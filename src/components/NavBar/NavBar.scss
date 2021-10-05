@@ -50,12 +50,12 @@
         color: #fff;
         background: #AB4BA5;
         line-height: 53px;
+        z-index: 501;
 
         p {
           padding-left: 10px;
         }
       }
-
       .dropDown {
         position: absolute;
         left: 0;
@@ -64,7 +64,7 @@
           overflow: hidden;
           width: 1080px;
           height: 0px;
-          padding-top: -1px;
+          padding-top: 0px;
           background: #fff;
           border: 1px solid white;
           border-top: none;
