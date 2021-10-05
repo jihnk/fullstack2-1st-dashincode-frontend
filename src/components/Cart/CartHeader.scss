@@ -1,0 +1,44 @@
+.cartHeaderWrap {
+  position: relative;
+  background-color: #f4f4f4;
+
+  .cartHeader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 25px;
+
+    .cartTitle {
+      display: inline-block;
+      position: relative;
+      font-size: 26px;
+      font-weight: 600;
+      color: #161616;
+      letter-spacing: -1px;
+    }
+
+    .cartSubTitleList {
+      display: flex;
+      position: absolute;
+      right: 15px;
+
+      .cartSubTitle {
+        margin-right: 13px;
+
+        .cartSubTitleText {
+          font-size: 17px;
+          font-weight: 400;
+          line-height: 1;
+          color: #959595;
+          &.on {
+            position: relative;
+            top: -3px;
+            color: #161616;
+            font-size: 20px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

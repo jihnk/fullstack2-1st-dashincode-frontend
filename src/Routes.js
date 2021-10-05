@@ -5,7 +5,7 @@ import signup from './pages/Signup';
 import login from './pages/Login';
 import product from './pages/Product';
 import list from './pages/List';
-import cart from './pages/Cart';
+import cart from './pages/CartPage/Cart';
 
 function Router() {
   return (
