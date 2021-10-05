@@ -1,0 +1,111 @@
+.Login {
+  position: relative;
+  margin: 0px 0px 20px;
+}
+.loginTitleBox {
+  display: block;
+  margin-bottom: 15px;
+  text-align: center;
+  font-family: 'Noto Sans', sans-serif;
+}
+.loginTitle {
+  display: block;
+  color: black;
+  font-size: 1.95em;
+  line-height: 1.4em;
+  font-weight: 700;
+}
+.underLoginTitle {
+  display: block;
+  margin-top: 30px;
+  color: black;
+  font-size: 1.15em;
+  line-height: 1.4em;
+  font-weight: 700;
+}
+.rightUnderLoginTitle {
+  color: #ab4ba5;
+}
+.loginForm {
+  position: relative;
+}
+.loginInput {
+  position: relative;
+  display: block;
+  background: white;
+  margin-bottom: 10px;
+  color: black;
+  font-weight: normal;
+  text-align: left;
+  font-family: 'Noto Sans', sans-serif;
+}
+.userIdPwForm {
+  display: block;
+  //   vertical-align: middle;
+  padding: 15px;
+  width: 348px;
+  background: white;
+  color: black;
+  text-align: left;
+  outline: medium none;
+  font-weight: normal;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.loginBtn a {
+  display: block;
+  background: #ab4ba5;
+  margin-top: 30px;
+  padding: 17px 0px;
+  border: 1px solid #ab4ba5;
+  color: white;
+  text-align: center;
+  font-size: 1.35em;
+  border-radius: 3px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.underLoginBtn {
+  display: block;
+  margin: 15px 0px 40px;
+  font-size: 1em;
+  line-height: 1.4em;
+  text-align: center;
+  font-family: 'Noto Sans', sans-serif;
+
+  .underLoginBtnWords {
+    display: block;
+    padding: 10px 2%;
+    font-size: 1.15em;
+    color: black;
+  }
+
+  .underLoginBtnBar {
+    display: inline-block;
+    padding: 0px 2%;
+    margin-top: 10px;
+    font-size: 0.9em;
+    font-weight: normal;
+  }
+}
+
+.easyLogin {
+  display: block;
+  margin: 0px 0px 30px;
+  text-align: center;
+
+  .easyLoginWord {
+    display: block;
+    font-size: 1.1em;
+    color: black;
+    letter-spacing: 0.03em;
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+  .loginInToSocial {
+    display: inline-block;
+    margin: 20px 0px 0px 20px;
+  }
+}

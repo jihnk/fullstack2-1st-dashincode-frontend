@@ -86,6 +86,7 @@ web_modules/
 .npm
 
 # Optional eslint cache
+.eslintrc
 .eslintcache
 
 # Microbundle cache
