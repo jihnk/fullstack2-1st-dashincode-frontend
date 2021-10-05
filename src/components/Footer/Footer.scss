@@ -25,9 +25,9 @@
           padding-right: 16px;
           color: #383838;
           font-size: 13px;
-          .hoverPurple:hover {
-            color: #AB4BA5;
-          }
+        }
+        li:nth-child(odd):hover {
+          color: #AB4BA5;
         }
       }
     }
@@ -135,6 +135,7 @@
               line-height: 18px;
               font-size: 12px;
               text-align: center;
+              line-height: 12px;
               cursor: pointer;
             }
             button:hover {
