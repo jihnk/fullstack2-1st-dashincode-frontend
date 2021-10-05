@@ -8,6 +8,7 @@ export class Cardlist extends React.Component {
     super();
     this.state = {
       foodProducts: [],
+      cart: false,
     };
   }
 
@@ -30,7 +31,6 @@ export class Cardlist extends React.Component {
   toggleCart = id => {
     const { foodProducts } = this.state;
     const newFoodProducts = [...foodProducts];
-    console.log('dd');
     for (let i = 0; i < newFoodProducts.length; i++) {
       if (newFoodProducts[i].id === id) {
         newFoodProducts[i].cart = !newFoodProducts[i].cart;
@@ -52,7 +52,7 @@ export class Cardlist extends React.Component {
   }
 
   render() {
-    const { foodProducts } = this.state;
+    const { foodProducts, isLiked } = this.state;
     return (
       <div className="List">
         <div className="sorts">
@@ -76,6 +76,7 @@ export class Cardlist extends React.Component {
                 toggleLike={this.toggleLike}
                 toggleCart={this.toggleCart}
                 cart={product.cart}
+                className={isLiked ? 'fill' : 'fa-heart'}
               />
             );
           })}
@@ -87,8 +88,9 @@ export class Cardlist extends React.Component {
                 alt={product.name}
                 discountedPrice={product.discountedPrice}
                 reviewCount={product.reviewCount}
-                toggleCart={this.toggleCart}
+                // onClick={this.toggleCart}
                 cart={product.cart}
+                className={product.cart ? 'open' : 'close'}
               />
             );
           })}

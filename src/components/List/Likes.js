@@ -11,8 +11,8 @@ class Likes extends React.Component {
       <FontAwesomeIcon
         onClick={() => toggleLike(id)}
         icon={faHeart}
-        isLiked={isLiked}
         id={id}
+        className={isLiked ? 'fill' : 'fa-heart'}
       />
     );
   }

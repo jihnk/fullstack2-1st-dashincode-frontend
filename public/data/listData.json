@@ -67,18 +67,6 @@
       "cart": false
     }
   ],
-    "SECOND_DATA": [
-      {
-        "id": 1,
-        "name": "아이스 커피",
-        "img": "https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[106509]_20210430111852870.jpg"
-      },
-      {
-        "id": 2,
-        "name": "오늘의 커피",
-        "img": "https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[2]_20210430111934117.jpg"
-      }
-    ],
     "LIST_TITLE": [
       {
         "id": 1,
