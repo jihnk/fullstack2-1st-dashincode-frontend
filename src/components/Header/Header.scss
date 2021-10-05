@@ -1,0 +1,155 @@
+body {
+  overflow-x: hidden;
+}
+
+.Header {
+  width: 100%;
+  height:144px;
+  margin: 0 auto;
+  padding: 0;
+  border-bottom: 1px solid #e5e5e5;
+  z-index: 400;
+  .header1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+    background: #ebebeb;
+    
+    .header1Box{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1100px;
+      margin: 0 auto;
+      h1 {
+        color: #262626;
+        font-size: 12px;
+        font-weight: 700;
+        text-align: center;
+      }
+      ul {
+        display: flex;
+        font-size: 11px;
+        color: #777;
+        li {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  .header2 {
+    margin-top: 22px;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 100;
+    text-align: center;
+
+    .header2Box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; 
+      position: relative;
+      width: 1100px;
+      margin: 18px auto;
+
+      .logoKorean {
+        width: 120px;
+        height: 34px;
+      }
+
+      .logo {
+        width: 70px;
+        padding-left: 200px;
+      }
+
+      .withoutLogo {
+        display: flex;
+      }
+
+      .searchWrap {
+        width: 234px;
+        height: 34px;
+        border: 1px solid #d4d4d4;
+        span {
+          height: 34px;
+          overflow: hidden;
+          background: #fff;
+          input {
+            width: 90%;
+            height: 34px;
+            color: #a9a9a9;
+            font-size: 13px;
+            line-height: 34px;
+            border: none;
+            outline: none;
+          }
+        }
+
+        .searchIcon {
+          display: block;
+          position: relative;
+          left: 205px;
+          top: -25px;
+        }
+      }
+
+      .userInfoAndGoToCart {
+        .headerIcons {
+          display: flex;
+          padding-top: 10px;
+          li{
+            cursor: pointer;
+            .userIcon {
+              padding-left: 20px;
+            }
+            .cartNum {
+              position: relative;
+              left: 35px;
+              top: -5px;
+              float: left;
+              height: 19px;
+              padding: 0px 6px;
+              color: #fff;
+              background: rgb(71, 71, 71);
+              border-radius: 60px;
+              line-height: 21px;
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+  .dropDownUserInfo {
+    position: relative;
+  }
+  .showUserInfo {
+    display: none;
+    position: absolute;
+    .userInfoWrap {
+      position: relative;
+      right: 20px;
+      top: 15px;
+      z-index: 700;
+    }
+    .userInfoTap {
+      width: 106px;
+      padding: 5px 0px;
+      background: #fff;
+      border: 1px solid #86868b;
+      border-radius: 7px;
+      li {
+        color: #333;
+        font-size: 11px;
+        
+        a {
+          display: block;
+          padding: 8px 17px;
+        }
+      }
+    }
+    
+  }
+  .dropDownUserInfo:hover .showUserInfo {display: block;}
+}
