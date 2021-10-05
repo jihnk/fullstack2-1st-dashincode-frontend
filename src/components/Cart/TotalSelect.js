@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CheckBox from '../shared/CheckBox';
-import Button from '../shared/Button';
 import './TotalSelect.scss';
 
 class TotalOrder extends Component {
@@ -8,7 +7,7 @@ class TotalOrder extends Component {
     return (
       <div className="totalOrderWrap">
         <CheckBox />
-        <Button />
+        <button class="selectDeleteBtn">선택상품삭제</button>
       </div>
     );
   }

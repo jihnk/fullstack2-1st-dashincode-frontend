@@ -9,11 +9,11 @@
     padding: 25px;
 
     .cartTitle {
-      display: inline-block;
       position: relative;
+      display: inline-block;
+      color: #161616;
       font-size: 26px;
       font-weight: 600;
-      color: #161616;
       letter-spacing: -1px;
     }
 
@@ -26,10 +26,10 @@
         margin-right: 13px;
 
         .cartSubTitleText {
+          color: #959595;
           font-size: 17px;
           font-weight: 400;
           line-height: 1;
-          color: #959595;
           &.on {
             position: relative;
             top: -3px;

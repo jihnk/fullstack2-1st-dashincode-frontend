@@ -12,8 +12,8 @@ class CartDetail extends Component {
           <CheckBox />
           <header class="cartDetailHeader">다신쿨배송(냉동 제품)</header>
         </div>
-        <div className="cartDetailContents">
-          <div className="cartDetailTable">
+        <section className="cartDetailContents">
+          <div className="cartDetailWrap">
             <div className="checkBoxWrap">
               <CheckBox />
             </div>
@@ -27,14 +27,14 @@ class CartDetail extends Component {
               </a>
             </div>
             <div className="orderInfoWrap">
-              <a className="order_title" href="#">
+              <p className="order_title" href="#">
                 완벽한 한끼 식단 다신밥상
-              </a>
+              </p>
               <ul className="orderInfoArea">
                 <li className="orderInfoWrap">
-                  <span className="orderInfoTitle">
+                  <p className="orderInfoTitle">
                     기본옵션: *특가* 1주 식단세트(5팩)
-                  </span>
+                  </p>
                   <span className="orderCntBtnWrap">
                     <a id="minBtn" className="minusBtn">
                       -
@@ -62,8 +62,8 @@ class CartDetail extends Component {
               </ul>
             </div>
           </div>
-        </div>
-        <div className="orderTotalPriceContainer">
+        </section>
+        <section className="orderTotalPriceContainer">
           <div className="orderTotalPriceWrap">
             <div className="orderPriceWrap">
               <p className="orderPriceName">주문금액</p>
@@ -82,7 +82,7 @@ class CartDetail extends Component {
               <em className="totalPriceWon">원</em>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     );
   }

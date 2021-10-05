@@ -5,7 +5,6 @@
   align-items: center;
   margin-top: 60px;
   border: 6px solid #e7e7e7;
-  font-family: 'Noto Sans', sans-serif;
 
   .totalOrderWrap {
     display: flex;
@@ -17,8 +16,8 @@
       background-color: #fff;
 
       .totalOrderTitle {
-        font-size: 13px;
         color: #444;
+        font-size: 13px;
       }
 
       .expectPrice {
@@ -33,9 +32,9 @@
       .totalOrderPrice {
         color: #000;
         display: inline-block;
-        font-size: 28px;
         line-height: 40px;
         vertical-align: middle;
+        font-size: 28px;
         font-weight: 800;
       }
 
@@ -43,9 +42,9 @@
         position: relative;
         display: inline-block;
         margin-left: 2px;
+        color: #333;
         font-weight: 700;
         font-size: 14px;
-        color: #333;
       }
 
       .expectPrice {
@@ -56,13 +55,13 @@
 
   .sign {
     display: inline-block;
-    text-align: center;
     width: 50px;
     height: 50px;
     line-height: 50px;
     border-radius: 80px;
     color: #999;
     background-color: #f6f6f6;
+    text-align: center;
     font-size: 30px;
     font-weight: 200;
   }
