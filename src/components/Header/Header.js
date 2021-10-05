@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,10 +9,12 @@ import logoKorean from './logo_korean.png';
 import './Header.scss';
 
 class Header extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       searchValue: '',
+      cartNum: 0,
+      // token: cookie.load('token'), 쿠키 설치 후 태그 감싸야 함
     };
   }
   handleInput = e => {
@@ -20,20 +22,55 @@ class Header extends Component {
       searchValue: e.target.value,
     });
   };
-  handleSearch = () => {
-    //filter 구현 예정
+  handleInputByEnter = e => {
+    if (e.key === 'Enter') {
+      this.handleSearch();
+      e.target.value = '';
+    }
   };
+  handleSearch = () => {
+    this.props.history.push(`/list/search?${this.state.searchValue}`);
+  };
+
+  componentDidUpdate() {
+    fetch('')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          cartNum: res,
+          //carts table 행이 몇개인지 숫자로 받아야함
+        });
+      });
+  }
   render() {
-    const searchPlaceholder = ['닭가슴살', '도시락', '현미떡', '프로틴음료'];
+    const searchPlaceholder = [
+      '닭가슴살',
+      '도시락',
+      '현미떡',
+      '프로틴음료',
+      '떡볶이',
+      '그릭요거트',
+      '핫도그',
+    ];
     const randomItem = word => {
       return word[Math.floor(Math.random() * word.length)];
     };
+    const userInfo = [
+      '주문/배송조회',
+      '취소/반품조회',
+      '할인쿠폰',
+      '적립금',
+      '찜한 상품',
+      '최근 본 상품',
+      '배송지관리',
+      '내정보 수정',
+    ];
     return (
       <header className="Header">
         <container className="headerTop">
           <div className="headerTopWrap">
             <Link to="/">
-              <h1> 다신코 </h1>
+              <h1> 1차 프로젝트 </h1>
             </Link>
             <ul>
               <Link to="/">
@@ -67,6 +104,7 @@ class Header extends Component {
                       type="text"
                       placeholder={randomItem(searchPlaceholder)}
                       onChange={this.handleInput}
+                      onKeyPress={this.handleInputByEnter}
                     />
                   </span>
                   <FontAwesomeIcon
@@ -87,30 +125,17 @@ class Header extends Component {
                         <div class="userInfoWrap">
                           <div class="userInfoList">
                             <ul>
-                              <li>
-                                <a href="/">주문/배송조회</a>
-                              </li>
-                              <li>
-                                <a href="/">취소/반품조회</a>
-                              </li>
-                              <li>
-                                <a href="/">할인쿠폰</a>
-                              </li>
-                              <li>
-                                <a href="/">적립금</a>
-                              </li>
-                              <li>
-                                <a href="/">찜한 상품</a>
-                              </li>
-                              <li>
-                                <a href="/">최근 본 상품</a>
-                              </li>
-                              <li>
-                                <a href="/">배송지관리</a>
-                              </li>
-                              <li>
-                                <a href="/">내정보 수정</a>
-                              </li>
+                              {userInfo.map((list, id) => {
+                                return (
+                                  <li key={id}>
+                                    {this.state.token ? (
+                                      <Link to="/user">{list}</Link>
+                                    ) : (
+                                      <Link to="/login">{list}</Link>
+                                    )}
+                                  </li>
+                                );
+                              })}
                             </ul>
                           </div>
                         </div>
@@ -122,7 +147,7 @@ class Header extends Component {
                         size="lg"
                         icon={faShoppingBag}
                       />
-                      <em class="cartNum">0</em>
+                      <em class="cartNum">{this.state.cartNum}</em>
                     </li>
                   </ul>
                 </div>
@@ -135,4 +160,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
