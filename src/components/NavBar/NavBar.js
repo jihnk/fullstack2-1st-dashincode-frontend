@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { faGripLines } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGripLines } from '@fortawesome/free-solid-svg-icons';
 import { faBox } from '@fortawesome/free-solid-svg-icons';
 import './NavBar.scss';
 
@@ -150,6 +150,7 @@ class NavBar extends Component {
                     &nbsp;다신쿨배송
                   </li>
                 </Link>
+                <li className="blank"></li>
               </ul>
             </div>
           </div>
