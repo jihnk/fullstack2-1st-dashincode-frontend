@@ -8,6 +8,7 @@ import './NavBar.scss';
 class NavBar extends Component {
   render() {
     return (
+      //수정수정
       <>
         <nav className="NavBar">
           <div className="navbarWrap">
@@ -127,25 +128,25 @@ class NavBar extends Component {
                   </div>
                 </li>
                 <Link to="/">
-                  <li>베스트</li>
+                  <li className="topMenuWithoutCategory">베스트</li>
                 </Link>
                 <Link to="/">
-                  <li>특가</li>
+                  <li className="topMenuWithoutCategory">특가</li>
                 </Link>
                 <Link to="/">
-                  <li>신상품</li>
+                  <li className="topMenuWithoutCategory">신상품</li>
                 </Link>
                 <Link to="/">
-                  <li>식단플랜</li>
+                  <li className="topMenuWithoutCategory">식단플랜</li>
                 </Link>
                 <Link to="/">
-                  <li>
+                  <li className="topMenuWithoutCategory">
                     <FontAwesomeIcon icon={faBox} />
                     &nbsp;다신배송
                   </li>
                 </Link>
                 <Link to="/">
-                  <li>
+                  <li className="topMenuWithoutCategory">
                     <FontAwesomeIcon icon={faBox} />
                     &nbsp;다신쿨배송
                   </li>
