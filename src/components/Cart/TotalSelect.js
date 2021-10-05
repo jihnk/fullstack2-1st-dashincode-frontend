@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CheckBox from '../shared/CheckBox';
 import Button from '../shared/Button';
-import './TotalOrder.scss';
+import './TotalSelect.scss';
 
 class TotalOrder extends Component {
   render() {

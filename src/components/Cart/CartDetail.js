@@ -52,13 +52,34 @@ class CartDetail extends Component {
                     </a>
                   </span>
                   <span className="orderPriceWrap">
-                    <em class="price">8,500원</em>
+                    <em class="price">8,500</em>
+                    <em class="priceWon">원</em>
                   </span>
                   <span className="deleteBtnWrap">
                     <FontAwesomeIcon icon={faBan} className="deleteBtn" />
                   </span>
                 </li>
               </ul>
+            </div>
+          </div>
+        </div>
+        <div className="orderTotalPriceContainer">
+          <div className="orderTotalPriceWrap">
+            <div className="orderPriceWrap">
+              <p className="orderPriceName">주문금액</p>
+              <em className="orderPrice">90,600</em>
+              <em className="orderPriceWon">원</em>
+            </div>
+            <p className="sign">+</p>
+            <div className="deliveryWrap">
+              <p className="deleveryTitle">배송비</p>
+              <p className="deleveryPrice">무료배송</p>
+            </div>
+            <p className="sign">=</p>
+            <div className="totalPriceWrap">
+              <p className="totalPriceTitle">결제금액</p>
+              <em className="totalPrice">90,600</em>
+              <em className="totalPriceWon">원</em>
             </div>
           </div>
         </div>

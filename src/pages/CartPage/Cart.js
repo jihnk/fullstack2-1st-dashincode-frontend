@@ -1,7 +1,8 @@
 import React from 'react';
 import CartHeader from '../../components/Cart/CartHeader';
-import TotalOrder from '../../components/Cart/TotalOrder';
+import TotalOrder from '../../components/Cart/TotalSelect';
 import CartDetail from '../../components/Cart/CartDetail';
+import TotalOrderPrice from '../../components/Cart/TotalOrderPrice';
 import './Cart.scss';
 
 class Cart extends React.Component {
@@ -12,6 +13,7 @@ class Cart extends React.Component {
           <CartHeader />
           <TotalOrder />
           <CartDetail />
+          <TotalOrderPrice />
         </div>
       </div>
     );

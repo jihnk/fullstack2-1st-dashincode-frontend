@@ -12,14 +12,14 @@
 
     .cartDetailHeader {
       margin-left: 20px;
-      font-size: 26px;
+      font-size: 23px;
       font-weight: 600;
     }
   }
+
   .cartDetailContents {
     display: flex;
     position: relative;
-    margin-bottom: 60px;
     border: 1px solid #c0c0c0;
     overflow: hidden;
     padding: 30px 0;
@@ -156,6 +156,109 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+
+  .orderTotalPriceContainer {
+    position: relative;
+    margin: -1px 0 0px 0;
+    border: 1px solid #999;
+    height: 70px;
+    background: #f8f9fa;
+
+    .orderTotalPriceWrap {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 20px 0 0;
+      right: 0;
+      top: 0;
+      width: 40%;
+
+      .orderPriceWrap {
+        display: flex;
+        align-items: center;
+
+        .orderPriceName {
+          color: #afafaf;
+          font-size: 11px;
+          font-family: 'Noto Sans', sans-serif;
+          display: inline-block;
+          margin-right: 10px;
+        }
+
+        .orderPrice {
+          color: #444;
+          font-size: 18px;
+          font-weight: 700;
+        }
+
+        .orderPriceWon {
+          position: relative;
+          bottom: 0;
+          text-align: right;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1;
+        }
+      }
+
+      .sign {
+        color: #cbcbcb;
+        font-size: 35px;
+        font-weight: normal;
+      }
+
+      .deliveryWrap {
+        display: flex;
+        align-items: center;
+
+        .deleveryTitle {
+          color: #afafaf;
+          font-size: 11px;
+          font-family: 'Noto Sans', sans-serif;
+          display: inline-block;
+          margin-right: 10px;
+        }
+
+        .deleveryPrice {
+          color: #ab4ba5;
+          font-size: 18px;
+          display: inline-block;
+          text-align: right;
+          font-weight: 700;
+        }
+      }
+
+      .totalPriceWrap {
+        display: flex;
+        align-items: center;
+
+        .totalPriceTitle {
+          color: #afafaf;
+          font-size: 11px;
+          font-family: 'Noto Sans', sans-serif;
+          display: inline-block;
+          margin-right: 10px;
+        }
+
+        .totalPrice {
+          display: inline-block;
+          text-align: right;
+          font-size: 24px;
+          font-family: 'Noto Sans', sans-serif;
+          font-weight: 700;
+          color: #000;
+        }
+
+        .totalPriceWon {
+          text-align: right;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1;
         }
       }
     }
