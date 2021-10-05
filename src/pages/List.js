@@ -1,9 +1,9 @@
 import React from 'react';
+import Cardlist from '../components/List/Cardlist';
 
-export class List extends React.Component {
+class List extends React.Component {
   render() {
-    return <div>리스트 페이지 초기화</div>;
+    return <Cardlist />;
   }
 }
-
 export default List;

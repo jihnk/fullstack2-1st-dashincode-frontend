@@ -1,0 +1,96 @@
+{
+  "FIRST_DATA": [
+      {
+        "id": 1,
+        "name": "다코현미밥상 다이어트 도시락",
+        "img": "https://data.0app0.com/diet/shop/goods/20190930/w_20190930154033_5777044664.jpg",
+        "discountedPrice": 39800,
+        "price": 48500,
+        "description": "3대 영양소는 기본! 비타민&미네랄까지 꼼꼼하게 설계했어요.",
+        "reviewCount": 12812,
+        "isLiked": false,
+        "cart": false
+    },
+    {
+        "id": 2,
+        "name": "든든한 한끼 오늘은 현미밥 9종",
+        "img": 	"https://data.0app0.com/diet/shop/goods/20210514/w_20210514173001_2332893189.jpg",
+        "discountedPrice": 1900,
+        "price": 2500,
+        "description": "다른 반찬 필요없이 4분만에 완성하는 균형잡힌 현미밥 식단!",
+        "reviewCount": 14422,
+        "isLiked": false,
+        "cart": false
+    },
+    {
+        "id": 3,
+        "name": "[1+1] 성수동905 치킨&족발 골라담기",
+        "img": "https://data.0app0.com/diet/shop/goods/20210811/w_20210811171916_7222514697.jpg",
+        "discountedPrice": 6400,
+        "price": 8000,
+        "description": "국내산 순살 100%!",
+        "reviewCount": 8191,
+        "isLiked": false,
+        "cart": false
+    },
+    {
+        "id": 4,
+        "name": "완벽한 한끼 식단 다신밥상",
+        "img": "https://data.0app0.com/diet/shop/goods/20180906/w_20180906114306_2447631469.jpg",
+        "discountedPrice": 22500,
+        "price": 30000,
+        "description": "3대 영양소는 기본! 비타민&미네랄까지 꼼꼼하게 설계했어요.",
+        "reviewCount": 24059,
+        "isLiked": false,
+        "cart": false
+    },
+    {
+      "id": 5,
+      "name": "[4주 정기구독] 한스푼 샐러드 도시락 한달 패키지",
+      "img": "https://data.0app0.com/diet/shop/goods/20200402/w_20200402155541_6940872901.jpg",
+      "discountedPrice": 92000,
+      "price": 99200,
+      "description": "*새벽배송* 매주 신선한 샐러드를 배송해드려요. 한달 식단 고민 걱정 끝!",
+      "reviewCount": 3405,
+      "isLiked": false,
+      "cart": false
+    },
+    {
+      "id": 6,
+      "name": "[3+1] 성수동905 치즈 뿌링 치킨",
+      "img": "https://data.0app0.com/diet/shop/goods/20210927/w_20210927114836_0184149586.jpg",
+      "discountedPrice": 3800,
+      "price": 4500,
+      "description": "달콤 짭쪼롬한 치즈풍미~ 치킨끝판왕!",
+      "reviewCount": 35,
+      "isLiked": false,
+      "cart": false
+    }
+  ],
+    "SECOND_DATA": [
+      {
+        "id": 1,
+        "name": "아이스 커피",
+        "img": "https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[106509]_20210430111852870.jpg"
+      },
+      {
+        "id": 2,
+        "name": "오늘의 커피",
+        "img": "https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[2]_20210430111934117.jpg"
+      }
+    ],
+    "LIST_TITLE": [
+      {
+        "id": 1,
+        "title": "지금 많이 찾는 BEST"
+      },
+      {
+        "id": 2,
+        "title": "특가"
+      },
+      {
+        "id": 3,
+        "title": "신상품 NEW"
+      }
+    ]
+  }
