@@ -1,0 +1,129 @@
+.NavBar {
+  position:sticky;
+  top: 0px;
+  height: 52px;
+  background-color: white;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 10px;
+  font-weight: 300;
+  text-align: center;
+  z-index: 500;
+  
+  .navbarWrap {
+    position: absolute;
+    width: 100%;
+
+    .navbar {
+      position: relative;
+      width: 1110px;
+      margin: 0 auto;
+    }
+
+    a:hover {
+      color: #AB4BA5;
+    }
+
+    .bar {
+      li {
+        position: relative;
+        float: left;
+        left: 200px;
+        height: 52px;
+        padding: 0 50px 0 0;
+        font-size: 1.35em;
+        font-weight: 600;
+        line-height: 53px;
+        cursor: pointer;
+      }
+      li.blank {
+        padding-right: 350px;
+        box-sizing: content-box;
+      }
+
+      .category {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        width: 160px;
+        height: 53px;
+        color: #fff;
+        background: #AB4BA5;
+        line-height: 53px;
+
+        p {
+          padding-left: 10px;
+        }
+      }
+
+      .dropDown {
+        position: absolute;
+        left: 0;
+
+        .dropDownCategory {
+          overflow: hidden;
+          width: 1080px;
+          height: 0px;
+          padding-top: -1px;
+          background: #fff;
+          border: 1px solid white;
+          border-top: none;
+          transition: 0.5s;
+          font-size: 0.7em;
+
+          .mainMenu {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            border-right: 1px solid #f5f5f5;
+            z-index: 1000;
+            
+            .mainMenuList {
+              position: relative;
+              left: 0;
+              height: 260px;
+              padding: 0;
+              border-right: 1px solid #f5f5f5;
+              text-align: center;
+              z-index: 1000;
+
+              .mainMenuList a {
+                height: 20px;
+                color: #777;
+                font-size: 1em;
+                line-height: 21px;
+                font-weight: 800;
+                cursor: pointer;
+              }
+
+              .subMenu {
+                display: flex;
+                flex-direction: column;
+                z-index: 1000;
+
+                li {
+                  left: 0;
+                  height: 34px;
+                  padding: 0;
+                  line-height: 35px;
+                  color: #777;
+                  font-size: 1em;
+                  font-weight: 400;
+                  cursor: pointer;
+                }
+              }
+            }
+
+            .mainMenuList:nth-child(8) {
+              border-right: none;
+            }
+          }
+        }
+      }
+    }
+    .dropDown:hover .dropDownCategory {
+      height: 260px;
+      border: 1px solid #d4d4d4;
+      border-top: none;
+    } 
+  }
+}
