@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHeart,
+  faShareAlt,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 import './ProductInfo.scss';
 
 export class ProductInfo extends React.Component {
@@ -9,6 +13,9 @@ export class ProductInfo extends React.Component {
     super();
     this.state = {
       isLikedHeart: false,
+      isSharePossible: false,
+      productPrice: 8500,
+      productQuantity: 1,
     };
   }
 
@@ -17,9 +24,27 @@ export class ProductInfo extends React.Component {
     this.setState({ isLikedHeart: !isLikedHeart });
   };
 
+  toggleShare = () => {
+    const { isSharePossible } = this.state;
+    this.setState({ isSharePossible: !isSharePossible });
+  };
+
+  plusQuantity = () => {
+    const { productQuantity } = this.state;
+    this.setState({ productQuantity: productQuantity + 1 });
+  };
+
+  minusQuantity = () => {
+    const { productQuantity } = this.state;
+    this.setState({
+      productQuantity: productQuantity > 1 ? productQuantity - 1 : 1,
+    });
+  };
+
   render() {
-    const { isLikedHeart } = this.state;
-    const { toggleHeart } = this;
+    const { isLikedHeart, isSharePossible, productPrice, productQuantity } =
+      this.state;
+    const { toggleHeart, toggleShare, plusQuantity, minusQuantity } = this;
     return (
       <main className="ProductInfo">
         <aside>
@@ -61,7 +86,42 @@ export class ProductInfo extends React.Component {
               onClick={toggleHeart}
               icon={faHeart}
             />
-            <FontAwesomeIcon className="fas fa-share-alt" icon={faShareAlt} />
+            <FontAwesomeIcon
+              className="fas fa-share-alt"
+              onClick={toggleShare}
+              icon={faShareAlt}
+            />
+          </div>
+          <div
+            id="ShareContainer"
+            className={isSharePossible ? 'active' : 'inactive'}
+          >
+            <FontAwesomeIcon
+              className="fas fa-times"
+              onClick={toggleShare}
+              icon={faTimes}
+            />
+            <p>공유하기</p>
+            <div>
+              <Link to="#">
+                <img
+                  alt="Share with KakaoStory"
+                  src="images/ico_sns_kakaostory.gif"
+                />
+              </Link>
+              <Link to="#">
+                <img
+                  alt="Share with Facebook"
+                  src="images/ico_sns_facebook.gif"
+                />
+              </Link>
+              <Link to="#">
+                <img
+                  alt="Share with Twitter"
+                  src="images/ico_sns_twitter.gif"
+                />
+              </Link>
+            </div>
           </div>
         </aside>
 
@@ -76,10 +136,12 @@ export class ProductInfo extends React.Component {
           <dl>
             <dt>판매가격</dt>
             <dd>
-              <em>8,500</em>원
+              <em>{productPrice.toLocaleString()}</em>원
             </dd>
             <dt>적립금</dt>
-            <dd>85원 적립 (실 결제금액의 1%)</dd>
+            <dd>
+              {(productPrice * 0.01).toLocaleString()}원 적립 (실 결제금액의 1%)
+            </dd>
           </dl>
           <dl>
             <dt>보관방법</dt>
@@ -96,11 +158,19 @@ export class ProductInfo extends React.Component {
           </dl>
 
           <div id="OrderContainer">
-            수량: <input type="number" value="1" />
+            <div className="QuantityCounter">
+              수량: <input type="number" value={productQuantity} min="1" />
+              <button className="plus" onClick={plusQuantity}>
+                ▲
+              </button>
+              <button className="minus" onClick={minusQuantity}>
+                ▼
+              </button>
+            </div>
             <p>
               총 상품금액{' '}
               <span>
-                <em>8,500</em>원
+                <em>{(productPrice * productQuantity).toLocaleString()}</em>원
               </span>
             </p>
             <button className="BuyButton">구매하기</button>
