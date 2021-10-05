@@ -1,16 +1,16 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-import './NavBar.scss';
+import { Link } from 'react-router-dom';
 import { faGripLines } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBox } from '@fortawesome/free-solid-svg-icons';
+import './NavBar.scss';
 
 const NavBar = () => {
   return (
     <>
       <nav className="NavBar">
         <div className="navbarWrap">
-          <div className="navbarWrapInner">
+          <div className="navbar">
             <ul className="bar">
               <li className="dropDown">
                 <div className="category">
@@ -115,28 +115,40 @@ const NavBar = () => {
                       </ul>
                     </li>
                     <li className="mainMenuList">
-                      <a href="/">진관동17</a>
+                      <a href="/">익선동18</a>
                       <ul className="subMenu">
                         <li>
-                          <a href="/">진관동17</a>
+                          <a href="/">익선동18</a>
                         </li>
                       </ul>
                     </li>
                   </ul>
                 </div>
               </li>
-              <li>베스트</li>
-              <li>특가</li>
-              <li>신상품</li>
-              <li>식단플랜</li>
-              <li>
-                <FontAwesomeIcon icon={faBox} />
-                다신배송
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faBox} />
-                다신쿨배송
-              </li>
+              <Link to="/">
+                <li>베스트</li>
+              </Link>
+              <Link to="/">
+                <li>특가</li>
+              </Link>
+              <Link to="/">
+                <li>신상품</li>
+              </Link>
+              <Link to="/">
+                <li>식단플랜</li>
+              </Link>
+              <Link to="/">
+                <li>
+                  <FontAwesomeIcon icon={faBox} />
+                  &nbsp;다신배송
+                </li>
+              </Link>
+              <Link to="/">
+                <li>
+                  <FontAwesomeIcon icon={faBox} />
+                  &nbsp;다신쿨배송
+                </li>
+              </Link>
             </ul>
           </div>
         </div>
