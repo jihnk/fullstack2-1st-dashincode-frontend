@@ -16,6 +16,7 @@ class Footer extends Component {
     };
   }
   goToChat = () => {
+    //수정
     const now = new Date();
     this.setState({
       now: now.getHours(),
