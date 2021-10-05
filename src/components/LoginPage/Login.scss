@@ -1,12 +1,33 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  font-family: 'Noto Sans', sans-serif;
+}
+#container {
+  padding: 52px 0 90px;
+  .loginBox {
+    width: 1100px;
+  }
+}
+
+.loginRenewBox {
+  overflow: hidden;
+  display: block;
+  position: relative;
+  background: white;
+  width: 380px;
+  margin: 0px auto;
+  font-family: 'Noto Sans', sans-serif;
+}
+
 .Login {
   position: relative;
   margin: 0px 0px 20px;
 }
-.loginTitleBox {
-  display: block;
-  margin-bottom: 15px;
-  text-align: center;
-  font-family: 'Noto Sans', sans-serif;
+
+.loginForm {
+  position: relative;
 }
 .loginTitle {
   display: block;
@@ -15,20 +36,26 @@
   line-height: 1.4em;
   font-weight: 700;
 }
+.loginTitleBox {
+  display: block;
+  margin-bottom: 15px;
+  text-align: center;
+  font-family: 'Noto Sans', sans-serif;
+}
+
 .underLoginTitle {
   display: block;
   margin-top: 30px;
   color: black;
-  font-size: 1.15em;
+  font-size: 15px;
   line-height: 1.4em;
   font-weight: 700;
+
+  .rightUnderLoginTitle {
+    color: #ab4ba5;
+  }
 }
-.rightUnderLoginTitle {
-  color: #ab4ba5;
-}
-.loginForm {
-  position: relative;
-}
+
 .loginInput {
   position: relative;
   display: block;
@@ -40,8 +67,7 @@
   font-family: 'Noto Sans', sans-serif;
 }
 .userIdPwForm {
-  display: block;
-  //   vertical-align: middle;
+  vertical-align: middle;
   padding: 15px;
   width: 348px;
   background: white;
@@ -69,6 +95,7 @@
 
 .underLoginBtn {
   display: block;
+  vertical-align: top;
   margin: 15px 0px 40px;
   font-size: 1em;
   line-height: 1.4em;
@@ -76,9 +103,9 @@
   font-family: 'Noto Sans', sans-serif;
 
   .underLoginBtnWords {
-    display: block;
+    display: inline-block;
     padding: 10px 2%;
-    font-size: 1.15em;
+    font-size: 15px;
     color: black;
   }
 
