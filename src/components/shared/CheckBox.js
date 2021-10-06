@@ -5,7 +5,7 @@ class CheckBox extends Component {
   render() {
     return (
       <div className="checkBoxWrap">
-        <input type="checkbox" id="Check" class="totalCheckBox" />
+        <input type="checkbox" id={this.props.id} class="totalCheckBox" />
         <label for="Check" />
       </div>
     );
