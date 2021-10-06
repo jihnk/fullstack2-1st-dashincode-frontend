@@ -36,7 +36,7 @@ class CartDetail extends Component {
                     기본옵션: *특가* 1주 식단세트(5팩)
                   </p>
                   <span className="orderCntBtnWrap">
-                    <a id="minBtn" className="minusBtn">
+                    <a id="minBtn" className="cntBtn">
                       -
                     </a>
                     <span className="orderCntWrap">
@@ -47,7 +47,7 @@ class CartDetail extends Component {
                         className="orderCnt"
                       />
                     </span>
-                    <a id="minBtn" className="minusBtn">
+                    <a id="plusBtn" className="cntBtn">
                       +
                     </a>
                   </span>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '../shared/Button';
 import './CartOrderButton.scss';
 
 class CartOrderButton extends Component {
@@ -6,8 +7,8 @@ class CartOrderButton extends Component {
     return (
       <div className="orderBtnContainer">
         <span class="orderBtnWrap">
-          <a class="Btn orderBtn">구매하기</a>
-          <a class="Btn continueBtn">계속 쇼핑하기</a>
+          <Button type="orderBtn" text="구매하기" />
+          <Button type="continueBtn" text="계속 쇼핑하기" />
         </span>
       </div>
     );

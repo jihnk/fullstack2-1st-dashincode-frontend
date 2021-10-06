@@ -1,3 +1,25 @@
+@mixin orderSubTitle {
+  display: inline-block;
+  margin-right: 10px;
+  color: #afafaf;
+  font-size: 11px;
+}
+
+@mixin priceNameWon {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+  line-height: 1;
+}
+
+@mixin orderPrice($color, $fontSize) {
+  display: inline-block;
+  color: $color;
+  font-size: $fontSize;
+  font-weight: 700;
+  text-align: right;
+}
+
 .cartDetailContainer {
   display: flex;
   flex-direction: column;
@@ -59,8 +81,6 @@
         font-weight: 700;
         letter-spacing: -1px;
         line-height: 22px;
-        vertical-align: middle;
-        overflow: hidden;
       }
 
       .orderInfoArea {
@@ -90,7 +110,7 @@
             color: #66646b;
             font-size: 12px;
 
-            .minusBtn {
+            .cntBtn {
               display: inline;
               padding: 4px 9px;
               border-top: 1px solid #dadada;
@@ -172,26 +192,15 @@
         align-items: center;
 
         .orderPriceName {
-          display: inline-block;
-          margin-right: 10px;
-          color: #afafaf;
-          font-size: 11px;
-          font-family: 'Noto Sans', sans-serif;
+          @include orderSubTitle;
         }
 
         .orderPrice {
-          color: #444;
-          font-size: 18px;
-          font-weight: 700;
+          @include orderPrice(#444, 18px);
         }
 
         .orderPriceWon {
-          position: relative;
-          bottom: 0;
-          font-size: 14px;
-          font-weight: 700;
-          text-align: right;
-          line-height: 1;
+          @include priceNameWon;
         }
       }
 
@@ -206,10 +215,7 @@
         align-items: center;
 
         .deleveryTitle {
-          display: inline-block;
-          margin-right: 10px;
-          color: #afafaf;
-          font-size: 11px;
+          @include orderSubTitle;
         }
 
         .deleveryPrice {
@@ -226,25 +232,15 @@
         align-items: center;
 
         .totalPriceTitle {
-          display: inline-block;
-          margin-right: 10px;
-          color: #afafaf;
-          font-size: 11px;
+          @include orderSubTitle;
         }
 
         .totalPrice {
-          display: inline-block;
-          color: #000;
-          font-size: 24px;
-          font-weight: 700;
-          text-align: right;
+          @include orderPrice(#000, 24px);
         }
 
         .totalPriceWon {
-          font-size: 14px;
-          font-weight: 700;
-          text-align: right;
-          line-height: 1;
+          @include priceNameWon;
         }
       }
     }
