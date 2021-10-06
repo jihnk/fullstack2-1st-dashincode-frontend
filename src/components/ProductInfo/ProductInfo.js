@@ -6,9 +6,11 @@ import {
   faShareAlt,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
+
+import QuantityCounter from '../QuantityCounter/QuantityCounter';
 import './ProductInfo.scss';
 
-export class ProductInfo extends React.Component {
+class ProductInfo extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -29,58 +31,51 @@ export class ProductInfo extends React.Component {
     this.setState({ isSharePossible: !isSharePossible });
   };
 
-  plusQuantity = () => {
-    const { productQuantity } = this.state;
-    this.setState({ productQuantity: productQuantity + 1 });
-  };
-
-  minusQuantity = () => {
-    const { productQuantity } = this.state;
-    this.setState({
-      productQuantity: productQuantity > 1 ? productQuantity - 1 : 1,
-    });
+  getQuantity = quantity => {
+    this.setState({ productQuantity: quantity });
   };
 
   render() {
     const { isLikedHeart, isSharePossible, productPrice, productQuantity } =
       this.state;
-    const { toggleHeart, toggleShare, plusQuantity, minusQuantity } = this;
+    const { toggleHeart, toggleShare, getQuantity } = this;
+
     return (
       <main className="ProductInfo">
         <aside>
           <img
-            className="ProductThumbnail"
+            className="productThumbnail"
             alt="Hand-made Greek Yogurt"
             src="images/image0.jpg"
           />
-          <div id="ThumbnailContainer">
+          <div className="thumbnailContainer">
             <img
-              className="LittleThumbnails"
+              className="littleThumbnails"
               alt="Hand-made Greek Yogurt"
               src="images/image0.jpg"
             />
             <img
-              className="LittleThumbnails"
+              className="littleThumbnails"
               alt="Hand-made Greek Yogurt"
               src="images/image1.jpg"
             />
             <img
-              className="LittleThumbnails"
+              className="littleThumbnails"
               alt="Hand-made Greek Yogurt"
               src="images/image2.jpg"
             />
             <img
-              className="LittleThumbnails"
+              className="littleThumbnails"
               alt="Hand-made Greek Yogurt"
               src="images/image3.jpg"
             />
             <img
-              className="LittleThumbnails"
+              className="littleThumbnails"
               alt="Hand-made Greek Yogurt"
               src="images/image4.jpg"
             />
           </div>
-          <div id="IconContainer">
+          <div className="iconContainer">
             <FontAwesomeIcon
               className={isLikedHeart ? 'fas fa-heart active' : 'fas fa-heart'}
               onClick={toggleHeart}
@@ -93,8 +88,9 @@ export class ProductInfo extends React.Component {
             />
           </div>
           <div
-            id="ShareContainer"
-            className={isSharePossible ? 'active' : 'inactive'}
+            className={
+              isSharePossible ? 'shareContainer active' : 'shareContainer'
+            }
           >
             <FontAwesomeIcon
               className="fas fa-times"
@@ -157,24 +153,19 @@ export class ProductInfo extends React.Component {
             <dd>롯데택배</dd>
           </dl>
 
-          <div id="OrderContainer">
-            <div className="QuantityCounter">
-              수량: <input type="number" value={productQuantity} min="1" />
-              <button className="plus" onClick={plusQuantity}>
-                ▲
-              </button>
-              <button className="minus" onClick={minusQuantity}>
-                ▼
-              </button>
-            </div>
+          <div className="orderContainer">
+            <QuantityCounter
+              quantity={productQuantity}
+              getQuantity={getQuantity}
+            />
             <p>
               총 상품금액{' '}
               <span>
                 <em>{(productPrice * productQuantity).toLocaleString()}</em>원
               </span>
             </p>
-            <button className="BuyButton">구매하기</button>
-            <button className="CartButton">장바구니</button>
+            <button className="buy">구매하기</button>
+            <button className="cart">장바구니</button>
           </div>
         </section>
       </main>

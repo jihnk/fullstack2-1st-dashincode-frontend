@@ -14,12 +14,12 @@
     width: 500px;
     padding: 0 auto;
 
-    img.ProductThumbnail {
+    img.productThumbnail {
       width: 500px;
       height: 500px;
     }
 
-    div#ThumbnailContainer {
+    div.thumbnailContainer {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -27,13 +27,13 @@
       width: 365px;
       margin: 20px auto 0 auto;
 
-      img.LittleThumbnails {
+      img.littleThumbnails {
         width: 65px;
         border: 1px solid lightgray;
       }
     }
 
-    div#IconContainer {
+    div.iconContainer {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -60,7 +60,7 @@
       }
     }
 
-    div#ShareContainer {
+    div.shareContainer {
       position: relative;
       display: none;
 
@@ -188,7 +188,7 @@
       }
     }
 
-    div#OrderContainer {
+    div.orderContainer {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -199,58 +199,6 @@
       padding: 10px 0;
       color: #999;
       line-height: 1.85;
-
-      div.QuantityCounter {
-        position: relative;
-
-        input {
-          width: 55px;
-          height: 35px;
-          margin-left: 10px;
-          border: 1px solid lightgray;
-          border-radius: 0;
-
-          font-family: Verdana, 'NanumSBold', 'Malgun Gothic', sans-serif;
-          font-size: 16px;
-          font-weight: bold;
-          text-align: center;
-          vertical-align: middle;
-
-          &::-webkit-outer-spin-button,
-          &::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-          }
-        }
-
-        button {
-          position: absolute;
-          right: -19px;
-
-          width: 20px;
-          height: 20px;
-          margin: 0;
-          border: 1px solid lightgray;
-          padding: 0;
-
-          background: white;
-          color: #666;
-          font-size: 10px;
-          text-align: center;
-
-          &:hover {
-            background: rgba(211, 211, 211, 0.3);
-          }
-
-          &.plus {
-            top: 0;
-          }
-
-          &.minus {
-            bottom: 0;
-          }
-        }
-      }
 
       p {
         display: block;
@@ -272,7 +220,8 @@
         }
       }
 
-      button {
+      button.buy,
+      button.cart {
         width: 255px;
         height: 50px;
         margin: 20px auto 300px auto;
@@ -282,13 +231,15 @@
         font-size: 18px;
         font-weight: 600;
         cursor: pointer;
+      }
 
-        &.BuyButton {
+      button {
+        &.buy {
           background: #ab4ba5;
           color: white;
         }
 
-        &.CartButton {
+        &.cart {
           background: white;
           color: #ab4ba5;
 

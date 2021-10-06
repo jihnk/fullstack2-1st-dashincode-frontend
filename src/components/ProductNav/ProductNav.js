@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './ProductNav.scss';
 
-export class ProductNav extends React.Component {
+class ProductNav extends React.Component {
   render() {
     return (
       <nav className="ProductNav">
