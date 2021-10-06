@@ -1,9 +1,8 @@
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
-import React from 'react';
-
-class Likes extends React.Component {
+class Like extends React.Component {
   render() {
     const { toggleLike, isLiked, id } = this.props;
     return (
@@ -12,9 +11,9 @@ class Likes extends React.Component {
         icon={faHeart}
         id={id}
         isLiked={isLiked}
-        className={isLiked ? 'fill' : 'fa-heart'}
+        className={isLiked ? 'fa-heart fill' : 'fa-heart'}
       />
     );
   }
 }
-export default Likes;
+export default Like;

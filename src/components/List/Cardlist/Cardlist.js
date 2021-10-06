@@ -3,7 +3,7 @@ import Card from '../Card/Card';
 import Cart from '../Cart/Cart';
 import './Cardlist.scss';
 
-export class Cardlist extends React.Component {
+class Cardlist extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -25,7 +25,6 @@ export class Cardlist extends React.Component {
     this.setState = {
       foodProducts: newFoodProducts,
     };
-    console.log(foodProducts);
   };
 
   toggleCart = id => {
@@ -55,11 +54,11 @@ export class Cardlist extends React.Component {
     const { foodProducts } = this.state;
     return (
       <div className="List">
-        <div className="sorts">
-          <span class="sortBypop">인기순</span>
-          <span class="sortByTime">등록순</span>
-          <span class="sortByPrice">낮은가격순</span>
-        </div>
+        <ul className="sorts">
+          <li class="sortBypop">인기순</li>
+          <li class="sortByTime">등록순</li>
+          <li class="sortByPrice">낮은가격순</li>
+        </ul>
         <ul className="foodList">
           {foodProducts.map(product => {
             return (

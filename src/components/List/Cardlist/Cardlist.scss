@@ -1,21 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
 .List {
   width: 1100px;
   margin: 0 auto;
+  padding: 20px 0;
+  font-size: 15px;
+
   .sorts {
-    float: right;
+    display: flex;
+    justify-content: flex-end;
+
     .sortByTime {
-      border-left: 1px solid gray;
-      border-right: 1px solid gray;
       margin: 0 10px;
       padding: 0 10px;
+      border-left: 1px solid #999999;
+      border-right: 1px solid #999999;
     }
   }
+
   .foodList {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    position: relative;
-    align-items: center;
     width: 100%;
+    align-items: center;
+
     .ListTitle {
       display: block;
       width: 100%;

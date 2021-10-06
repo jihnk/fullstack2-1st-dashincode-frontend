@@ -8,8 +8,7 @@
         "price": 48500,
         "description": "3대 영양소는 기본! 비타민&미네랄까지 꼼꼼하게 설계했어요.",
         "reviewCount": 12812,
-        "isLiked": false,
-        "cart": false
+        "isLiked": false
     },
     {
         "id": 2,
@@ -19,8 +18,7 @@
         "price": 2500,
         "description": "다른 반찬 필요없이 4분만에 완성하는 균형잡힌 현미밥 식단!",
         "reviewCount": 14422,
-        "isLiked": false,
-        "cart": false
+        "isLiked": false
     },
     {
         "id": 3,
@@ -30,8 +28,7 @@
         "price": 8000,
         "description": "국내산 순살 100%!",
         "reviewCount": 8191,
-        "isLiked": false,
-        "cart": false
+        "isLiked": false
     },
     {
         "id": 4,
@@ -41,8 +38,7 @@
         "price": 30000,
         "description": "3대 영양소는 기본! 비타민&미네랄까지 꼼꼼하게 설계했어요.",
         "reviewCount": 24059,
-        "isLiked": false,
-        "cart": false
+        "isLiked": false
     },
     {
       "id": 5,
@@ -52,8 +48,7 @@
       "price": 99200,
       "description": "*새벽배송* 매주 신선한 샐러드를 배송해드려요. 한달 식단 고민 걱정 끝!",
       "reviewCount": 3405,
-      "isLiked": false,
-      "cart": false
+      "isLiked": false
     },
     {
       "id": 6,
@@ -63,8 +58,7 @@
       "price": 4500,
       "description": "달콤 짭쪼롬한 치즈풍미~ 치킨끝판왕!",
       "reviewCount": 35,
-      "isLiked": false,
-      "cart": false
+      "isLiked": false
     }
   ],
     "LIST_TITLE": [
