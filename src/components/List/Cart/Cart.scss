@@ -1,44 +1,52 @@
 .Cart {
+  display: none;
+  display: block;
   position: absolute;
   top: 0;
   left: 25%;
   width: 500px;
-  text-align: center;
   background-color: white;
   padding: 15px;
   border-radius: 10px;
-  display: none;
-  display: block;
+  text-align: center;
+
+  .close {
+    display: none;
+  }
 
   .cartTitle {
     display: flex;
     justify-content: space-between;
     height: 50px;
+    margin-bottom: 0;
     line-height: 50px;
-    border-bottom: 1px solid black;
-    font-size: 20px;
+    font-size: 17px;
     text-align: left;
+    font-weight: 500;
+
     .closeButton {
       cursor: pointer;
     }
-    margin-bottom: 0;
   }
 
   .cartContent {
-    padding: 0;
-    border-top: 1px solid black;
-    font-size: 15px;
+    padding: 10px 0;
+    font-size: 17px;
     text-align: left;
-
+    .contentProduct {
+      padding-bottom: 10px;
+    }
     .optionWrapper {
       padding: 0px;
       height: 300px;
       overflow-y: scroll;
+      border-top: 2px solid black;
 
       .option {
         height: 50px;
         padding: 20px 30px 30px 10px;
         margin: 5px;
+        font-size: 13px;
         .optionName {
           margin-bottom: 15px;
         }
@@ -50,18 +58,18 @@
           .optionButtons {
             height: 30px;
             width: 120px;
-            border: 1px solid darkgray;
+            border: 1px solid #999999;
 
             .productQuantity {
               width: 60px;
             }
             .subtractButton {
               width: 30px;
-              background-color: darkgray;
+              background-color: #999999;
             }
             .addButton {
               width: 30px;
-              background-color: darkgray;
+              background-color: #999999;
             }
           }
         }
@@ -73,7 +81,7 @@
             width: 20px;
           }
         }
-        border-bottom: 1px gray solid;
+        border-bottom: 1px #999999 solid;
       }
     }
   }
@@ -88,10 +96,32 @@
       margin: 0 10px;
     }
 
+    .point {
+      display: flex;
+      justify-content: end;
+      line-height: 25px;
+      font-size: 15px;
+      padding: 5px 30px;
+
+      .pointTitle {
+        background-color: #999999;
+        border-radius: 25px;
+        width: 40px;
+        height: 25px;
+        color: white;
+      }
+
+      .pointSum {
+        margin: 0 10px;
+      }
+    }
+
     .total {
       display: flex;
       justify-content: space-between;
-      padding: 20px 0;
+      padding: 20px 30px;
+      font-size: 25px;
+      font-weight: 400;
     }
     .showDetails {
       background-color: #999999;
@@ -103,7 +133,7 @@
       width: 160px;
       height: 50px;
       padding: 0;
-      margin: 15px 20px 30px;
+      margin: 20px 30px;
       font-size: 100%;
       color: white;
       border: none;

@@ -21,7 +21,7 @@ class Cart extends React.Component {
     const { productQuantity } = this.state;
     return (
       <>
-        <div className={cart ? 'Cart' : 'Cart'}>
+        <div className={cart ? 'Cart' : 'Cart close'}>
           <div className="cartTitle">
             <p>상품 선택</p>
             <div className="closeButton">
@@ -29,6 +29,7 @@ class Cart extends React.Component {
             </div>
           </div>
           <div className="cartContent">
+            <div className="contentProduct">{this.props.alt}</div>
             <ul className="optionWrapper">
               <li className="option">
                 <div className="optionName">{this.props.alt}</div>
@@ -116,6 +117,15 @@ class Cart extends React.Component {
                 discountedPrice,
                 productQuantity
               )}원`}</div>
+            </div>
+            <div className="point">
+              <div className="pointTitle">적립</div>
+              <div className="pointSum">
+                {`${
+                  this.getTotal(discountedPrice, productQuantity) * 0.01
+                }원 적립`}
+              </div>
+              <div className="pointRate">(실 결제금액의 1%)</div>
             </div>
             <Link to="/product">
               <button className="showDetails">상품정보보기</button>

@@ -25,7 +25,7 @@ export class Cardlist extends React.Component {
     this.setState = {
       foodProducts: newFoodProducts,
     };
-    // console.log(foodProducts);
+    console.log(foodProducts);
   };
 
   toggleCart = id => {
@@ -53,13 +53,12 @@ export class Cardlist extends React.Component {
 
   render() {
     const { foodProducts } = this.state;
-    console.log(foodProducts.cart);
     return (
       <div className="List">
         <div className="sorts">
-          <button>인기순</button>
-          <button>등록순</button>
-          <button>낮은가격순</button>
+          <span class="sortBypop">인기순</span>
+          <span class="sortByTime">등록순</span>
+          <span class="sortByPrice">낮은가격순</span>
         </div>
         <ul className="foodList">
           {foodProducts.map(product => {

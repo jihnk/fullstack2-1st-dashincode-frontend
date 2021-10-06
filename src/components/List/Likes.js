@@ -6,12 +6,12 @@ import React from 'react';
 class Likes extends React.Component {
   render() {
     const { toggleLike, isLiked, id } = this.props;
-
     return (
       <FontAwesomeIcon
         onClick={() => toggleLike(id)}
         icon={faHeart}
         id={id}
+        isLiked={isLiked}
         className={isLiked ? 'fill' : 'fa-heart'}
       />
     );

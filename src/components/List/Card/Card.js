@@ -10,8 +10,7 @@ class Card extends React.Component {
   };
 
   render() {
-    const { toggleLike, toggleCart, isLiked, id } = this.props;
-    console.log(isLiked);
+    const { toggleLike, toggleCart, isLiked, id, className } = this.props;
     return (
       <li className="foodProduct">
         <div className="rank">{`${this.props.id}위`}</div>
@@ -22,7 +21,7 @@ class Card extends React.Component {
             toggleLike={toggleLike}
             isLiked={isLiked}
             id={id}
-            className={isLiked ? 'fill' : ''}
+            className={isLiked ? 'fill' : 'fa-heart'}
           />
           <FontAwesomeIcon
             onClick={() => toggleCart(id)}

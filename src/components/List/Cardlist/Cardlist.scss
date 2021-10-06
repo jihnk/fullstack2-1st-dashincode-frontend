@@ -3,12 +3,22 @@
   margin: 0 auto;
   .sorts {
     float: right;
+    .sortByTime {
+      border-left: 1px solid gray;
+      border-right: 1px solid gray;
+      margin: 0 10px;
+      padding: 0 10px;
+    }
   }
   .foodList {
-    width: 100%;
     display: grid;
-    position: relative;
     grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
     align-items: center;
+    width: 100%;
+    .ListTitle {
+      display: block;
+      width: 100%;
+    }
   }
 }
