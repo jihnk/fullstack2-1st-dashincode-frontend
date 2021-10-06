@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { notice, bankAccount, footerTop } from './footerData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicrophoneAlt } from '@fortawesome/free-solid-svg-icons';
 import { faCommentAlt } from '@fortawesome/free-regular-svg-icons';
@@ -9,24 +10,15 @@ import { faBlogger } from '@fortawesome/free-brands-svg-icons';
 import './Footer.scss';
 
 class Footer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      now: new Date(),
-    };
-  }
   goToChat = () => {
-    //수정
-    const now = new Date();
-    this.setState({
-      now: now.getHours(),
-    });
-    if (this.state.now >= 12) {
+    const now = new Date().getHours();
+    if (now >= 12) {
       window.open('https://www.wecode.co.kr/', '_blank');
     } else {
-      alert('오후에만 톡톡 상담이 가능합니다');
+      alert('오후에만 팅팅탱탱 상담이 가능합니다( ⁎ ᵕᴗᵕ ⁎ )');
     }
   };
+
   render() {
     return (
       <footer className="Footer">
@@ -34,21 +26,15 @@ class Footer extends Component {
           <div className="footerTop">
             <div className="footerTopWrap">
               <ul>
-                <Link to="/">
-                  <li>개인정보처리방침</li>
-                </Link>
                 <li>|</li>
-                <Link to="/">
-                  <li>제휴입점문의</li>
-                </Link>
-                <li>|</li>
-                <Link to="/">
-                  <li>이용약관</li>
-                </Link>
-                <li>|</li>
-                <Link to="/">
-                  <li>자주하는 질문</li>
-                </Link>
+                {footerTop.map((data, id) => {
+                  return (
+                    <Link key={id} to={data.link}>
+                      <li>{data.name}</li>
+                      <li>|</li>
+                    </Link>
+                  );
+                })}
               </ul>
             </div>
           </div>
@@ -62,7 +48,9 @@ class Footer extends Component {
                   <h2>&nbsp;8282-8282</h2>
                 </div>
                 <p>
-                  휴무는 없습니다. 왜냐하면 우리는 위코드이기 때문이죠. 히히.
+                  매일 오후12시 ~ 오후11시59분
+                  <br />
+                  휴무는 없습니다.
                 </p>
                 <br />
                 <div className="csCenterButton">
@@ -72,7 +60,7 @@ class Footer extends Component {
                   <a href="/">
                     <button onClick={this.goToChat}>
                       <FontAwesomeIcon icon={faCommentAlt} />
-                      &nbsp;톡톡 채팅상담
+                      &nbsp;팅팅탱탱 채팅상담
                     </button>
                   </a>
                 </div>
@@ -86,12 +74,13 @@ class Footer extends Component {
                 </div>
                 <div className="line">_______</div>
                 <ul>
-                  <Link to="/">
-                    <li>10월에도 행복하세요</li>
-                  </Link>
-                  <Link to="/">
-                    <li>9월에는 행복했어요</li>
-                  </Link>
+                  {notice.map((data, id) => {
+                    return (
+                      <Link key={id} to={data.link}>
+                        <li>{data.name}</li>
+                      </Link>
+                    );
+                  })}
                 </ul>
               </div>
             </li>
@@ -100,7 +89,7 @@ class Footer extends Component {
                 <h1>다신코 정보</h1>
                 <div className="line">_______</div>
                 <ul>
-                  <li>(주)다신코 대표 고원구</li>
+                  <li>(주)다신코 대표 원구</li>
                   <li>
                     <p>본점 : 종로</p>
                     <a href="/">
@@ -108,7 +97,11 @@ class Footer extends Component {
                     </a>
                   </li>
                   <li>지점 : 홍대</li>
-                  <li>통신판매업신고 안했지롱 뀨</li>
+                  <li>
+                    통신판매업신고를 할 수 있는 그날까지
+                    <br />
+                    화이팅!
+                  </li>
                 </ul>
               </div>
             </li>
@@ -122,44 +115,37 @@ class Footer extends Component {
                       <td>예금주명</td>
                       <td>다신코</td>
                     </tr>
-                    <tr>
-                      <td>다빈은행</td>
-                      <td>1111111111111</td>
-                    </tr>
-                    <tr>
-                      <td>지현은행</td>
-                      <td>1111111111111</td>
-                    </tr>
-                    <tr>
-                      <td>재원은행</td>
-                      <td>1111111111111</td>
-                    </tr>
-                    <tr>
-                      <td>정호은행</td>
-                      <td>1111111111111</td>
-                    </tr>
+                    {bankAccount.map((data, id) => {
+                      return (
+                        <tr key={id}>
+                          <td>{data.name}</td>
+                          <td>{data.account}</td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
+              {/* 아이콘을 import해서 사용하는 형태라 map이 돌지 않습니다,, 방법을 아시는분은 알려주세요 */}
               <div className="sns">
                 <h1>SNS</h1>
                 <div className="line">_______</div>
                 <div>
-                  <a href="/">
+                  <a href="/facebook">
                     <FontAwesomeIcon
                       className="snsIcon"
                       icon={faFacebookSquare}
                       size="lg"
                     />
                   </a>
-                  <a href="/">
+                  <a href="/instagram">
                     <FontAwesomeIcon
                       className="snsIcon"
                       icon={faInstagramSquare}
                       size="lg"
                     />
                   </a>
-                  <a href="/">
+                  <a href="/blog">
                     <FontAwesomeIcon
                       className="snsIcon"
                       icon={faBlogger}
