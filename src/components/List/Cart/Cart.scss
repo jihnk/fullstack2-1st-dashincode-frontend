@@ -1,0 +1,120 @@
+.Cart {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 500px;
+  text-align: center;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: none;
+  display: block;
+
+  .cartTitle {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    text-align: left;
+    .closeButton {
+      cursor: pointer;
+    }
+    margin-bottom: 0;
+  }
+
+  .cartContent {
+    padding: 0;
+    border-top: 1px solid black;
+    font-size: 15px;
+    text-align: left;
+
+    .optionWrapper {
+      padding: 0px;
+      height: 300px;
+      overflow-y: scroll;
+
+      .option {
+        height: 50px;
+        padding: 20px 30px 30px 10px;
+        margin: 5px;
+        .optionName {
+          margin-bottom: 15px;
+        }
+        .optionAmount {
+          display: flex;
+          justify-content: space-between;
+          text-align: center;
+          line-height: 30px;
+          .optionButtons {
+            height: 30px;
+            width: 120px;
+            border: 1px solid darkgray;
+
+            .productQuantity {
+              width: 60px;
+            }
+            .subtractButton {
+              width: 30px;
+              background-color: darkgray;
+            }
+            .addButton {
+              width: 30px;
+              background-color: darkgray;
+            }
+          }
+        }
+
+        .optionButtons {
+          display: flex;
+          button {
+            height: 20px;
+            width: 20px;
+          }
+        }
+        border-bottom: 1px gray solid;
+      }
+    }
+  }
+
+  .cartBottom {
+    .productCount {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .productQuantity {
+      margin: 0 10px;
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+    .showDetails {
+      background-color: #999999;
+    }
+    .addToCart {
+      background-color: #ab4ba5;
+    }
+    button {
+      width: 160px;
+      height: 50px;
+      padding: 0;
+      margin: 15px 20px 30px;
+      font-size: 100%;
+      color: white;
+      border: none;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: white;
+        border: 1px solid #ab4ba5;
+        border-color: #ab4ba5;
+        color: #ab4ba5;
+      }
+    }
+  }
+}
