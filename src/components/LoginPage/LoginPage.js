@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.scss';
 
-export class LoginPage extends React.Component {
+class LoginPage extends React.Component {
   constructor() {
     super();
 
@@ -15,9 +15,9 @@ export class LoginPage extends React.Component {
   }
 
   goToMainPage = () => {
-    console.log(this.props);
     this.props.history.push('/Main');
   };
+
   // 아이디 체크
   idInputCheck = event => {
     if (event.target.value.include('@')) {
@@ -26,6 +26,7 @@ export class LoginPage extends React.Component {
       this.setState({ idChecked: false }, () => this.btnChangeColor());
     }
   };
+
   //비밀번호 체크
   pwInputCheck = event => {
     this.setState({ userPw: event.target.value });
@@ -83,8 +84,9 @@ export class LoginPage extends React.Component {
                 </div>
               </div>
               <div className="loginBtn">
-                <Link onClick="/">로그인</Link>
-                {/* 스타일 포인터 어떻게 주는지  */}
+                <Link onClick="/" style={{ cursor: 'pointer' }}>
+                  로그인
+                </Link>
               </div>
               <div className="underLoginBtn">
                 <Link href="/Signup" className="underLoginBtnWords">
