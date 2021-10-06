@@ -3,7 +3,7 @@
   top: 25%;
   right: 10%;
   z-index: 900;
-  .box {
+  .sidebarWrap {
     position: absolute;
     width: 80px;
     overflow: hidden;
@@ -12,16 +12,16 @@
     li {
       display: block;
       background: rgb(199, 198, 198);
+      color: #fff;
       line-height: 32px;
       font-size: 1em;
       text-align: center;
-      color: #fff;
       font-weight: 300;
     }
     .imgBox {
-      background: white;
       display: flex;
       width: 320px;
+      background: white;
     }
     .currentImg {
       display: flex;
@@ -31,39 +31,36 @@
       align-items: center;
       width: 80px;
       height: 260px;
-      background: #fff;
       margin: 15px 0px;
-      vertical-align: middle;
+      background: #fff;
       text-align: center;
-      .linkToProduct {
+      .imgWrap {
         width: 55px;
         height: 55px;
         margin: 5px 12.5px;
         img {
           width: 55px;
           height: 55px;
-          margin: 0 auto;
         }
       }
     }
   }
-  .imgListNum {
+  .listNumAndButtonWrap {
     display: flex;
     text-align: center;
-    .button {
+    .listNumAndButton {
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 12px;
       button {
+        width: 13px;
+        height: 13px;
+        padding: 0 3px 7px 3px;
         color: white;
         background-color: rgb(230, 228, 228);
         border: none;
-        width: 13px;
-        height: 13px;
         line-height: 1em;
-        padding: 0 3px 7px 3px;
-
       }
     }
   }
@@ -71,15 +68,15 @@
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 55%;
+    top: 50%;
     right: 2%;
     z-index: 400;
     button {
       height: 30px;
+      margin-bottom: 10px;
       background-color: white;
       border-radius: 3px;
       border: 1px solid rgb(196, 194, 194);
-      margin-bottom: 10px;
     }
   }
 }
