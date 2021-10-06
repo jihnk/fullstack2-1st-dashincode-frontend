@@ -1,40 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 
-const CountDownTimer = props => {
-  const [day, setDay] = useState(0);
-  const [hour, setHour] = useState(0);
-  const [min, setMin] = useState(0);
-  const [sec, setSec] = useState(0);
-  const [timeUp, setTimeUp] = useState(false);
+class CountDownTimer extends Component {
+  state = {
+    day: 0,
+    hour: 0,
+    min: 0,
+    sec: 0,
+    timeUp: false,
+  };
 
-  useEffect(() => {
-    const countDown = () => {
-      setInterval(() => {
-        let eventDate = +new Date(props.date);
-        let difference = eventDate - +new Date();
-        if (difference < 1) {
-          setTimeUp(true);
-          clearInterval(countDown);
-        } else {
-          let days = Math.floor(difference / (1000 * 60 * 60 * 24));
-          let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-          let minutes = Math.floor((difference / (1000 * 60)) % 60);
-          let seconds = Math.floor((difference / 1000) % 60);
-          setHour(hours > 9 ? hours : `0${hours}`);
-          setMin(minutes > 9 ? minutes : `0${minutes}`);
-          setSec(seconds > 9 ? seconds : `0${seconds}`);
-          setDay(days);
-        }
-      }, 1000);
-    };
-    countDown();
-  });
+  componentDidMount() {
+    setInterval(() => {
+      let eventDate = +new Date(this.props.date);
+      let difference = eventDate - +new Date();
+      if (difference < 1) {
+        this.setState({ timeUp: true });
+      } else {
+        let day = Math.floor(difference / (1000 * 60 * 60 * 24));
+        let hour = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        let min = Math.floor((difference / (1000 * 60)) % 60);
+        let sec = Math.floor((difference / 1000) % 60);
+        this.setState({
+          hour: hour > 9 ? hour : `0${hour}`,
+          min: min > 9 ? min : `0${min}`,
+          sec: sec > 9 ? sec : `0${sec}`,
+          day,
+        });
+      }
+    }, 1000);
+  }
 
-  return timeUp ? (
-    <p>{props.text}</p>
-  ) : (
-    <p>{`${day} 일 ${hour} : ${min} : ${sec} 남음`}</p>
-  );
-};
+  render() {
+    const { day, hour, min, sec, timeUp } = this.state;
+    return timeUp ? (
+      <p>{this.props.text}</p>
+    ) : (
+      <p>{`${day} 일 ${hour} : ${min} : ${sec} 남음`}</p>
+    );
+  }
+}
 
 export default CountDownTimer;
