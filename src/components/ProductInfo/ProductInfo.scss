@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .ProductInfo {
   display: flex;
   flex-direction: row;
@@ -5,8 +9,6 @@
 
   width: 1100px;
   margin: 20px auto 0 auto;
-  box-sizing: border-box;
-
   font-family: 'Noto sans', sans-serif;
   font-size: 14px;
 
@@ -28,7 +30,7 @@
       margin: 20px auto 0 auto;
 
       img.littleThumbnails {
-        width: 65px;
+        width: 67px;
         border: 1px solid lightgray;
       }
     }
@@ -38,12 +40,12 @@
       flex-direction: row;
       justify-content: space-between;
 
-      width: 160px;
+      width: 155px;
       margin: 20px auto 0 auto;
 
       svg.fas {
-        width: 50px;
-        height: 30px;
+        width: 70px;
+        height: 50px;
         border: 1px solid lightgray;
         padding: 10px;
 
@@ -64,7 +66,7 @@
       position: relative;
       display: none;
 
-      width: 340px;
+      width: 320px;
       height: 120px;
       margin: 20px auto 0 auto;
       box-shadow: 0 2px 6px 0 rgba(60, 60, 60, 0.3);
@@ -87,10 +89,11 @@
       }
 
       p {
-        width: 340px;
-        height: 30px;
+        width: 320px;
+        height: 36px;
+        margin-top: 16px;
         border-bottom: 1px solid rgba(211, 211, 211, 0.6);
-        padding-top: 15px;
+        padding: 10px auto;
 
         font-size: 16px;
         text-align: center;
