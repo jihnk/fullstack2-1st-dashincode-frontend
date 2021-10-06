@@ -127,6 +127,7 @@ class SignUp extends React.Component {
                             href="https://dshop.dietshin.com/union_agreement.asp"
                             target="_blank"
                             className="text"
+                            style={{ cursor: 'pointer' }}
                           >
                             내용보기
                           </Link>
@@ -154,6 +155,7 @@ class SignUp extends React.Component {
                             href="https://dshop.dietshin.com/union_privacy.asp"
                             target="_blank"
                             className="text"
+                            style={{ cursor: 'pointer' }}
                           >
                             내용보기
                           </Link>
@@ -184,6 +186,34 @@ class SignUp extends React.Component {
                               name="checkBox4"
                             />
                             <label for="checkBox4">
+                              <span></span>
+                            </label>
+                          </span>
+                        </p>
+                      </div>
+                      <div className="agreementElement">
+                        <span className="allAgree">
+                          마케팅 수신동의
+                          <em>(선택)</em>
+                        </span>
+                        <p className="agreementText">
+                          <Link
+                            href="https://dshop.dietshin.com/union_privacy.asp"
+                            target="_blank"
+                            className="text"
+                            style={{ cursor: 'pointer' }}
+                          >
+                            내용보기
+                          </Link>
+                        </p>
+                        <p className="agreeBox">
+                          <span className="loginCheckBox">
+                            <input
+                              type="checkBox"
+                              id="checkBox5"
+                              name="checkBox5"
+                            />
+                            <label for="checkBox5">
                               <span></span>
                             </label>
                           </span>
