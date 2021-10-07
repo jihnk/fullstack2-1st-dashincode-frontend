@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import './findId';
+import './findPw';
 import './LoginPage.scss';
 
 class LoginPage extends React.Component {
