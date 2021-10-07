@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './SignUp.scss';
 
 class SignUp extends React.Component {
   render() {
@@ -11,13 +12,13 @@ class SignUp extends React.Component {
               <div className="easySignUp">
                 <p className="easySignUpTitle">SNS계정 간편 로그인/회원가입</p>
                 <div className="easySignUpIcon">
-                  <Link href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=2XL8Yj37FAjmgpAJa5Yo&redirect_uri=https%3A%2F%2Fdshop%2Edietshin%2Ecom%2Fmember%2Fnaver%2Easp&state=naver">
+                  <Link to="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=2XL8Yj37FAjmgpAJa5Yo&redirect_uri=https%3A%2F%2Fdshop%2Edietshin%2Ecom%2Fmember%2Fnaver%2Easp&state=naver">
                     <img
                       alt=""
                       src="https://dshop.dietshin.com/img/ico/ico_sns_naver_c.png"
                     />
                   </Link>
-                  <Link href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fdshop.dietshin.com%252Fmember%252Fkakao.asp%26state%3Dkakao%26client_id%3D2d4ac180ad6ea3f67c6cfbe9d55448bc">
+                  <Link to="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fdshop.dietshin.com%252Fmember%252Fkakao.asp%26state%3Dkakao%26client_id%3D2d4ac180ad6ea3f67c6cfbe9d55448bc">
                     <img
                       alt=""
                       src="https://dshop.dietshin.com/img/ico/ico_sns_kakao_c.png"
