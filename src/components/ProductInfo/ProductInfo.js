@@ -34,14 +34,13 @@ class ProductInfo extends React.Component {
     this.setState({ isSharable: !isSharable });
   };
 
-  getQuantity = quantity => {
+  setQuantity = quantity => {
     this.setState({ productQuantity: quantity });
   };
 
   render() {
     const { isLiked, isSharable, productPrice, productQuantity } = this.state;
-    const { toggleHeart, toggleShare, getQuantity } = this;
-    console.log(isLiked, isSharable);
+    const { toggleHeart, toggleShare, setQuantity } = this;
 
     return (
       <main className="ProductInfo">
@@ -157,7 +156,7 @@ class ProductInfo extends React.Component {
           <div className="orderContainer">
             <QuantityCounter
               quantity={productQuantity}
-              getQuantity={getQuantity}
+              setQuantity={setQuantity}
             />
             <p>
               총 상품금액{' '}

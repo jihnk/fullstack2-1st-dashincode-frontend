@@ -2,33 +2,18 @@ import React from 'react';
 import './QuantityCounter.scss';
 
 class QuantityCounter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      quantity: this.props.quantity,
-    };
-  }
-
   plusQuantity = () => {
-    const { quantity } = this.state;
-    this.setState({ quantity: quantity + 1 });
-    this.setState(prevState => {
-      this.props.getQuantity(prevState.quantity);
-    });
+    const { quantity, setQuantity } = this.props;
+    setQuantity(quantity + 1);
   };
 
   minusQuantity = () => {
-    const { quantity } = this.state;
-    this.setState({
-      quantity: quantity > 1 ? quantity - 1 : 1,
-    });
-    this.setState(prevState => {
-      this.props.getQuantity(prevState.quantity);
-    });
+    const { quantity, setQuantity } = this.props;
+    setQuantity(quantity > 1 ? quantity - 1 : 1);
   };
 
   render() {
-    const { quantity } = this.state;
+    const { quantity } = this.props;
     const { plusQuantity, minusQuantity } = this;
 
     return (
