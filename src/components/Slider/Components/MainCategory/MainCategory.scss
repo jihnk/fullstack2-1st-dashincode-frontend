@@ -1,6 +1,7 @@
 .MainCategory{
   position: absolute;
   width: 100%;
+  margin-left: 5px;
   text-align: center;
   z-index: 400;
 
@@ -70,7 +71,7 @@
               width: 200px;
               font-size: 12px;
               line-height: 2em;
-              word-break:break-all;
+              word-break: break-all;
             }
           }
         }  
