@@ -14,21 +14,24 @@ class ProductInfo extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLikedHeart: false,
-      isSharePossible: false,
+      isLiked: false,
+      isSharable: false,
       productPrice: 8500,
       productQuantity: 1,
     };
   }
 
   toggleHeart = () => {
-    const { isLikedHeart } = this.state;
-    this.setState({ isLikedHeart: !isLikedHeart });
+    const { isLiked } = this.state;
+    this.setState({ isLiked: !isLiked });
+    !isLiked
+      ? window.alert('찜한 상품에 저장되었습니다.')
+      : window.alert('취소되었습니다.');
   };
 
   toggleShare = () => {
-    const { isSharePossible } = this.state;
-    this.setState({ isSharePossible: !isSharePossible });
+    const { isSharable } = this.state;
+    this.setState({ isSharable: !isSharable });
   };
 
   getQuantity = quantity => {
@@ -36,9 +39,9 @@ class ProductInfo extends React.Component {
   };
 
   render() {
-    const { isLikedHeart, isSharePossible, productPrice, productQuantity } =
-      this.state;
+    const { isLiked, isSharable, productPrice, productQuantity } = this.state;
     const { toggleHeart, toggleShare, getQuantity } = this;
+    console.log(isLiked, isSharable);
 
     return (
       <main className="ProductInfo">
@@ -77,7 +80,7 @@ class ProductInfo extends React.Component {
           </div>
           <div className="iconContainer">
             <FontAwesomeIcon
-              className={isLikedHeart ? 'fas fa-heart active' : 'fas fa-heart'}
+              className={isLiked ? 'fas fa-heart active' : 'fas fa-heart'}
               onClick={toggleHeart}
               icon={faHeart}
             />
@@ -88,9 +91,7 @@ class ProductInfo extends React.Component {
             />
           </div>
           <div
-            className={
-              isSharePossible ? 'shareContainer active' : 'shareContainer'
-            }
+            className={isSharable ? 'shareContainer active' : 'shareContainer'}
           >
             <FontAwesomeIcon
               className="fas fa-times"
