@@ -1,11 +1,8 @@
-body {
-  overflow-x: hidden;
-}
-
 .Header {
   height:144px;
   border-bottom: 1px solid #e5e5e5;
   z-index: 400;
+
   .headerTop {
     display: flex;
     justify-content: space-between;
@@ -19,16 +16,19 @@ body {
       align-items: center;
       width: 1100px;
       margin: 0 auto;
+
       h1 {
         color: #262626;
         font-size: 12px;
         font-weight: 700;
         text-align: center;
       }
+
       ul {
         display: flex;
-        font-size: 11px;
         color: #777;
+        font-size: 11px;
+        
         li {
           margin-left: 5px;
         }
@@ -39,10 +39,10 @@ body {
   .headerBottom {
     margin-top: 22px;
     border-bottom: 1px solid #e5e5e5;
-    z-index: 100;
     text-align: center;
-
-    .headerBottomBox {
+    z-index: 100;
+    
+    .headerBottomWrap {
       display: flex;
       justify-content: space-between;
       align-items: center; 
@@ -57,7 +57,7 @@ body {
 
       .logo {
         width: 70px;
-        padding-left: 200px;
+        margin-left: 190px;
       }
 
       .withoutLogo {
@@ -67,20 +67,23 @@ body {
       .searchWrap {
         width: 234px;
         height: 34px;
+        margin-right: 20px;
         border: 1px solid #d4d4d4;
+
         span {
           height: 34px;
-          overflow: hidden;
           background: #fff;
+          overflow: hidden;
+
           input {
             width: 90%;
-            height: 34px;
+            height: 100%;
             padding: 0;
+            border: none;
+            outline: none;
             color: #a9a9a9;
             font-size: 13px;
             line-height: 34px;
-            border: none;
-            outline: none;
           }
         }
 
@@ -88,7 +91,7 @@ body {
           display: block;
           position: relative;
           left: 205px;
-          top: -25px;
+          top: -24px;
           cursor: pointer;
         }
       }
@@ -96,17 +99,20 @@ body {
       .userInfoAndGoToCart {
         .userAndCartIcons {
           display: flex;
-          padding-top: 10px;
-          li{
+          padding-top:7px;
+
+          li {
             cursor: pointer;
-            .userIcon {
-              padding-left: 20px;
+
+            .bagIcon {
+              margin-left: 12px;
             }
+            
             .cartNum {
+              display: inline-block;
               position: relative;
-              left: 35px;
+              left: -7px;
               top: -5px;
-              float: left;
               height: 19px;
               padding: 0px 6px;
               color: #fff;
@@ -120,24 +126,29 @@ body {
       }
     }
   }
+
   .dropDownUserInfo {
     position: relative;
   }
+
   .showUserInfo {
     display: none;
     position: absolute;
+
     .userInfoWrap {
       position: relative;
-      right: 20px;
+      right: 45px;
       top: 15px;
       z-index: 700;
     }
+
     .userInfoList {
       width: 106px;
       padding: 5px 0px;
       background: #fff;
       border: 1px solid #86868b;
       border-radius: 7px;
+
       li {
         color: #333;
         font-size: 11px;
@@ -148,7 +159,7 @@ body {
         }
       }
     }
-    
   }
+
   .dropDownUserInfo:hover .showUserInfo {display: block;}
 }
