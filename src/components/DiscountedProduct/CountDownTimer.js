@@ -10,8 +10,8 @@ class CountDownTimer extends Component {
   };
 
   componentDidMount() {
-    setInterval(() => {
-      let eventDate = +new Date(this.props.date);
+    this.interval = setInterval(() => {
+      const eventDate = +new Date(this.props.date);
       let difference = eventDate - +new Date();
       if (difference < 1) {
         this.setState({ timeUp: true });
@@ -28,6 +28,10 @@ class CountDownTimer extends Component {
         });
       }
     }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.setInterval);
   }
 
   render() {

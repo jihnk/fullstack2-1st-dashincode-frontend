@@ -11,6 +11,7 @@ class DiscountedProduct extends Component {
       product: {},
     };
   }
+
   componentDidMount() {
     fetch('http://localhost:3000/data/discountedinfo.json')
       .then(res => res.json())
@@ -19,16 +20,16 @@ class DiscountedProduct extends Component {
           product: data.DATA,
         });
       });
-    //데이터 받을 때 date_format(updated_At, '/%m/%d/%Y')
   }
 
   render() {
     const { product } = this.state;
+    const link = '/product/' + product.id;
     return (
       <div className="DiscountedProduct">
-        <Link to="/">
-          <div className="discountedProductContainer">
-            <div className="discountedProductTitle">
+        <Link to={link}>
+          <div className="discountedProductWrap">
+            <div className="title">
               <img alt="dart icon" src={dart} />
               <h1>런칭특가</h1>
             </div>
@@ -37,7 +38,7 @@ class DiscountedProduct extends Component {
               <ul>
                 <li className="timer">
                   <CountDownTimer
-                    date={product.updated_at}
+                    date={product.expire_date}
                     text="특가 행사가 종료되었습니다 ˃̩̩̥ɷ˂̩̩̥"
                   />
                 </li>
