@@ -41,7 +41,6 @@
       }
 
       .dropDownCategory {
-        overflow: hidden;
         position: absolute;
         top: 52px;
         width: 1080px;
@@ -52,7 +51,8 @@
         background: #fff;
         transition: 0.5s;
         font-size: 0.7em;
-
+        overflow: hidden;
+        
         .mainMenu {
           display: grid;
           grid-template-columns: repeat(8, 1fr);
