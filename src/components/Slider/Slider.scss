@@ -1,42 +1,39 @@
 .Slider {
-  .sliderWithBtn {
-    .Slide {
-    overflow: hidden;
-    z-index: 350;
-    .inner {
+  .sliderWrap {
+    .imageSlide {
+      overflow: hidden;
+      z-index: 350;
+
+    .spreadImage {
       display: flex;
-      flex-direction: row;
       width: 500vw;
     }
+
     .sliderImg {
       display: flex;
       float: left;
       width: 100vw;
-      height: 395px;
+      height: 400px;
     }
     }
     .button {
+      display: flex;
       position: relative;
       bottom: 50px;
-      left: 1150px;
-      overflow: hidden;
-      display: flex;
-      background: rgba(0,0,0,0.5);
+      left: 1200px;
       width: 108px;
       height: 36px;
-      line-height: 36px;
       padding-left: 21px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 60px; 
       color: #fff;
       font-size: 1.32em;
       font-weight: 400;
-      text-align: left;
+      text-align: left;line-height: 36px;
       letter-spacing: 0.01em;
-      border-radius: 60px;
+      overflow: hidden;
       z-index: 450;
-      // margin: 347px 0px 0px 0px;
-      p {
-        margin-right: 5px;
-      }
+
       button {
         border: none;
         background: none;
@@ -44,6 +41,6 @@
         font-size: 1.2em;
       }
     }
-}
+  }
 }
 

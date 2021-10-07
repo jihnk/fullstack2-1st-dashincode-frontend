@@ -1,62 +1,89 @@
-import React, { useState, useRef, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
-import './Slider.scss';
-// import slider1 from './slider1.jpg';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import slider1 from './slider1.png';
 import slider2 from './slider2.jpg';
+import slider3 from './slider3.png';
+import slider4 from './slider4.png';
+import slider5 from './slider5.png';
 import MainCategory from './Components/MainCategory/MainCategory';
+import './Slider.scss';
 
-const Slider = () => {
-  const TOTAL_SLIDES = 5;
-  const [currentSlide, setCurrentSlide] = useState(1);
-  const slideRef = useRef(null);
-  const nextSlide = () => {
-    if (currentSlide >= TOTAL_SLIDES) {
-      setCurrentSlide(1);
-    } else {
-      setCurrentSlide(currentSlide + 1);
-    }
+class Slider extends Component {
+  constructor() {
+    super();
+    this.state = {
+      totalSlides: 5,
+      currentSlide: 1,
+    };
+    this.myRef = React.createRef();
+  }
+
+  nextSlide = () => {
+    const { totalSlides, currentSlide } = this.state;
+    this.setState(
+      { currentSlide: currentSlide === totalSlides ? 1 : currentSlide + 1 },
+      () => {
+        this.moveImage();
+      }
+    );
   };
-  const prevSlide = () => {
-    if (currentSlide === 1) {
-      setCurrentSlide(TOTAL_SLIDES);
-    } else {
-      setCurrentSlide(currentSlide - 1);
-    }
+
+  prevSlide = () => {
+    const { totalSlides, currentSlide } = this.state;
+    this.setState(
+      { currentSlide: currentSlide === 1 ? totalSlides : currentSlide - 1 },
+      () => {
+        this.moveImage();
+      }
+    );
   };
-  const moveSlide = currentSlide - 1;
-  useEffect(() => {
-    slideRef.current.style.transition = 'all 0.5s ease-in-out';
-    slideRef.current.style.transform = `translateX(-${moveSlide}00vw)`; // 백틱을 사용하여 슬라이드로 이동하는 애니메이션을 만듭니다.
-  }, [moveSlide]);
-  return (
-    <>
+
+  moveImage = () => {
+    const moveImg = this.state.currentSlide - 1;
+    this.myRef.current.style.transition = 'all 0.5s ease-in-out';
+    this.myRef.current.style.transform = `translateX(-${moveImg}00vw)`;
+  };
+
+  render() {
+    const { currentSlide, totalSlides } = this.state;
+    return (
       <div className="Slider">
-        <div className="sliderWithBtn">
+        <div className="sliderWrap">
           <MainCategory />
-          <div className="Slide">
-            <container className="inner" ref={slideRef}>
-              <img className="sliderImg" alt="" src={slider2} />
-              <img className="sliderImg" alt="" src={slider2} />
-              <img className="sliderImg" alt="" src={slider2} />
-              <img className="sliderImg" alt="" src={slider2} />
-              <img className="sliderImg" alt="" src={slider2} />
-            </container>
+          <div className="imageSlide">
+            <div className="spreadImage" ref={this.myRef}>
+              <Link to="/">
+                <img className="sliderImg" alt="" src={slider1} />
+              </Link>
+              <Link to="/">
+                <img className="sliderImg" alt="" src={slider2} />
+              </Link>
+              <Link to="/">
+                <img className="sliderImg" alt="" src={slider3} />
+              </Link>
+              <Link to="/">
+                <img className="sliderImg" alt="" src={slider4} />
+              </Link>
+              <Link to="/">
+                <img className="sliderImg" alt="" src={slider5} />
+              </Link>
+            </div>
           </div>
           <div className="button">
             <p>
-              {currentSlide}/{TOTAL_SLIDES}
+              {currentSlide}/{totalSlides}
             </p>
-            <button className="button1" onClick={prevSlide}>
+            <button className="button1" onClick={this.prevSlide}>
               &lt;
             </button>
-            <button className="button2" onClick={nextSlide}>
+            <button className="button2" onClick={this.nextSlide}>
               &gt;
             </button>
           </div>
         </div>
       </div>
-    </>
-  );
-};
+    );
+  }
+}
 
 export default Slider;
