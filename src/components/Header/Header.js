@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import { searchPlaceholder, userInfo } from './headerData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faShoppingBag, faSearch } from '@fortawesome/free-solid-svg-icons';
 import logo from './logo.png';
 import logoKorean from './logo_korean.png';
 import './Header.scss';
@@ -14,7 +14,7 @@ class Header extends Component {
     this.state = {
       searchValue: '',
       cartNum: 0,
-      // token: cookie.load('token'), 쿠키 설치 후 태그 감싸야 함
+      hasToken: false,
     };
   }
   handleInput = e => {
@@ -29,7 +29,7 @@ class Header extends Component {
     }
   };
   handleSearch = () => {
-    this.props.history.push(`/list/search?${this.state.searchValue}`);
+    this.props.history.push(`/list?${this.state.searchValue}`);
   };
 
   componentDidUpdate() {
@@ -41,43 +41,29 @@ class Header extends Component {
           //carts table 행이 몇개인지 숫자로 받아야함
         });
       });
+    document.cookie.includes('token') &&
+      this.setState({
+        token: true,
+      });
   }
+
   render() {
-    const searchPlaceholder = [
-      '닭가슴살',
-      '도시락',
-      '현미떡',
-      '프로틴음료',
-      '떡볶이',
-      '그릭요거트',
-      '핫도그',
-    ];
     const randomItem = word => {
       return word[Math.floor(Math.random() * word.length)];
     };
-    const userInfo = [
-      '주문/배송조회',
-      '취소/반품조회',
-      '할인쿠폰',
-      '적립금',
-      '찜한 상품',
-      '최근 본 상품',
-      '배송지관리',
-      '내정보 수정',
-    ];
     return (
       <header className="Header">
-        <container className="headerTop">
+        <div className="headerTop">
           <div className="headerTopWrap">
             <Link to="/">
               <h1> 1차 프로젝트 </h1>
             </Link>
             <ul>
-              <Link to="/">
+              <Link to="/login">
                 <li>로그인</li>
               </Link>
               <li> &nbsp;|&nbsp; </li>
-              <Link to="/">
+              <Link to="/signup">
                 <li>회원가입</li>
               </Link>
               <li> &nbsp;|&nbsp; </li>
@@ -90,9 +76,9 @@ class Header extends Component {
               </Link>
             </ul>
           </div>
-        </container>
-        <container className="headerBottom">
-          <div className="headerBottomBox">
+        </div>
+        <div className="headerBottom">
+          <div className="headerBottomWrap">
             <img src={logoKorean} alt="logo korean" className="logoKorean" />
             <img src={logo} alt="logo" className="logo" />
             <div>
@@ -128,7 +114,7 @@ class Header extends Component {
                               {userInfo.map((list, id) => {
                                 return (
                                   <li key={id}>
-                                    {this.state.token ? (
+                                    {this.state.hasToken ? (
                                       <Link to="/user">{list}</Link>
                                     ) : (
                                       <Link to="/login">{list}</Link>
@@ -142,19 +128,21 @@ class Header extends Component {
                       </div>
                     </li>
                     <li>
-                      <FontAwesomeIcon
-                        className="icons bagIcon"
-                        size="lg"
-                        icon={faShoppingBag}
-                      />
-                      <em class="cartNum">{this.state.cartNum}</em>
+                      <Link to="/cart">
+                        <FontAwesomeIcon
+                          className="icons bagIcon"
+                          size="lg"
+                          icon={faShoppingBag}
+                        />
+                        <em class="cartNum">{this.state.cartNum}</em>
+                      </Link>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-        </container>
+        </div>
       </header>
     );
   }
