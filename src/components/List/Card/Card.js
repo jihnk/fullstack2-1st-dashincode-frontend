@@ -5,19 +5,43 @@ import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import './Card.scss';
 
 class Card extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      foodProducts: [],
+    };
+  }
+
   getDiscountRate = (num1, num2) => {
     return Math.round(100 - (num1 / num2) * 100);
   };
 
+  // toggleLike = id => {
+  //   const { foodProducts } = this.state;
+  //   const newFoodProducts = [...foodProducts];
+  //   for (let i = 0; i < newFoodProducts.length; i++) {
+  //     if (newFoodProducts[i].id === id) {
+  //       newFoodProducts[i].isLiked = !newFoodProducts[i].isLiked;
+  //       newFoodProducts[i].isLiked
+  //         ? window.alert('찜한 상품에 저장되었습니다.')
+  //         : window.alert('취소되었습니다.');
+  //     }
+  //   }
+  //   this.setState = {
+  //     foodProducts: newFoodProducts,
+  //   };
+  // };
+
   render() {
     const { toggleLike, toggleCart, isLiked, id } = this.props;
+    console.log(isLiked);
     return (
       <li className="foodProduct">
         <div className="rank">{`${this.props.id}위`}</div>
         <div className="foodImage">
           <img src={this.props.src} alt={this.props.alt} />
           <Like
-            onClick={() => toggleLike(id)}
+            // onClick={toggleLike}
             toggleLike={toggleLike}
             isLiked={isLiked}
             id={id}

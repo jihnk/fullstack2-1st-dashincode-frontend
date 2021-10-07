@@ -20,6 +20,7 @@ class Cardlist extends React.Component {
         newFoodProducts[i].isLiked
           ? window.alert('찜한 상품에 저장되었습니다.')
           : window.alert('취소되었습니다.');
+        return newFoodProducts;
       }
     }
     this.setState = {
@@ -73,7 +74,7 @@ class Cardlist extends React.Component {
                   description={product.description}
                   reviewCount={product.reviewCount}
                   isLiked={product.isLiked}
-                  toggleLike={this.toggleLike}
+                  toggleLike={() => this.toggleLike(product.id)}
                   toggleCart={this.toggleCart}
                   cart={product.cart}
                 />

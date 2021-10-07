@@ -42,8 +42,10 @@
     background-color: whitesmoke;
     opacity: 0.8;
 
-    .fill {
-      background-color: chartreuse;
+    &.fill {
+      background-color: whitesmoke;
+      opacity: 1;
+      color: #ab4ba5;
     }
 
     &:hover {
