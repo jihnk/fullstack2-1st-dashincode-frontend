@@ -1,44 +1,76 @@
 const category = [
   {
+    id: 1,
     name: '다신메이드',
-    list: ['다신메이드'],
+    list: [{ id: 1, name: '다신메이드' }],
   },
   {
-    name: '도시락과 샐러드',
-    list: ['도시락', '샐러드'],
-  },
-  {
-    name: '닭가슴살',
-    list: ['닭가슴살'],
-  },
-  {
-    name: '간편식',
-    list: ['베이커리/떡', '분식', '곤약/면류', '시리얼/선식'],
-  },
-  {
-    name: '건강간식',
+    id: 2,
+    name: '도시락&샐러드',
     list: [
-      '건강과자',
-      '고구마/단호박/계란',
-      '디저트',
-      '견과/바',
-      '소스/잼',
-      '두유,요거트,차',
+      { id: 1, name: '도시락' },
+      { id: 2, name: '샐러드' },
     ],
   },
   {
+    id: 3,
+    name: '닭가슴살',
+    list: [{ id: 1, name: '닭가슴살' }],
+  },
+  {
+    id: 4,
+    name: '간편식',
+    list: [
+      { id: 1, name: '베이커리/떡' },
+      { id: 2, name: '분식' },
+      { id: 3, name: '곤약/면류' },
+      { id: 4, name: '시리얼/선식' },
+    ],
+  },
+  {
+    id: 5,
+    name: '건강간식',
+    list: [
+      { id: 1, name: '건강과자' },
+      { id: 2, name: '고구마/단호박/계란' },
+      { id: 3, name: '디저트' },
+      { id: 4, name: '견과/바' },
+      { id: 5, name: '소스/잼' },
+      { id: 6, name: '두유/요거트,차' },
+    ],
+  },
+  {
+    id: 6,
     name: '단백질/헬스',
-    list: ['단백질보충', '장건강', '건강식품', '체중계/홈트'],
+    list: [
+      { id: 1, name: '단백질보충' },
+      { id: 2, name: '장건강' },
+      { id: 3, name: '건강식품' },
+      { id: 4, name: '체중계/홈트' },
+    ],
   },
   {
+    id: 7,
     name: '체지방관리',
-    list: ['체지방', '클렌즈/스무디'],
+    list: [
+      { id: 1, name: '체지방' },
+      { id: 2, name: '클렌즈/스무디' },
+    ],
   },
   {
+    id: 8,
     name: '익선동18',
-    list: ['익선동18'],
+    list: [{ id: 1, name: '익선동18' }],
   },
-  //데이터 URL은 name으로, 불가능하면 main_category_id와 sub_category_id받아서 Link 이동
 ];
 
-export default category;
+const navbarList = [
+  { name: '베스트', link: 'bestproducts' },
+  { name: '특가', link: 'specialprice' },
+  { name: '신상품', link: 'newproducts' },
+  { name: '식단플랜', link: 'dietplan' },
+  { name: '다신배송', link: 'dashindelivery' },
+  { name: '다신쿨배송', link: 'dashincooldelivery' },
+];
+
+export { category, navbarList };
