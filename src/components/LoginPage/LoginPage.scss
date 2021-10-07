@@ -1,6 +1,6 @@
 $font-family: 'Noto Sans', sans-serif;
 
-#container {
+.loginPage {
   position: relative;
   padding: 52px 0px 90px;
   width: 1100px;
@@ -20,7 +20,7 @@ $font-family: 'Noto Sans', sans-serif;
   margin: 0px auto;
 }
 
-.Login {
+.login {
   position: relative;
   margin: 0px 0px 20px;
 }
@@ -81,6 +81,9 @@ $font-family: 'Noto Sans', sans-serif;
 
 .loginBtn a {
   display: block;
+  style: {
+    cursor: 'pointer';
+  }
   margin-top: 30px;
   background: #ab4ba5;
   padding: 17px 0px;
