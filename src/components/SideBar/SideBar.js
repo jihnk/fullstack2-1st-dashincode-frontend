@@ -15,6 +15,7 @@ class SideBar extends Component {
     };
     this.myRef = React.createRef();
   }
+
   componentDidMount() {
     fetch('http://localhost:3000/data/currentviewed.json', {
       headers: {
@@ -29,52 +30,42 @@ class SideBar extends Component {
       });
     window.addEventListener('scroll', this.handleScroll);
   }
+
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   }
+
   nextSlide = () => {
-    if (this.state.currentSlide >= this.state.totalSlides) {
-      this.setState({
-        currentSlide: 1,
-      });
-    } else {
-      const nextSlide = this.state.currentSlide + 1;
-      this.setState({
-        currentSlide: nextSlide,
-      });
-    }
-    const moveImg = (this.state.currentSlide - 1) * 80;
-    this.myRef.current.style.transform = `translateX(-${moveImg}px)`;
+    const { totalSlides, currentSlide } = this.state;
+    this.setState(
+      { currentSlide: currentSlide === totalSlides ? 1 : currentSlide + 1 },
+      () => {
+        this.moveImage();
+      }
+    );
   };
 
   prevSlide = () => {
-    if (this.state.currentSlide === 1) {
-      this.setState({
-        currentSlide: this.state.totalSlides,
-      });
-    } else {
-      const prevSlide = this.state.currentSlide - 1;
-      this.setState({
-        currentSlide: prevSlide,
-      });
-    }
+    const { totalSlides, currentSlide } = this.state;
+    this.setState(
+      { currentSlide: currentSlide === 1 ? totalSlides : currentSlide - 1 },
+      () => {
+        this.moveImage();
+      }
+    );
+  };
+
+  moveImage = () => {
     const moveImg = (this.state.currentSlide - 1) * 80;
     this.myRef.current.style.transform = `translateX(-${moveImg}px)`;
   };
 
   handleScroll = () => {
     const { scrollY } = this.state;
-    if (scrollY > 200) {
-      this.setState({
-        scrollY: window.pageYOffset,
-        scrollActive: true,
-      });
-    } else {
-      this.setState({
-        scrollY: window.pageYOffset,
-        scrollActive: false,
-      });
-    }
+    this.setState({
+      scrollY: window.pageYOffset,
+      scrollActive: scrollY > 200 ? true : false,
+    });
   };
 
   render() {
