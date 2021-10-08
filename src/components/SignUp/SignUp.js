@@ -5,7 +5,7 @@ import './SignUp.scss';
 class SignUp extends React.Component {
   render() {
     return (
-      <section>
+      <div className="container">
         <div className="signUpBox">
           <div className="easySignUpBox">
             <p className="easySignUpTitle">SNS계정 간편 로그인/회원가입</p>
@@ -119,8 +119,34 @@ class SignUp extends React.Component {
                 <div className="signUpHpWrap">
                   <p className="signUpHp">
                     <input type="hidden" name="sendSms" />
-                    <input type="text" placeholder="휴대폰 번호 입력" />
+                    <input
+                      type="text"
+                      className="phoneNum"
+                      placeholder="휴대폰 번호 입력"
+                      // style={'100%'}
+                      name="phonNum"
+                      maxLength="11"
+                    />
                   </p>
+                  {/* 휴대폰 번호 입력 밑 말풍선 */}
+                  <div id="benefitBox">
+                    <span className="benefitIcon">
+                      <img
+                        alt="speech bubble"
+                        src="https://dshop.dietshin.com/img/ico/ico_log_arrow.png"
+                      />
+                    </span>
+                    <div className="welcomeCouponWrap">
+                      <span className="welcomeCouponBox">
+                        <span className="welcomeCoupon">
+                          최대 15,000원 상당 웰컴쿠폰팩
+                          <br />
+                          즉시지급
+                          <em>(인증회원)</em>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -258,7 +284,7 @@ class SignUp extends React.Component {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     );
   }
 }
