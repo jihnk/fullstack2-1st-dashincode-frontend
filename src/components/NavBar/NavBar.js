@@ -39,7 +39,7 @@ class NavBar extends Component {
             </div>
           </li>
           {navbarList.map((list, id) => {
-            const name = '/category/' + list.link;
+            const name = '/list/' + list.link;
             return (
               <li className="navbarList" key={id}>
                 <Link to={name} key={id}>

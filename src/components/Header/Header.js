@@ -17,19 +17,24 @@ class Header extends Component {
       hasToken: false,
     };
   }
+
   handleInput = e => {
     this.setState({
       searchValue: e.target.value,
     });
   };
+
   handleInputByEnter = e => {
     if (e.key === 'Enter') {
       this.handleSearch();
       e.target.value = '';
     }
   };
+
   handleSearch = () => {
-    this.props.history.push(`/list?${this.state.searchValue}`);
+    this.state.searchValue.length > 0
+      ? this.props.history.push(`/list?${this.state.searchValue}`)
+      : alert('검색어를 입력해주세요 =͟͟͞͞(๑º ﾛ º๑)');
   };
 
   componentDidUpdate() {
@@ -38,7 +43,7 @@ class Header extends Component {
       .then(res => {
         this.setState({
           cartNum: res,
-          //carts table 행이 몇개인지 숫자로 받아야함
+          //carts table 행이 몇개인지 숫자로 받아야함 fetch
         });
       });
     document.cookie.includes('token') &&
@@ -79,8 +84,12 @@ class Header extends Component {
         </div>
         <div className="headerBottom">
           <div className="headerBottomWrap">
-            <img src={logoKorean} alt="logo korean" className="logoKorean" />
-            <img src={logo} alt="logo" className="logo" />
+            <Link to="/">
+              <img src={logoKorean} alt="logo korean" className="logoKorean" />
+            </Link>
+            <Link to="/">
+              <img src={logo} alt="logo" className="logo" />
+            </Link>
             <div>
               <div className="withoutLogo">
                 <div className="searchWrap">
@@ -108,8 +117,8 @@ class Header extends Component {
                         size="lg"
                       />
                       <div className="showUserInfo">
-                        <div class="userInfoWrap">
-                          <div class="userInfoList">
+                        <div className="userInfoWrap">
+                          <div className="userInfoList">
                             <ul>
                               {userInfo.map((list, id) => {
                                 return (

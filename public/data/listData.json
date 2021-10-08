@@ -14,7 +14,8 @@
       "isFree": true,
       "isDashin": false,
       "isCool": false,
-      "isBasic": false
+      "isBasic": false,
+      "createAt": "2020-03-11"
     },
     {
       "id": 2,
@@ -30,7 +31,8 @@
       "isFree": true,
       "isDashin": false,
       "isCool": false,
-      "isBasic": false
+      "isBasic": false,
+      "createAt": "2020-03-11"
     },
     {
       "id": 3,
@@ -46,11 +48,12 @@
       "isFree": true,
       "isDashin": false,
       "isCool": false,
-      "isBasic": false
+      "isBasic": false,
+      "createAt": "2020-03-11"
     },
     {
       "id": 4,
-      "mainCategoryId": 2,
+      "mainCategoryId": 4,
       "subCategoryId": 1,
       "name": "완벽한 한끼 식단 다신밥상",
       "img": "https://data.0app0.com/diet/shop/goods/20180906/w_20180906114306_2447631469.jpg",
@@ -62,7 +65,8 @@
       "isFree": true,
       "isDashin": false,
       "isCool": false,
-      "isBasic": false
+      "isBasic": false,
+      "createAt": "2021-03-11"
     },
     {
       "id": 5,
@@ -78,7 +82,8 @@
       "isFree": true,
       "isDashin": false,
       "isCool": false,
-      "isBasic": false
+      "isBasic": false,
+      "createAt": "2021-03-11"
     },
     {
       "id": 6,
@@ -94,7 +99,8 @@
       "isFree": true,
       "isDashin": false,
       "isCool": false,
-      "isBasic": false
+      "isBasic": false,
+      "createAt": "2020-11-11"
     },
     {
       "id": 7,
@@ -110,7 +116,8 @@
       "isFree": false,
       "isDashin": false,
       "isCool": true,
-      "isBasic": false
+      "isBasic": false,
+      "createAt": "2020-12-11"
     },
     {
       "id": 8,
@@ -125,7 +132,8 @@
       "isFree": false,
       "isDashin": false,
       "isCool": true,
-      "isBasic": false
+      "isBasic": false,
+      "createAt": "2020-11-11"
     }
   ],
   "LIST_TITLE": [
