@@ -1,88 +1,96 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBan } from '@fortawesome/free-solid-svg-icons';
 import CheckBox from '../shared/CheckBox';
+import CartProduct from './CartProduct';
 import './CartDetail.scss';
 
 class CartDetail extends Component {
+  constructor() {
+    super();
+    this.state = {
+      categoryTotalPrice: null,
+      totalOrderPrice: null,
+      isFree: false,
+    };
+  }
+
+  // 현재 데이터에 저장된 가격만 총 주문금액으로 보여주고, cnt버튼 작동 시 총금액 합산 기능은 미구현됨
+  componentDidMount() {
+    const { products } = this.props;
+    const reducer = (acc, cur) => acc + cur;
+    const priceList = [];
+
+    products.forEach(el => priceList.push(parseInt(el.price * el.quantity)));
+    const totalCategoryPrice = priceList.reduce(reducer);
+    const isTrue = totalCategoryPrice > 30000 ? true : false;
+
+    this.setState({
+      categoryTotalPrice: totalCategoryPrice,
+      isFree: isTrue,
+    });
+  }
+
   render() {
+    const { id, type, products, checked, checkItems, handleChecked } =
+      this.props;
+    let { categoryTotalPrice, isFree } = this.state;
+
     return (
       <div className="cartDetailContainer">
         <div className="cartDetailHeaderWrap">
-          <CheckBox />
-          <header class="cartDetailHeader">다신쿨배송(냉동 제품)</header>
+          <CheckBox
+            id={id}
+            checked={checked}
+            checkItems={checkItems}
+            handleChecked={handleChecked}
+          />
+          <header class="cartDetailHeader">{type}</header>
         </div>
         <section className="cartDetailContents">
-          <div className="cartDetailWrap">
-            <div className="checkBoxWrap">
-              <CheckBox />
-            </div>
-            <div className="orderThumnailWrap">
-              <a href="#">
-                <img
-                  alt="음식샘플1"
-                  src="https://www.kfoodtimes.com/news/photo/202105/15867_27069_332.png"
-                  className="orderDetailImg"
-                />
-              </a>
-            </div>
-            <div className="orderInfoWrap">
-              <p className="order_title" href="#">
-                완벽한 한끼 식단 다신밥상
-              </p>
-              <ul className="orderInfoArea">
-                <li className="orderInfoWrap">
-                  <p className="orderInfoTitle">
-                    기본옵션: *특가* 1주 식단세트(5팩)
-                  </p>
-                  <span className="orderCntBtnWrap">
-                    <a id="minBtn" className="cntBtn">
-                      -
-                    </a>
-                    <span className="orderCntWrap">
-                      <input
-                        type="text"
-                        maxLength="3"
-                        value="1"
-                        className="orderCnt"
-                      />
-                    </span>
-                    <a id="plusBtn" className="cntBtn">
-                      +
-                    </a>
-                  </span>
-                  <span className="orderPriceWrap">
-                    <em class="price">8,500</em>
-                    <em class="priceWon">원</em>
-                  </span>
-                  <span className="deleteBtnWrap">
-                    <FontAwesomeIcon icon={faBan} className="deleteBtn" />
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
+          {products.map(props => {
+            for (let i = 0; i < products.length; i++) {
+              return (
+                <>
+                  <CartProduct
+                    key={props.id}
+                    id={props.id}
+                    products={props}
+                    checked={checked}
+                    checkItems={checkItems}
+                    handleChecked={handleChecked}
+                    categoryTotalPrice={categoryTotalPrice}
+                  />
+                </>
+              );
+            }
+          })}
         </section>
         <section className="orderTotalPriceContainer">
           <div className="orderTotalPriceWrap">
             <div className="orderPriceWrap">
               <p className="orderPriceName">주문금액</p>
-              <em className="orderPrice">90,600</em>
+              <em className="orderPrice">
+                {parseInt(categoryTotalPrice).toLocaleString()}
+              </em>
               <em className="orderPriceWon">원</em>
             </div>
             <p className="sign">+</p>
             <div className="deliveryWrap">
-              <p className="deleveryTitle">배송비</p>
-              <p className="deleveryPrice">무료배송</p>
+              <p className="deliveryTitle">배송비</p>
+              <p className="deliveryPrice">{isFree ? '무료배송' : '3,000원'}</p>
             </div>
             <p className="sign">=</p>
             <div className="totalPriceWrap">
               <p className="totalPriceTitle">결제금액</p>
-              <em className="totalPrice">90,600</em>
+              <em className="totalPrice">
+                {isFree
+                  ? categoryTotalPrice.toLocaleString()
+                  : (categoryTotalPrice + 3000).toLocaleString()}
+              </em>
               <em className="totalPriceWon">원</em>
             </div>
           </div>
         </section>
+        <div className="spacingBetweenProducts" />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "type": "다신배송",
+    "type": "다신배송(상온 제품)",
     "products": [
       {
         "id": 101,
@@ -10,16 +10,18 @@
         "image_url": "https://img-ex.hellonature.co.kr/images/ex/PGD/ITEM/018/018354/018354_003_22.png",
         "price": "8500",
         "quantity": "1",
-        "storage": "다신배송"
+        "storage": "다신배송",
+        "description": "다빈님, 지현님을 위한 찐한 수제 그릭요거트 준비했습니다~:)"
       },
       {
         "id": 102,
         "product_id": "13310",
         "name": "통밀당 곤약라면",
-        "image_url": "https://lh3.googleusercontent.com/proxy/1UaIwx8M5HHRqPXxgkeeDfCwI67K6UCmKrLxT_jBCe_H-sNTaFOueCgWq8UIGHtuebSGvZ7rZBwRspsCg2B8XrYlX6owdNNrVFKBZ7IDAiAQUVo3sL-1OrHx_Y-stcLtOsF03qvSVr5kJ9oBrThPlgqWHlF9",
+        "image_url": "https://cdn.imweb.me/thumbnail/20210713/2d1785388d0ed.jpg",
         "price": "2500",
         "quantity": "4",
-        "storage": "다신배송"
+        "storage": "다신배송",
+        "description": "곤약라면은 살안쪄요~ 5개 먹어도 0칼로리~"
       },
       {
         "id": 103,
@@ -28,7 +30,8 @@
         "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcXN8c7LGWu2R2TkS0xfdCthF-coGpEpdm4Q&usqp=CAU",
         "price": "32900",
         "quantity": "1",
-        "storage": "다신배송"
+        "storage": "다신배송",
+        "description": "위코드생들을 위한 특별한 상자!! 23종 과자폭탄!!"
       },
       {
         "id": 104,
@@ -37,13 +40,14 @@
         "image_url": "https://stimg.emart.com:448/upload/peacock/item/20180214_1045057_848.jpg",
         "price": "4500",
         "quantity": "3",
-        "storage": "다신배송"
+        "storage": "다신배송",
+        "description": "당신의 단백질을 책임져줄 닭가슴살 볶음 고추장!!!"
       }
     ]
   },
   {
     "id": 2,
-    "type": "다신쿨배송",
+    "type": "다신쿨배송(냉동 제품)",
     "products": [
       {
         "id": 201,
@@ -52,7 +56,8 @@
         "image_url": "http://img.danawa.com/prod_img/500000/338/769/img/5769338_1.jpg?shrink=330:330&_v=20210617191435",
         "price": "39800",
         "quantity": "1",
-        "storage": "다신쿨배송"
+        "storage": "다신쿨배송",
+        "description": "현미밥상으로 다이어트 꼭 성공하세요~!"
       },
       {
         "id": 202,
@@ -61,7 +66,8 @@
         "image_url": "http://imagescdn.gettyimagesbank.com/500/201904/a11353462.jpg",
         "price": "3500",
         "quantity": "6",
-        "storage": "다신쿨배송"
+        "storage": "다신쿨배송",
+        "description": "성수동에서 가장 Hot~한 성수동905! 현미치킨카츠를 집에서 먹어요"
       },
       {
         "id": 203,
@@ -70,7 +76,8 @@
         "image_url": "http://image.auction.co.kr/itemimage/23/07/91/2307913db6.jpg",
         "price": "5500",
         "quantity": "3",
-        "storage": "다신쿨배송"
+        "storage": "다신쿨배송",
+        "description": "성수동에서 가장 Hot~한 성수동905! 순살족발도 있습니다!"
       },
       {
         "id": 204,
@@ -79,7 +86,8 @@
         "image_url": "https://www.cakedrama.com/data/product/202003/1584947478_64.jpg",
         "price": "3200",
         "quantity": "4",
-        "storage": "다신쿨배송"
+        "storage": "다신쿨배송",
+        "description": "우리가게겐 두유크림 카스테라가 최고라예~~"
       }
     ]
   }
