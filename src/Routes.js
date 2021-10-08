@@ -14,17 +14,16 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <>
-          <Header />
-          <NavBar />
-          <Route exact path="/" component={main} />
-          <Route exact path="/signup" component={signup} />
-          <Route exact path="/login" component={login} />
-          <Route exact path="/product" component={product} />
-          <Route exact path="/list" component={list} />
-          <Route exact path="/cart" component={cart} />
-          <Footer />
-        </>
+        <Route exact path="/" component={main} />
+        <Route exact path="/signup" component={signup} />
+        <Route exact path="/login" component={login} />
+        <Route exact path="/product" component={product} />
+        <Route
+          exact
+          path="/category/:mainCategoryId/:subCategoryId"
+          component={list}
+        />
+        <Route exact path="/cart" component={cart} />
       </Switch>
     </BrowserRouter>
   );
