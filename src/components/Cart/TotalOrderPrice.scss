@@ -1,0 +1,94 @@
+.totalOrderContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 6px solid #e7e7e7;
+
+  .totalOrderWrap {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    border: none;
+
+    .totalOrderTitleWrap {
+      background-color: #fff;
+
+      .totalOrderTitle {
+        color: #444;
+        font-size: 13px;
+      }
+
+      .expectPrice {
+        color: #ab4ba5;
+      }
+    }
+
+    .totalOrderPriceWrap {
+      padding-bottom: 25px;
+      text-align: center;
+
+      .totalOrderPrice {
+        color: #000;
+        display: inline-block;
+        line-height: 40px;
+        vertical-align: middle;
+        font-size: 28px;
+        font-weight: 800;
+      }
+
+      .totalOrderPriceWon {
+        position: relative;
+        display: inline-block;
+        margin-left: 2px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .expectPrice {
+        color: #ab4ba5;
+      }
+    }
+  }
+
+  .sign {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 80px;
+    color: #999;
+    background-color: #f6f6f6;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 200;
+  }
+}
+
+.discountPriceWrap {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 8px 10px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -1px;
+
+  .discountPriceTitle {
+    margin-right: 8px;
+    line-height: 1;
+    color: #383838;
+  }
+
+  .discountPrice {
+    color: #9395a0;
+    font-size: 15px;
+    letter-spacing: 0px;
+  }
+
+  .discountPriceWon {
+    color: #000;
+    font-size: 14px;
+  }
+}
