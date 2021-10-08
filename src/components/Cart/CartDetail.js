@@ -29,10 +29,24 @@ class CartDetail extends Component {
     });
   }
 
+  setCategoryTotalAmount = (productPrice, sign) => {
+    const { categoryTotalPrice } = this.state;
+    const setProductPrice = parseInt(productPrice);
+
+    sign === '-'
+      ? this.setState({
+          categoryTotalPrice: categoryTotalPrice - setProductPrice,
+        })
+      : this.setState({
+          categoryTotalPrice: categoryTotalPrice + setProductPrice,
+        });
+  };
+
   render() {
     const { id, type, products, checked, checkItems, handleChecked } =
       this.props;
     let { categoryTotalPrice, isFree } = this.state;
+    // console.log(categoryTotalPrice);
 
     return (
       <div className="cartDetailContainer">
@@ -58,6 +72,7 @@ class CartDetail extends Component {
                     checkItems={checkItems}
                     handleChecked={handleChecked}
                     categoryTotalPrice={categoryTotalPrice}
+                    setCategoryTotalAmount={this.setCategoryTotalAmount}
                   />
                 </>
               );

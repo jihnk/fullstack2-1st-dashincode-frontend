@@ -20,8 +20,9 @@ export class CartProduct extends React.Component {
     });
   }
 
-  minusQuantity = () => {
-    const { setQuantity } = this.state;
+  minusQuantity = sign => {
+    const { setQuantity, setPrice } = this.state;
+    const { setCategoryTotalAmount } = this.props;
     const numQuantity = parseInt(setQuantity);
 
     if (numQuantity > 0) {
@@ -29,15 +30,20 @@ export class CartProduct extends React.Component {
         setQuantity: numQuantity - 1,
       });
     }
+
+    setCategoryTotalAmount(setPrice, sign);
   };
 
-  plusQuantity = () => {
-    const { setQuantity } = this.state;
+  plusQuantity = sign => {
+    const { setQuantity, setPrice } = this.state;
+    const { setCategoryTotalAmount } = this.props;
     const numQuantity = parseInt(setQuantity);
 
     this.setState({
       setQuantity: numQuantity + 1,
     });
+
+    setCategoryTotalAmount(setPrice, sign);
   };
 
   render() {
@@ -72,7 +78,11 @@ export class CartProduct extends React.Component {
               <li className="orderInfoWrap">
                 <div className="orderInfoTitle">{products.description}</div>
                 <span className="orderCntBtnWrap">
-                  <a id={id} className="cntBtn" onClick={this.minusQuantity}>
+                  <a
+                    id={id}
+                    className="cntBtn"
+                    onClick={e => this.minusQuantity(e.target.innerHTML)}
+                  >
                     -
                   </a>
                   <span className="orderCntWrap">
@@ -80,7 +90,11 @@ export class CartProduct extends React.Component {
                       {setQuantity}
                     </span>
                   </span>
-                  <a id={id} className="cntBtn" onClick={this.plusQuantity}>
+                  <a
+                    id={id}
+                    className="cntBtn"
+                    onClick={e => this.plusQuantity(e.target.innerHTML)}
+                  >
                     +
                   </a>
                 </span>
