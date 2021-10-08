@@ -1,0 +1,147 @@
+.foodProduct {
+  width: 340px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+
+  .foodImage {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: 5px;
+    border-radius: 10px;
+  }
+
+  img {
+    width: 340px;
+    height: 340px;
+    transform: scale(1);
+    transition: all 0.1s ease-in-out;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  &:hover .fa-heart {
+    visibility: visible;
+    bottom: 10px;
+  }
+
+  .fa-heart {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.1s ease-in-out;
+    color: #999999;
+    visibility: hidden;
+    bottom: -30px;
+    left: 10px;
+    background-color: whitesmoke;
+    opacity: 0.8;
+
+    &.fill {
+      background-color: whitesmoke;
+      opacity: 1;
+      color: #ab4ba5;
+    }
+
+    &:hover {
+      color: #ab4ba5;
+      opacity: 1;
+    }
+  }
+
+  .fa-shopping-bag {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: white;
+    opacity: 0.8;
+  }
+
+  .productDetails {
+    overflow: hidden;
+    margin: 20px 5px;
+    text-align: left;
+
+    .productName {
+      margin-bottom: 20px;
+      white-space: nowrap;
+      font-size: 20px;
+    }
+
+    .productPrice {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+      font-size: 20px;
+      text-align: left;
+
+      .originalPrice {
+        padding-left: 10px;
+        text-decoration: line-through;
+        font-size: 15px;
+        color: #999999;
+      }
+
+      .discountRate {
+        color: #ab4ba5;
+        font-weight: 600;
+      }
+    }
+
+    .productDescription {
+      height: 70px;
+      margin: 15px 0;
+      padding: 15px 0;
+      color: #999999;
+      border-top: 0.5px solid rgb(185, 171, 171);
+      border-bottom: 0.5px solid rgb(185, 171, 171);
+      font-size: 15px;
+      text-align: left;
+    }
+
+    .reviewAndShipment {
+      display: flex;
+      justify-content: flex-start;
+
+      .shipment {
+        margin-left: 10px;
+
+        li {
+          padding: 3px 2px;
+          border: 1px solid;
+          font-weight: 400;
+        }
+
+        .isFree {
+          color: white;
+          border-color: rgb(0, 0, 0);
+          background: rgb(0, 0, 0);
+        }
+
+        .isDashin {
+          color: #ab4ba5;
+          border-color: #ab4ba5;
+        }
+
+        .isCool {
+          color: #4bb6e3;
+          border-color: #65c1e7;
+        }
+
+        .isBasic {
+          color: #999999;
+          border-color: #999999;
+        }
+      }
+    }
+  }
+}

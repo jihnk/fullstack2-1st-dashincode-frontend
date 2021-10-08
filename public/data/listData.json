@@ -1,0 +1,179 @@
+{
+  "FIRST_DATA": [
+    {
+      "id": 1,
+      "mainCategoryId": 1,
+      "subCategoryId": 1,
+      "name": "다코현미밥상 다이어트 도시락",
+      "img": "https://data.0app0.com/diet/shop/goods/20190930/w_20190930154033_5777044664.jpg",
+      "discountedPrice": 39800,
+      "price": 48500,
+      "description": "3대 영양소는 기본! 비타민&미네랄까지 꼼꼼하게 설계했어요.",
+      "reviewCount": 12812,
+      "isLiked": false,
+      "isFree": true,
+      "isDashin": false,
+      "isCool": false,
+      "isBasic": false
+    },
+    {
+      "id": 2,
+      "mainCategoryId": 1,
+      "subCategoryId": 2,
+      "name": "든든한 한끼 오늘은 현미밥 9종",
+      "img": "https://data.0app0.com/diet/shop/goods/20210514/w_20210514173001_2332893189.jpg",
+      "discountedPrice": 1900,
+      "price": 2500,
+      "description": "다른 반찬 필요없이 4분만에 완성하는 균형잡힌 현미밥 식단!",
+      "reviewCount": 14422,
+      "isLiked": false,
+      "isFree": true,
+      "isDashin": false,
+      "isCool": false,
+      "isBasic": false
+    },
+    {
+      "id": 3,
+      "mainCategoryId": 1,
+      "subCategoryId": 1,
+      "name": "[1+1] 성수동905 치킨&족발 골라담기",
+      "img": "https://data.0app0.com/diet/shop/goods/20210811/w_20210811171916_7222514697.jpg",
+      "discountedPrice": 6400,
+      "price": 8000,
+      "description": "국내산 순살 100%!",
+      "reviewCount": 8191,
+      "isLiked": false,
+      "isFree": true,
+      "isDashin": false,
+      "isCool": false,
+      "isBasic": false
+    },
+    {
+      "id": 4,
+      "mainCategoryId": 2,
+      "subCategoryId": 1,
+      "name": "완벽한 한끼 식단 다신밥상",
+      "img": "https://data.0app0.com/diet/shop/goods/20180906/w_20180906114306_2447631469.jpg",
+      "discountedPrice": 22500,
+      "price": 30000,
+      "description": "3대 영양소는 기본! 비타민&미네랄까지 꼼꼼하게 설계했어요.",
+      "reviewCount": 24059,
+      "isLiked": false,
+      "isFree": true,
+      "isDashin": false,
+      "isCool": false,
+      "isBasic": false
+    },
+    {
+      "id": 5,
+      "mainCategoryId": 3,
+      "subCategoryId": 1,
+      "name": "[4주 정기구독] 한스푼 샐러드 도시락 한달 패키지",
+      "img": "https://data.0app0.com/diet/shop/goods/20200402/w_20200402155541_6940872901.jpg",
+      "discountedPrice": 92000,
+      "price": 99200,
+      "description": "*새벽배송* 매주 신선한 샐러드를 배송해드려요. 한달 식단 고민 걱정 끝!",
+      "reviewCount": 3405,
+      "isLiked": false,
+      "isFree": true,
+      "isDashin": false,
+      "isCool": false,
+      "isBasic": false
+    },
+    {
+      "id": 6,
+      "mainCategoryId": 1,
+      "subCategoryId": 2,
+      "name": "[3+1] 성수동905 치즈 뿌링 치킨",
+      "img": "https://data.0app0.com/diet/shop/goods/20210927/w_20210927114836_0184149586.jpg",
+      "discountedPrice": 3800,
+      "price": 4500,
+      "description": "달콤 짭쪼롬한 치즈풍미~ 치킨끝판왕!",
+      "reviewCount": 35,
+      "isLiked": false,
+      "isFree": true,
+      "isDashin": false,
+      "isCool": false,
+      "isBasic": false
+    },
+    {
+      "id": 7,
+      "mainCategoryId": 3,
+      "subCategoryId": 1,
+      "name": "곤약현미떡 7종",
+      "img": "https://data.0app0.com/diet/shop/goods/20210831/w_20210831190332_4257225253.jpg",
+      "discountedPrice": 4000,
+      "price": 4800,
+      "description": "절편 출시! 식사대용 건강떡",
+      "reviewCount": 6676,
+      "isLiked": false,
+      "isFree": false,
+      "isDashin": false,
+      "isCool": true,
+      "isBasic": false
+    },
+    {
+      "id": 8,
+      "categoryId": 3,
+      "name": "통밀당 닭가슴살 핫도그",
+      "img": "https://data.0app0.com/diet/shop/goods/20200530/w_20200530010236_2803584985.jpg",
+      "discountedPrice": 2300,
+      "price": 4800,
+      "description": "오븐에 구워 더 맛있는 닭가슴살 핫도그",
+      "reviewCount": 2688,
+      "isLiked": false,
+      "isFree": false,
+      "isDashin": false,
+      "isCool": true,
+      "isBasic": false
+    }
+  ],
+  "LIST_TITLE": [
+    {
+      "id": 1,
+      "name": "지금 많이 찾는 BEST"
+    },
+    {
+      "id": 2,
+      "name": "특가"
+    },
+    {
+      "id": 3,
+      "name": "신상품 NEW"
+    }
+  ],
+  "CATEGORY_DATA": [
+    {
+      "id": 1,
+      "name": "다신메이드"
+    },
+    {
+      "id": 2,
+      "name": "도시락&샐러드"
+    },
+    {
+      "id": 3,
+      "name": "닭가슴살"
+    },
+    {
+      "id": 4,
+      "name": "간편식"
+    },
+    {
+      "id": 5,
+      "name": "건강간식"
+    },
+    {
+      "id": 6,
+      "name": "단백질&헬스"
+    },
+    {
+      "id": 7,
+      "name": "체지방관리"
+    },
+    {
+      "id": 8,
+      "name": "익선동18"
+    }
+  ]
+}
