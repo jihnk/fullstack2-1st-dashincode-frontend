@@ -1,8 +1,19 @@
 import React from 'react';
+import Slider from '../components/Slider/Slider';
+import ScrollTo from '../components/SideBar/ScrollTo';
+import SideBar from '../components/SideBar/SideBar';
+import DiscountedProduct from '../components/DiscountedProduct/DiscountedProduct';
 
-export class Main extends React.Component {
+class Main extends React.Component {
   render() {
-    return <div>메인 페이지 초기화</div>;
+    return (
+      <div>
+        <SideBar />
+        <ScrollTo />
+        <Slider />
+        <DiscountedProduct />
+      </div>
+    );
   }
 }
 
