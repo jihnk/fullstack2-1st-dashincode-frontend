@@ -68,7 +68,28 @@ class SideBar extends Component {
     });
   };
 
+  // getClickedProducts = () => {
+  //   리스트 카드에 추가!
+  //   localStorage.setItem("name", "hihihi");
+  //   사이드바에 가져오기
+  //   const products = localStorage.getItem("name");
+  //   스토리지에 16개 이상 하나 삭제 후 추가
+  //   localStorage.removeItem("name");
+  //   localStorage.clear();
+
+  //   localStorage.setItem('json', JSON.stringify({a: 1, b: 2}))
+
+  // JSON.parse(localStorage.getItem('json'))
+  // {a: 1, b: 2} => string
+  // 리스트 페이지에서 아이템 클릭시 ("product_id, {imgurl, productid})
+
+  // const items = { ...localStorage };
+  // items.length를 setState에 저장
+  //length가 4이상일 때 버튼 보이게 하기, {지금} : {4/length}
+  // }
+
   render() {
+    localStorage.getItem();
     return (
       <aside className={this.state.scrollActive ? 'SideBar' : 'SideBarHide'}>
         <div className="sidebarWrap">
