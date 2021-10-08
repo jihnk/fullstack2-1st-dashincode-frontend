@@ -30,29 +30,6 @@ class LoginPage extends React.Component {
     }
   };
 
-  // 아이디 체크
-  // idInputCheck = event => {
-  //   if (event.target.value.include('@')) {
-  //     this.setState({ idChecked: true }, () => this.btnChangeColor());
-  //   } else {
-  //     this.setState({ idChecked: false }, () => this.btnChangeColor());
-  //   }
-  // };
-
-  //비밀번호 체크
-  // pwInputCheck = event => {
-  //   this.setState({ userPw: event.target.value });
-  //   if (event.target.value.length >= 8) {
-  //     this.setState({ userName: event.target.value, pwChecked: true }, () =>
-  //       this.btnChangeColor()
-  //     );
-  //   } else {
-  //     this.setState({ pwChecked: false }, () =>
-  //       this.btnChangeColor(alert('이메일 혹은 비밀번호를 입력해주세요'))
-  //     );
-  //   }
-  // };
-
   loginCheck = () => {
     if (this.state.idChecked && this.state.pwChecked) {
       this.goToMainPage();
@@ -68,13 +45,6 @@ class LoginPage extends React.Component {
   };
 
   render() {
-    console.log(this.state.userEmail);
-    console.log(this.state.userPw);
-    // const { userEmail, userPw } = this.state;
-    // const userValidate = userEmail.includes('@') && userPw.length >= 8;
-    // const userNotValidate =
-    // (userEmail.includes('@') && userPw.length >= 8) ||
-    // (userEmail === '' && userPw === '');
     return (
       <div className="loginPage">
         <div className="loginBox">
