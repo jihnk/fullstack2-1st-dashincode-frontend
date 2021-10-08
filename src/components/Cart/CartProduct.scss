@@ -1,0 +1,127 @@
+.cartDetailContainer {
+  .cartDetailWrap {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 25px 5px;
+
+    .orderImgWrap {
+      display: inline-block;
+      width: 140px;
+      height: 130px;
+      margin-left: 30px;
+      overflow: hidden;
+
+      .orderDetailImg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .orderInfoWrap {
+      display: flex;
+      flex-direction: column;
+
+      .orderTitle {
+        display: inline-block;
+        max-width: 650px;
+        max-height: 46px;
+        margin-top: 20px;
+        padding: 1px 1px 0 15px;
+        color: #010101;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        line-height: 22px;
+      }
+
+      .orderInfoArea {
+        position: relative;
+        width: 100%;
+        margin: 30px 15px 0 15px;
+        padding: 8px 0px 8px 13px;
+        border: 1px solid #efefef;
+        color: #66646b;
+        background-color: #fbfbfb;
+        font-size: 12px;
+        overflow: hidden;
+
+        .orderInfoWrap {
+          flex-direction: row;
+          border-top: 0 none;
+          padding-top: 9px;
+
+          .orderInfoTitle {
+            width: 560px;
+            margin-top: 4px;
+            padding-right: 5px;
+            max-height: 30px;
+            line-height: 16px;
+          }
+
+          .orderCntBtnWrap {
+            color: #66646b;
+            font-size: 12px;
+
+            .cntBtn {
+              display: inline;
+              padding: 4px 9px;
+              border-top: 1px solid #dadada;
+              border-bottom: 1px solid #dadada;
+              background: #dadada;
+              color: #000;
+              font-size: 12px;
+              font-weight: bold;
+              cursor: pointer;
+            }
+
+            .orderCntWrap {
+              display: inline-block;
+              border-top: 1px solid #dadada;
+              border-bottom: 1px solid #dadada;
+              font-size: 1em;
+              text-align: center;
+              vertical-align: middle;
+
+              .orderCnt {
+                display: inline-block;
+                width: 35px;
+                height: 23px;
+                border: 0px solid;
+                line-height: 28px;
+                font-weight: 700;
+                text-align: center;
+              }
+            }
+          }
+
+          .orderPriceWrap {
+            display: flex;
+            flex-direction: row;
+            width: 150px;
+            margin: 5px 0 5px 10px;
+            font-size: 15px;
+            text-align: right;
+
+            .priceText {
+              display: block;
+            }
+
+            .price {
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .lineWrap {
+    .line {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: 1px solid #dadada;
+    }
+  }
+}
