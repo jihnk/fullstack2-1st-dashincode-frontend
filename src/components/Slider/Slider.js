@@ -70,9 +70,8 @@ class Slider extends Component {
             </div>
           </div>
           <div className="button">
-            <p>
-              {currentSlide}/{totalSlides}
-            </p>
+            <p>{currentSlide}</p>
+            <p>/&nbsp;{totalSlides}</p>
             <button className="button1" onClick={this.prevSlide}>
               &lt;
             </button>
