@@ -17,25 +17,14 @@ class SideBar extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/currentviewed.json', {
-      headers: {
-        Accpet: 'application/json',
-      },
-    })
-      .then(res => res.json())
-      .then(data => {
-        const num = Math.ceil(data.DATA.length / 4);
-        this.setState({
-          sidebar: data.DATA,
-          slideNum: num,
-        });
-      });
-    console.log(this.state);
     window.addEventListener('scroll', this.handleScroll);
+
     if (localStorage.length > 0) {
       const sidebarData = JSON.parse(localStorage.getItem('loadedProduct'));
+      const num = Math.ceil(sidebarData.length / 4);
       this.setState({
         sidebar: sidebarData,
+        slideNum: sidebarData.length < 4 ? 1 : num,
       });
     }
   }
@@ -43,6 +32,24 @@ class SideBar extends Component {
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   }
+
+  handleScroll = () => {
+    this.setState({
+      scrollY: window.pageYOffset,
+      scrollActive: window.pageYOffset > 400 ? true : false,
+    });
+  };
+
+  deleteLoadedProduct = id => {
+    let loadedProduct = JSON.parse(localStorage.getItem('loadedProduct'));
+    const filteredProduct = loadedProduct.filter(
+      product => product.productId !== id
+    );
+    localStorage.setItem('loadedProduct', JSON.stringify(filteredProduct));
+    this.setState({
+      sidebar: JSON.parse(localStorage.getItem('loadedProduct')),
+    });
+  };
 
   nextSlide = () => {
     const { slideNum, currentSlide } = this.state;
@@ -58,23 +65,16 @@ class SideBar extends Component {
     });
   };
 
-  handleScroll = () => {
-    const { scrollY } = this.state;
-    this.setState({
-      scrollY: window.pageYOffset,
-      scrollActive: scrollY > 200 ? true : false,
-    });
-  };
-
   render() {
     const firstData = (this.state.currentSlide - 1) * 4;
     const sidebar = this.state.sidebar.slice(firstData, firstData + 4);
+
     return (
       <aside className={this.state.scrollActive ? 'SideBar' : 'SideBarHide'}>
         <div className="sidebarWrap">
           <ul>
             <li>
-              <Link to="/">
+              <Link to="/cart">
                 <div className="goToCart">장바구니</div>
               </Link>
             </li>
@@ -85,13 +85,21 @@ class SideBar extends Component {
               <div className="currentImg">
                 {sidebar.map((data, id) => {
                   return (
-                    <Link
-                      key={id}
-                      to={`/product/${data.id}`}
-                      className="imgWrap"
-                    >
-                      <img alt="" src={data.img} />
-                    </Link>
+                    <div className="loadedProduct">
+                      <Link
+                        key={id}
+                        to={`/product/${data.productId}`}
+                        className="imgWrap"
+                      >
+                        <img alt="" src={data.imageUrl} />
+                      </Link>
+                      <button
+                        className="deleteBtn"
+                        onClick={() => this.deleteLoadedProduct(data.productId)}
+                      >
+                        x
+                      </button>
+                    </div>
                   );
                 })}
               </div>
