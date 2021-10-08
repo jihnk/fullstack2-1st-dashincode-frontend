@@ -7,8 +7,7 @@ class CartDetail extends Component {
   constructor() {
     super();
     this.state = {
-      categoryTotalPrice: null,
-      totalOrderPrice: null,
+      categoryTotalPrice: 0,
       isFree: false,
     };
   }
@@ -16,6 +15,7 @@ class CartDetail extends Component {
   // 현재 데이터에 저장된 가격만 총 주문금액으로 보여주고, cnt버튼 작동 시 총금액 합산 기능은 미구현됨
   componentDidMount() {
     const { products } = this.props;
+    const { categoryTotalPrice } = this.state;
     const reducer = (acc, cur) => acc + cur;
     const priceList = [];
 
@@ -23,8 +23,12 @@ class CartDetail extends Component {
     const totalCategoryPrice = priceList.reduce(reducer);
     const isTrue = totalCategoryPrice > 30000 ? true : false;
 
+    const { setTotalAmount } = this.props;
+
+    setTotalAmount(totalCategoryPrice);
+
     this.setState({
-      categoryTotalPrice: totalCategoryPrice,
+      categoryTotalPrice: categoryTotalPrice + totalCategoryPrice,
       isFree: isTrue,
     });
   }
@@ -46,7 +50,6 @@ class CartDetail extends Component {
     const { id, type, products, checked, checkItems, handleChecked } =
       this.props;
     let { categoryTotalPrice, isFree } = this.state;
-    // console.log(categoryTotalPrice);
 
     return (
       <div className="cartDetailContainer">
@@ -63,7 +66,7 @@ class CartDetail extends Component {
           {products.map(props => {
             for (let i = 0; i < products.length; i++) {
               return (
-                <>
+                <div className="cartProductWrap">
                   <CartProduct
                     key={props.id}
                     id={props.id}
@@ -74,7 +77,7 @@ class CartDetail extends Component {
                     categoryTotalPrice={categoryTotalPrice}
                     setCategoryTotalAmount={this.setCategoryTotalAmount}
                   />
-                </>
+                </div>
               );
             }
           })}

@@ -10,11 +10,12 @@ class Cart extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: [],
+      mockData: [],
       allProduct: [],
       allProductList: [],
       allProductId: [],
       checkItems: [],
+      setTotalPrice: 0,
       checked: false,
       allChecked: false,
     };
@@ -27,17 +28,29 @@ class Cart extends React.Component {
       },
     })
       .then(res => res.json())
-      .then(data => {
+      .then(mockData => {
         const productList = [];
-        data.forEach(el => productList.push(el.products));
+        mockData.forEach(el => productList.push(el.products));
 
         this.setState({
-          data: data,
+          mockData: mockData,
           allProduct: productList,
         });
         this.handleAllProductId();
       });
   }
+
+  setTotalAmount = totalCategoryPrice => {
+    const { setTotalPrice } = this.state;
+    const setCategoryPrice = parseInt(totalCategoryPrice);
+
+    console.log(setCategoryPrice);
+    console.log(setTotalPrice);
+
+    this.setState({
+      setTotalPrice: setTotalPrice + totalCategoryPrice,
+    });
+  };
 
   handleAllProductId = () => {
     const checkArray = [];
@@ -95,7 +108,14 @@ class Cart extends React.Component {
   };
 
   render() {
-    const { data, checked, allChecked, allProductId, checkItems } = this.state;
+    const {
+      mockData,
+      checked,
+      allChecked,
+      allProductId,
+      checkItems,
+      setTotalPrice,
+    } = this.state;
     const TotalSelectId = 0;
 
     return (
@@ -109,7 +129,7 @@ class Cart extends React.Component {
             handleChecked={this.handleAllSelectCheckBox}
           />
           <div className="productsDetailWrap">
-            {data.map(props => {
+            {mockData.map(props => {
               return (
                 <CartDetail
                   key={props.id}
@@ -119,11 +139,12 @@ class Cart extends React.Component {
                   checkItems={checkItems}
                   products={props.products}
                   handleChecked={this.handleSingleCheckBox}
+                  setTotalAmount={this.setTotalAmount}
                 />
               );
             })}
           </div>
-          <TotalOrderPrice />
+          <TotalOrderPrice setTotalPrice={setTotalPrice} />
           <CartOrderButton />
         </div>
       </div>

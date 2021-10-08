@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './CartHeader.scss';
 
-class Cart extends Component {
+class CartHeader extends Component {
   render() {
     return (
       <div className="cartHeaderWrap">
@@ -30,4 +30,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+export default CartHeader;

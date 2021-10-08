@@ -2,7 +2,25 @@ import React, { Component } from 'react';
 import './TotalOrderPrice.scss';
 
 class TotalOrderPrice extends Component {
+  constructor() {
+    super();
+    this.state = {
+      totalPrice: 0,
+    };
+  }
+
+  // 장바구니 총합계 구현 중..!
+  componentDidMount() {
+    const { totalPrice } = this.state;
+    const { setTotalPrice } = this.props;
+
+    this.setState({
+      totalPrice: totalPrice + setTotalPrice,
+    });
+  }
+
   render() {
+    const { setTotalPrice } = this.props;
     return (
       <>
         <div className="totalOrderContainer">
@@ -11,7 +29,7 @@ class TotalOrderPrice extends Component {
               <strong className="totalOrderTitle">총 주문금액</strong>
             </div>
             <div className="totalOrderPriceWrap">
-              <em className="totalOrderPrice">152,800</em>
+              <em className="totalOrderPrice">{setTotalPrice}</em>
               <em className="totalOrderPriceWon">원</em>
             </div>
           </div>
@@ -33,7 +51,7 @@ class TotalOrderPrice extends Component {
               </strong>
             </div>
             <div className="totalOrderPriceWrap">
-              <em className="totalOrderPrice expectPrice">152,800</em>
+              <em className="totalOrderPrice expectPrice">{setTotalPrice}</em>
               <em className="totalOrderPriceWon expectPrice">원</em>
             </div>
           </div>
