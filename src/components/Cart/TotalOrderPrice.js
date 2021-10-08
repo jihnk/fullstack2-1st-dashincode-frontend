@@ -2,25 +2,10 @@ import React, { Component } from 'react';
 import './TotalOrderPrice.scss';
 
 class TotalOrderPrice extends Component {
-  constructor() {
-    super();
-    this.state = {
-      totalPrice: 0,
-    };
-  }
-
-  // 장바구니 총합계 구현 중..!
-  componentDidMount() {
-    const { totalPrice } = this.state;
-    const { setTotalPrice } = this.props;
-
-    this.setState({
-      totalPrice: totalPrice + setTotalPrice,
-    });
-  }
-
   render() {
-    const { setTotalPrice } = this.props;
+    const { totalPrice } = this.props;
+    const totalOrderPrice = totalPrice.toLocaleString();
+
     return (
       <>
         <div className="totalOrderContainer">
@@ -29,7 +14,7 @@ class TotalOrderPrice extends Component {
               <strong className="totalOrderTitle">총 주문금액</strong>
             </div>
             <div className="totalOrderPriceWrap">
-              <em className="totalOrderPrice">{setTotalPrice}</em>
+              <em className="totalOrderPrice">{totalOrderPrice}</em>
               <em className="totalOrderPriceWon">원</em>
             </div>
           </div>
@@ -51,7 +36,7 @@ class TotalOrderPrice extends Component {
               </strong>
             </div>
             <div className="totalOrderPriceWrap">
-              <em className="totalOrderPrice expectPrice">{setTotalPrice}</em>
+              <em className="totalOrderPrice expectPrice">{totalOrderPrice}</em>
               <em className="totalOrderPriceWon expectPrice">원</em>
             </div>
           </div>
@@ -59,7 +44,9 @@ class TotalOrderPrice extends Component {
         <div className="discountPriceContainer">
           <div className="discountPriceWrap">
             <p className="discountPriceTitle">예상적립금</p>
-            <em className="discountPrice">1,520</em>
+            <em className="discountPrice">
+              {(totalPrice * 0.1).toLocaleString()}
+            </em>
             <em className="discountPriceWon">원</em>
           </div>
         </div>

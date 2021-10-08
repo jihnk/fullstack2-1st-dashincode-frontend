@@ -35,15 +35,28 @@ class CartDetail extends Component {
 
   setCategoryTotalAmount = (productPrice, sign) => {
     const { categoryTotalPrice } = this.state;
+    const { setTotalAmount } = this.props;
     const setProductPrice = parseInt(productPrice);
 
-    sign === '-'
-      ? this.setState({
-          categoryTotalPrice: categoryTotalPrice - setProductPrice,
-        })
-      : this.setState({
-          categoryTotalPrice: categoryTotalPrice + setProductPrice,
-        });
+    // sign === '-'
+    //   ? this.setState({
+    //       categoryTotalPrice: categoryTotalPrice - setProductPrice,
+    //     })
+    //   : this.setState({
+    //       categoryTotalPrice: categoryTotalPrice + setProductPrice,
+    //     });
+
+    if (sign === '-') {
+      setTotalAmount(setProductPrice);
+      this.setState({
+        categoryTotalPrice: categoryTotalPrice - setProductPrice,
+      });
+    } else {
+      setTotalAmount(setProductPrice);
+      this.setState({
+        categoryTotalPrice: categoryTotalPrice + setProductPrice,
+      });
+    }
   };
 
   render() {
