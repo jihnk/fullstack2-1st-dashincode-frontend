@@ -54,18 +54,6 @@
     }
   }
 
-  .fa-shopping-bag {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 35px;
-    height: 35px;
-    padding: 10px;
-    border-radius: 30px;
-    background-color: white;
-    opacity: 0.8;
-  }
-
   .productDetails {
     overflow: hidden;
     margin: 20px 5px;
@@ -111,14 +99,22 @@
     .reviewAndShipment {
       display: flex;
       justify-content: flex-start;
+      align-items: center;
+      height: 40px;
+
+      .reviewCount {
+        margin-right: 10px;
+        padding: 1.3px 2px;
+        line-height: 25px;
+        font-size: 15px;
+      }
 
       .shipment {
-        margin-left: 10px;
-
         li {
-          padding: 3px 2px;
+          padding: 0.3px 2px;
           border: 1px solid;
-          font-weight: 400;
+          line-height: 25px;
+          font-size: 15px;
         }
 
         .isFree {
