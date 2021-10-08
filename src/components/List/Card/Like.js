@@ -11,7 +11,7 @@ class Like extends React.Component {
   }
 
   checkLike = () => {
-    const { isLiked } = this.props;
+    const { isLiked } = this.state;
     this.setState({
       isLiked: !isLiked,
     });
@@ -23,7 +23,7 @@ class Like extends React.Component {
     const { checkLike } = this;
     return (
       <FontAwesomeIcon
-        onClick={toggleLike}
+        onClick={() => toggleLike(id)}
         onMouseDown={checkLike}
         icon={faHeart}
         id={id}

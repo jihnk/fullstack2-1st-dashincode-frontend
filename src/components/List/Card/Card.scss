@@ -72,7 +72,7 @@
     text-align: left;
 
     .productName {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       white-space: nowrap;
       font-size: 20px;
     }
@@ -99,8 +99,8 @@
 
     .productDescription {
       height: 70px;
-      margin: 20px 0;
-      padding: 20px 0;
+      margin: 15px 0;
+      padding: 15px 0;
       color: #999999;
       border-top: 0.5px solid rgb(185, 171, 171);
       border-bottom: 0.5px solid rgb(185, 171, 171);
@@ -114,6 +114,33 @@
 
       .shipment {
         margin-left: 10px;
+
+        li {
+          padding: 3px 2px;
+          border: 1px solid;
+          font-weight: 400;
+        }
+
+        .isFree {
+          color: white;
+          border-color: rgb(0, 0, 0);
+          background: rgb(0, 0, 0);
+        }
+
+        .isDashin {
+          color: #ab4ba5;
+          border-color: #ab4ba5;
+        }
+
+        .isCool {
+          color: #4bb6e3;
+          border-color: #65c1e7;
+        }
+
+        .isBasic {
+          color: #999999;
+          border-color: #999999;
+        }
       }
     }
   }

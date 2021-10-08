@@ -35,14 +35,10 @@
     }
 
     .optionWrapper {
-      height: 300px;
-      overflow-y: scroll;
-      border-top: 2px solid black;
-      padding: 0px;
-
       .option {
-        padding: 10px;
+        padding: 20px 0px;
         margin: 5px;
+        border-top: 2px solid black;
         border-bottom: 1px #999999 solid;
         font-size: 13px;
 
@@ -121,8 +117,8 @@
     .total {
       display: flex;
       justify-content: space-between;
-      padding: 20px 30px;
-      font-size: 25px;
+      padding: 10px;
+      font-size: 20px;
       font-weight: 400;
     }
 
@@ -153,7 +149,7 @@
     }
   }
 
-  .close {
+  &.close {
     display: none;
   }
 }

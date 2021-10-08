@@ -17,121 +17,39 @@ class Cart extends React.Component {
   };
 
   render() {
-    const { discountedPrice } = this.props;
+    const { discountedPrice, addQuantity, alt, description, closeCart } =
+      this.props;
     const { productQuantity } = this.state;
     return (
       <div className="Cart">
         <div className="cartTitle">
           <p>상품 선택</p>
           <div className="closeButton">
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon icon={faTimes} onClick={closeCart} />
           </div>
         </div>
         <div className="cartContent">
-          <div className="contentProduct">{this.props.alt}</div>
+          <div className="contentProduct">{alt}</div>
           <ul className="optionWrapper">
             <li className="option">
-              <div className="optionName">{this.props.alt}</div>
+              <div className="optionName">{description}</div>
               <div className="optionAmount">
-                <div class="optionPrice">{`${this.props.discountedPrice.toLocaleString(
+                <div class="optionPrice">{`${discountedPrice.toLocaleString(
                   'ko-KR'
                 )}원`}</div>
                 <div className="optionButtons">
-                  <button className="subtractButton">-</button>
+                  <button
+                    className="subtractButton"
+                    onClick={this.minusQuantity}
+                  >
+                    -
+                  </button>
                   <div className="productQuantity">
                     {productQuantity.toLocaleString('ko-KR')}
                   </div>
-                  <button className="addButton">+</button>
-                </div>
-              </div>
-            </li>
-            <li className="option">
-              <div className="optionName">{this.props.alt}</div>
-              <div className="optionAmount">
-                <div class="optionPrice">{`${this.props.discountedPrice.toLocaleString(
-                  'ko-KR'
-                )}원`}</div>
-                <div className="optionButtons">
-                  <button className="subtractButton">-</button>
-                  <div className="productQuantity">
-                    {productQuantity.toLocaleString('ko-KR')}
-                  </div>
-                  <button className="addButton">+</button>
-                </div>
-              </div>
-            </li>
-            <li className="option">
-              <div className="optionName">{this.props.alt}</div>
-              <div className="optionAmount">
-                <div class="optionPrice">{`${this.props.discountedPrice.toLocaleString(
-                  'ko-KR'
-                )}원`}</div>
-                <div className="optionButtons">
-                  <button className="subtractButton">-</button>
-                  <div className="productQuantity">
-                    {productQuantity.toLocaleString('ko-KR')}
-                  </div>
-                  <button className="addButton">+</button>
-                </div>
-              </div>
-            </li>
-            <li className="option">
-              <div className="optionName">{this.props.alt}</div>
-              <div className="optionAmount">
-                <div class="optionPrice">{`${this.props.discountedPrice.toLocaleString(
-                  'ko-KR'
-                )}원`}</div>
-                <div className="optionButtons">
-                  <button className="subtractButton">-</button>
-                  <div className="productQuantity">
-                    {productQuantity.toLocaleString('ko-KR')}
-                  </div>
-                  <button className="addButton">+</button>
-                </div>
-              </div>
-            </li>
-            <li className="option">
-              <div className="optionName">{this.props.alt}</div>
-              <div className="optionAmount">
-                <div class="optionPrice">{`${this.props.discountedPrice.toLocaleString(
-                  'ko-KR'
-                )}원`}</div>
-                <div className="optionButtons">
-                  <button className="subtractButton">-</button>
-                  <div className="productQuantity">
-                    {productQuantity.toLocaleString('ko-KR')}
-                  </div>
-                  <button className="addButton">+</button>
-                </div>
-              </div>
-            </li>
-            <li className="option">
-              <div className="optionName">{this.props.alt}</div>
-              <div className="optionAmount">
-                <div class="optionPrice">{`${this.props.discountedPrice.toLocaleString(
-                  'ko-KR'
-                )}원`}</div>
-                <div className="optionButtons">
-                  <button className="subtractButton">-</button>
-                  <div className="productQuantity">
-                    {productQuantity.toLocaleString('ko-KR')}
-                  </div>
-                  <button className="addButton">+</button>
-                </div>
-              </div>
-            </li>
-            <li className="option">
-              <div className="optionName">{this.props.alt}</div>
-              <div className="optionAmount">
-                <div class="optionPrice">{`${this.props.discountedPrice.toLocaleString(
-                  'ko-KR'
-                )}원`}</div>
-                <div className="optionButtons">
-                  <button className="subtractButton">-</button>
-                  <div className="productQuantity">
-                    {productQuantity.toLocaleString('ko-KR')}
-                  </div>
-                  <button className="addButton">+</button>
+                  <button className="addButton" onClick={addQuantity}>
+                    +
+                  </button>
                 </div>
               </div>
             </li>

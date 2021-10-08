@@ -1,7 +1,8 @@
 import React from 'react';
-import Like from './Like';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import Like from './Like';
 import './Card.scss';
 
 class Card extends React.Component {
@@ -16,69 +17,76 @@ class Card extends React.Component {
     return Math.round(100 - (num1 / num2) * 100);
   };
 
-  // toggleLike = id => {
-  //   const { foodProducts } = this.state;
-  //   const newFoodProducts = [...foodProducts];
-  //   for (let i = 0; i < newFoodProducts.length; i++) {
-  //     if (newFoodProducts[i].id === id) {
-  //       newFoodProducts[i].isLiked = !newFoodProducts[i].isLiked;
-  //       newFoodProducts[i].isLiked
-  //         ? window.alert('찜한 상품에 저장되었습니다.')
-  //         : window.alert('취소되었습니다.');
-  //     }
-  //   }
-  //   this.setState = {
-  //     foodProducts: newFoodProducts,
-  //   };
-  // };
-
   render() {
-    const { toggleLike, toggleCart, isLiked, id } = this.props;
-    console.log(isLiked);
+    const {
+      toggleLike,
+      toggleCart,
+      isLiked,
+      id,
+      closeCart,
+      addQuantity,
+      discountedPrice,
+      price,
+      description,
+      reviewCount,
+      isCool,
+      isDashin,
+      isFree,
+      img,
+      name,
+    } = this.props;
     return (
       <li className="foodProduct">
-        <div className="rank">{`${this.props.id}위`}</div>
+        <div className="rank">{`${id}위`}</div>
         <div className="foodImage">
-          <img src={this.props.src} alt={this.props.alt} />
+          <Link to={`/product/${id}`}>
+            <img src={img} alt={name} />
+          </Link>
           <Like
-            // onClick={toggleLike}
             toggleLike={toggleLike}
             isLiked={isLiked}
             id={id}
             className={isLiked ? 'fa-heart fill' : 'fa-heart'}
           />
           <FontAwesomeIcon
-            onClick={() => toggleCart(id)}
+            toggleCart={toggleCart}
+            onClick={toggleCart}
             icon={faShoppingBag}
             id={id}
+            closeCart={closeCart}
+            addQuantity={addQuantity}
           />
         </div>
         <div className="productDetails">
           <div className="productName">
-            <p>{this.props.alt}</p>
+            <p>{name}</p>
           </div>
           <div className="productPrice">
             <div className="prices">
-              <span className="discountedPrice">{`${this.props.discountedPrice.toLocaleString(
+              <span className="discountedPrice">{`${discountedPrice.toLocaleString(
                 'ko-KR'
               )}원`}</span>
-              <span className="originalPrice">{`${this.props.price.toLocaleString(
+              <span className="originalPrice">{`${price.toLocaleString(
                 'ko-KR'
               )}원`}</span>
             </div>
             <div className="discountRate">
-              {`${this.getDiscountRate(
-                this.props.discountedPrice,
-                this.props.price
-              )}%`}
+              {`${this.getDiscountRate(discountedPrice, price)}%`}
             </div>
           </div>
-          <p className="productDescription">{this.props.description}</p>
+          <p className="productDescription">{description}</p>
           <div className="reviewAndShipment">
-            <div className="reviewCount">{`리뷰: ${this.props.reviewCount.toLocaleString(
+            <div className="reviewCount">{`리뷰: ${reviewCount.toLocaleString(
               'ko-KR'
             )}`}</div>
-            <div className="shipment">{`${this.props.shipment}`}</div>
+            <ul className="shipment">
+              {isFree && <li className="isFree">무료배송</li>}
+              {isDashin && <li className="isDashin">다신배송</li>}
+              {isCool && <li className="isCool">다신쿨배송</li>}
+              {!isFree && !isDashin && !isCool && (
+                <li className="isBasic">기본배송</li>
+              )}
+            </ul>
           </div>
         </div>
       </li>

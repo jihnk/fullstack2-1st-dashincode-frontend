@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Card from '../Card/Card';
 import Cart from '../Cart/Cart';
 import './Cardlist.scss';
@@ -8,6 +9,7 @@ class Cardlist extends React.Component {
     super();
     this.state = {
       foodProducts: [],
+      productQuantity: 0,
     };
   }
 
@@ -28,63 +30,78 @@ class Cardlist extends React.Component {
     };
   };
 
-  toggleCart = id => {
-    const { foodProducts } = this.state;
-    const newFoodProducts = [...foodProducts];
-    for (let i = 0; i < newFoodProducts.length; i++) {
-      if (newFoodProducts[i].id === id) {
-        newFoodProducts[i].cart = !newFoodProducts[i].cart;
+  componentDidMount() {
+    const { name } = this.props;
+    // if (name === 'mainpage') {
+    //   fetch('http://localhost:3000/data/listData.json')
+    //     .then(res => {
+    //       return res.json();
+    //     })
+    //     .then(data => {
+    //       this.setState({
+    //         foodProducts: data.FIRST_DATA.filter(
+    //           product => product.reviewCount > 3000
+    //         ),
+    //       });
+    //     });
+    // }
+    if (name === 'listpage') {
+      console.log('hh');
+      const { mainCategoryId, subCategoryId } = this.props.match.params;
+      console.log(mainCategoryId, subCategoryId);
+      if (subCategoryId === 'undefined') {
+        fetch('http://localhost:3000/data/listData.json')
+          .then(res => res.json())
+          .then(data => {
+            this.setState({
+              foodProducts: data.FIRST_DATA.filter(
+                product => product.mainCategoryId === mainCategoryId
+              ),
+            });
+          });
       }
     }
-    this.setState = {
-      foodProducts: newFoodProducts,
-    };
-  };
-
-  componentDidMount() {
-    fetch('http://localhost:3000/data/listData.json')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          foodProducts: data.FIRST_DATA,
-        });
-      });
+    // } else {
+    //   const { mainCategory, subCategory } = this.props.match.params;
+    //   fetch('http://localhost:3000/data/listData.json')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //       this.setState({
+    //         foodProducts: data.FIRST_DATA.filter(
+    //           product =>
+    //             (product.mainCategoryId === mainCategory) &
+    //             (product.subCategoryId === subCategory)
+    //         ),
+    //       });
+    //     });
+    // }
   }
 
   render() {
     const { foodProducts } = this.state;
     return (
       <div className="List">
+        <h1>{this.props.name}</h1>
         <ul className="sorts">
-          <li class="sortBypop">인기순</li>
-          <li class="sortByTime">등록순</li>
-          <li class="sortByPrice">낮은가격순</li>
+          <li className="sortBypop">인기순</li>
+          <li className="sortByTime">등록순</li>
+          <li className="sortByPrice">낮은가격순</li>
         </ul>
         <ul className="foodList">
           {foodProducts.map(product => {
             return (
               <>
-                <Card
-                  key={product.id}
-                  id={product.id}
-                  src={product.img}
-                  alt={product.name}
-                  price={product.price}
-                  discountedPrice={product.discountedPrice}
-                  description={product.description}
-                  reviewCount={product.reviewCount}
-                  isLiked={product.isLiked}
-                  toggleLike={() => this.toggleLike(product.id)}
-                  toggleCart={this.toggleCart}
-                  cart={product.cart}
-                />
+                <Card {...product} toggleLike={this.toggleLike} />
                 <Cart
                   key={product.id}
                   id={product.id}
                   alt={product.name}
                   discountedPrice={product.discountedPrice}
                   reviewCount={product.reviewCount}
-                  cart={product.cart}
+                  description={product.description}
+                  closeCart={() => this.closeCart(product.id)}
+                  toggleCart={() => this.toggleCart(product.id)}
+                  addQuantity={() => this.addQuantity(product.id)}
                 />
               </>
             );
@@ -95,4 +112,4 @@ class Cardlist extends React.Component {
   }
 }
 
-export default Cardlist;
+export default withRouter(Cardlist);

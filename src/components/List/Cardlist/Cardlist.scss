@@ -8,6 +8,12 @@
   padding: 20px 0;
   font-size: 15px;
 
+  h1 {
+    height: 100%;
+    font-size: 20px;
+    padding: 10px;
+  }
+
   .sorts {
     display: flex;
     justify-content: flex-end;
@@ -26,10 +32,5 @@
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     align-items: center;
-
-    .ListTitle {
-      display: block;
-      width: 100%;
-    }
   }
 }
