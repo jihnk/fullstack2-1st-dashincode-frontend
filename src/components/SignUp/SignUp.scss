@@ -1,5 +1,136 @@
-.container {
+section {
   padding: 52px 0 90px;
   width: 1100px;
   margin: 0px auto;
+}
+
+.signUpBox {
+  overflow: hidden;
+  display: block;
+  position: relative;
+  background: white;
+  width: 380px;
+  margin: 0px auto;
+}
+
+.easySignUpBox {
+  display: block;
+  padding: 30px;
+  margin-bottom: 30px;
+
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+
+  .easySignUpTitle {
+    display: block;
+
+    font-size: 0.9em;
+    color: black;
+    letter-spacing: 0.15em;
+  }
+
+  .easySignUpIcon {
+    display: inline;
+    margin: 20px 0px 0px 20px;
+  }
+}
+
+.signUpWrap {
+  position: relative;
+  margin: 0px 0px 40px 0px;
+
+  .signUpTitle {
+    display: block;
+    margin: 10px 0px;
+
+    font-size: 1em;
+    color: black;
+    font-weight: 500;
+  }
+
+  .importStar {
+    color: #d7266d;
+  }
+
+  .signUpInputForm {
+    position: relative;
+    display: block;
+    background: white;
+    margin: 0px 0px 10px 0px;
+    color: black;
+
+    font-weight: normal;
+    text-align: left;
+  }
+
+  .signUpInput {
+    padding: 15px 0px;
+    background: white;
+    color: black;
+    width: 99%;
+
+    border: 1px solid #e1e1e1;
+    font-size: 0.9em;
+    border-radius: 5px;
+    text-indent: 12px;
+    vertical-align: middle;
+    outline: medium none;
+    font-weight: normal;
+  }
+}
+// signform 다시...
+
+.signUpTipBox {
+  margin-bottom: 10px;
+
+  .signUpTip {
+    display: block;
+    padding: 1px 0px 3px;
+
+    font-size: 0.8em;
+    color: #222;
+    line-height: 1.4em;
+    text-align: left;
+    font-weight: normal;
+  }
+}
+
+.signUpForm {
+  position: relative;
+  margin: 0px 0px 40px 0px;
+
+  .signUpTitle {
+    display: block;
+    margin: 10px 0px;
+
+    font-size: 1.13em;
+    color: black;
+    font-weight: 500;
+  }
+
+  .importStar {
+    color: #d7266d;
+  }
+
+  .policyAgreedTitle {
+    display: block;
+    background: #fff;
+    margin: 40px 0px 40px;
+
+    .allAgreeBox {
+      position: relative;
+      display: block;
+      margin: 10px 0px 40px;
+      font-size: 1.25em;
+      font-weight: bold;
+      color: #000;
+      text-align: left;
+
+      .agreeBox {
+        position: absolute;
+        top: 1.5px;
+        left: 0px;
+      }
+    }
+  }
 }
