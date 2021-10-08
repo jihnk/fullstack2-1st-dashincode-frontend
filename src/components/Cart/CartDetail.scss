@@ -42,15 +42,17 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    padding: 0;
+    margin: none;
     border: 1px solid #dadada;
     border-bottom: none;
-    margin: none;
   }
 
   .orderTotalPriceContainer {
     position: relative;
     height: 70px;
     background: #f8f9fa;
+    padding: none;
     border: 1px solid #dadada;
     border-top: none;
 
