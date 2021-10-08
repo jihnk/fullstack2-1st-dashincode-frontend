@@ -1,9 +1,9 @@
 .SideBar {
   position: fixed;
   top: 25%;
-  right: 10%;
+  right: 11%;
   z-index: 900;
-  // 컨플릭트해결
+
   .sidebarWrap {
     position: absolute;
     width: 80px;
@@ -23,7 +23,6 @@
 
     .imgBox {
       display: flex;
-      width: 320px;
       background: white;
     }
 

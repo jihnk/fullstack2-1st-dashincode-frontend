@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import ScrollTo from './ScrollTo';
 import './SideBar.scss';
 
 class SideBar extends Component {
-  //컨플릭트 해결
   constructor(props) {
     super(props);
     this.state = {
       sidebar: [],
-      totalSlides: 4,
+      slideNum: 1,
+      totalSlides: 1,
       currentSlide: 1,
       scrollY: 0,
       scrollActive: false,
@@ -25,11 +24,20 @@ class SideBar extends Component {
     })
       .then(res => res.json())
       .then(data => {
+        const num = Math.ceil(data.DATA.length / 4);
         this.setState({
           sidebar: data.DATA,
+          slideNum: num,
         });
       });
+    console.log(this.state);
     window.addEventListener('scroll', this.handleScroll);
+    if (localStorage.length > 0) {
+      const sidebarData = JSON.parse(localStorage.getItem('loadedProduct'));
+      this.setState({
+        sidebar: sidebarData,
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -37,28 +45,17 @@ class SideBar extends Component {
   }
 
   nextSlide = () => {
-    const { totalSlides, currentSlide } = this.state;
-    this.setState(
-      { currentSlide: currentSlide === totalSlides ? 1 : currentSlide + 1 },
-      () => {
-        this.moveImage();
-      }
-    );
+    const { slideNum, currentSlide } = this.state;
+    this.setState({
+      currentSlide: currentSlide === slideNum ? 1 : currentSlide + 1,
+    });
   };
 
   prevSlide = () => {
-    const { totalSlides, currentSlide } = this.state;
-    this.setState(
-      { currentSlide: currentSlide === 1 ? totalSlides : currentSlide - 1 },
-      () => {
-        this.moveImage();
-      }
-    );
-  };
-
-  moveImage = () => {
-    const moveImg = (this.state.currentSlide - 1) * 80;
-    this.myRef.current.style.transform = `translateX(-${moveImg}px)`;
+    const { slideNum, currentSlide } = this.state;
+    this.setState({
+      currentSlide: currentSlide === 1 ? slideNum : currentSlide - 1,
+    });
   };
 
   handleScroll = () => {
@@ -69,28 +66,9 @@ class SideBar extends Component {
     });
   };
 
-  // getClickedProducts = () => {
-  //   리스트 카드에 추가!
-  //   localStorage.setItem("name", "hihihi");
-  //   사이드바에 가져오기
-  //   const products = localStorage.getItem("name");
-  //   스토리지에 16개 이상 하나 삭제 후 추가
-  //   localStorage.removeItem("name");
-  //   localStorage.clear();
-
-  //   localStorage.setItem('json', JSON.stringify({a: 1, b: 2}))
-
-  // JSON.parse(localStorage.getItem('json'))
-  // {a: 1, b: 2} => string
-  // 리스트 페이지에서 아이템 클릭시 ("product_id, {imgurl, productid})
-
-  // const items = { ...localStorage };
-  // items.length를 setState에 저장
-  //length가 4이상일 때 버튼 보이게 하기, {지금} : {4/length}
-  // }
-
   render() {
-    localStorage.getItem();
+    const firstData = (this.state.currentSlide - 1) * 4;
+    const sidebar = this.state.sidebar.slice(firstData, firstData + 4);
     return (
       <aside className={this.state.scrollActive ? 'SideBar' : 'SideBarHide'}>
         <div className="sidebarWrap">
@@ -105,7 +83,7 @@ class SideBar extends Component {
             </li>
             <li className="imgBox" ref={this.myRef}>
               <div className="currentImg">
-                {this.state.sidebar.map((data, id) => {
+                {sidebar.map((data, id) => {
                   return (
                     <Link
                       key={id}
@@ -120,15 +98,15 @@ class SideBar extends Component {
             </li>
             <li className="listNumAndButtonWrap">
               <div className="listNumAndButton">
-                {/* 제품 있을 때만 클릭 가능 로직 추가해야함 */}
                 <button onClick={this.prevSlide}>&lt;</button>
-                <div>{this.state.currentSlide}/4</div>
+                <div>
+                  {this.state.currentSlide}/{this.state.slideNum}
+                </div>
                 <button onClick={this.nextSlide}>&gt;</button>
               </div>
             </li>
           </ul>
         </div>
-        <ScrollTo />
       </aside>
     );
   }

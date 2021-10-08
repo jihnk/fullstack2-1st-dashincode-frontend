@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './ScrollTo.scss';
 
 class ScrollTo extends Component {
   constructor() {
