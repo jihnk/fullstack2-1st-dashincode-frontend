@@ -80,8 +80,6 @@
   }
 }
 
-// signform 다시...
-
 .signUpTipBox {
   margin: 10px 0px 10px;
 
@@ -97,111 +95,125 @@
   }
 }
 
-.signUpHpWrap {
-  position: relative;
+.signUpBtn {
   display: block;
-  text-align: left;
-  margin-bottom: 10px;
+  width: 380px;
+  margin-top: 100px;
+  padding: 17px 0px;
+  background: #ab4ba5;
+  border: 1px solid #ab4ba5;
+  color: white;
+  text-align: center;
+  font-size: 1.05em;
+  border-radius: 3px;
 }
 
-.signUpHp {
-  position: relative;
-  height: 52px;
-  line-height: 52px;
-  margin: 0px 130px 0px 0px;
-  background: #fff;
-  font-size: 1.1em;
-  color: #9d9d9d;
-  vertical-align: middle;
+// 이용약관, 핸드폰 css...
+// .signUpHpWrap {
+//   position: relative;
+//   display: block;
+//   text-align: left;
+//   margin-bottom: 10px;
+// }
 
-  input {
-    height: 52px;
-    line-height: 52px;
-    border: 1px solid #e1e1e1;
-    border-radius: 5px;
-    text-indent: 10px;
-    font-size: 1.1em;
-    outline: medium none;
-    font-weight: 700;
-  }
-}
+// .signUpHp {
+//   position: relative;
+//   height: 52px;
+//   line-height: 52px;
+//   margin: 0px 130px 0px 0px;
+//   background: #fff;
+//   font-size: 1.1em;
+//   color: #9d9d9d;
+//   vertical-align: middle;
 
-.benefitIcon {
-  position: absolute;
-  top: 54px;
-  left: 25px;
-  z-index: 10;
+//   input {
+//     height: 52px;
+//     line-height: 52px;
+//     border: 1px solid #e1e1e1;
+//     border-radius: 5px;
+//     text-indent: 10px;
+//     font-size: 1.1em;
+//     outline: medium none;
+//     font-weight: 700;
+//   }
+// }
 
-  img {
-    display: inline-block;
-    width: 15px;
-  }
-}
+// .benefitIcon {
+//   position: absolute;
+//   top: 54px;
+//   left: 25px;
+//   z-index: 10;
 
-.welcomeCouponWrap {
-  position: relative;
-  width: 100%;
+//   img {
+//     display: inline-block;
+//     width: 15px;
+//   }
+// }
 
-  .welcomeCouponBox {
-    display: inline-block;
-    width: 194px;
-    position: absolute;
-    top: 10px;
-    left: 0px;
-    padding: 8px 12px;
-    text-align: left;
-    border-radius: 5px;
-    background: #fff;
-    box-shadow: 0 3px 5px 0;
-    box-sizing: border-box;
-    border: 1px solid #666;
-    z-index: 9;
+// .welcomeCouponWrap {
+//   position: relative;
+//   width: 100%;
 
-    .welcomeCoupon {
-      font-size: 13px;
-      line-height: 17px;
-      letter-spacing: -0.05em;
-      color: #d7266d;
-    }
-  }
-}
+//   .welcomeCouponBox {
+//     display: inline-block;
+//     width: 194px;
+//     position: absolute;
+//     top: 10px;
+//     left: 0px;
+//     padding: 8px 12px;
+//     text-align: left;
+//     border-radius: 5px;
+//     background: #fff;
+//     box-shadow: 0 3px 5px 0;
+//     box-sizing: border-box;
+//     border: 1px solid #666;
+//     z-index: 9;
 
-.signUpForm {
-  position: relative;
-  margin: 0px 0px 40px 0px;
+//     .welcomeCoupon {
+//       font-size: 13px;
+//       line-height: 17px;
+//       letter-spacing: -0.05em;
+//       color: #d7266d;
+//     }
+//   }
+// }
 
-  .signUpTitle {
-    display: block;
-    margin: 10px 0px;
+// .signUpForm {
+//   position: relative;
+//   margin: 0px 0px 40px 0px;
 
-    font-size: 1.13em;
-    color: black;
-    font-weight: 500;
-  }
+//   .signUpTitle {
+//     display: block;
+//     margin: 10px 0px;
 
-  .importStar {
-    color: #d7266d;
-  }
+//     font-size: 1.13em;
+//     color: black;
+//     font-weight: 500;
+//   }
 
-  .policyAgreedTitle {
-    display: block;
-    background: #fff;
-    margin: 40px 0px 40px;
+//   .importStar {
+//     color: #d7266d;
+//   }
 
-    .allAgreeBox {
-      position: relative;
-      display: block;
-      margin: 10px 0px 40px;
-      font-size: 1.25em;
-      font-weight: bold;
-      color: #000;
-      text-align: left;
+//   .policyAgreedTitle {
+//     display: block;
+//     background: #fff;
+//     margin: 40px 0px 40px;
 
-      .agreeBox {
-        position: absolute;
-        top: 1.5px;
-        left: 0px;
-      }
-    }
-  }
-}
+//     .allAgreeBox {
+//       position: relative;
+//       display: block;
+//       margin: 10px 0px 40px;
+//       font-size: 1.25em;
+//       font-weight: bold;
+//       color: #000;
+//       text-align: left;
+
+//       .agreeBox {
+//         position: absolute;
+//         top: 1.5px;
+//         left: 0px;
+//       }
+//     }
+//   }
+// }
