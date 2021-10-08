@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import Like from './Like';
 import './Card.scss';
 
@@ -20,11 +18,8 @@ class Card extends React.Component {
   render() {
     const {
       toggleLike,
-      toggleCart,
       isLiked,
       id,
-      closeCart,
-      addQuantity,
       discountedPrice,
       price,
       description,
@@ -37,7 +32,6 @@ class Card extends React.Component {
     } = this.props;
     return (
       <li className="foodProduct">
-        <div className="rank">{`${id}위`}</div>
         <div className="foodImage">
           <Link to={`/product/${id}`}>
             <img src={img} alt={name} />
@@ -47,14 +41,6 @@ class Card extends React.Component {
             isLiked={isLiked}
             id={id}
             className={isLiked ? 'fa-heart fill' : 'fa-heart'}
-          />
-          <FontAwesomeIcon
-            toggleCart={toggleCart}
-            onClick={toggleCart}
-            icon={faShoppingBag}
-            id={id}
-            closeCart={closeCart}
-            addQuantity={addQuantity}
           />
         </div>
         <div className="productDetails">

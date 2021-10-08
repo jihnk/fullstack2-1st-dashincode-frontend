@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Card from '../Card/Card';
-import Cart from '../Cart/Cart';
 import './Cardlist.scss';
 
 class Cardlist extends React.Component {
@@ -29,59 +28,91 @@ class Cardlist extends React.Component {
       foodProducts: newFoodProducts,
     };
   };
-
   componentDidMount() {
-    const { name } = this.props;
-    // if (name === 'mainpage') {
-    //   fetch('http://localhost:3000/data/listData.json')
-    //     .then(res => {
-    //       return res.json();
-    //     })
-    //     .then(data => {
-    //       this.setState({
-    //         foodProducts: data.FIRST_DATA.filter(
-    //           product => product.reviewCount > 3000
-    //         ),
-    //       });
-    //     });
-    // }
-    if (name === 'listpage') {
-      console.log('hh');
-      const { mainCategoryId, subCategoryId } = this.props.match.params;
-      console.log(mainCategoryId, subCategoryId);
-      if (subCategoryId === 'undefined') {
+    const { page } = this.props;
+    if (page === 'main') {
+      fetch('http://localhost:3000/data/listData.json')
+        .then(res => {
+          return res.json();
+        })
+        .then(data => {
+          this.setState({
+            foodProducts: data.FIRST_DATA.filter(
+              product => product.reviewCount > 3000
+            ),
+          });
+        });
+    }
+    if (page === 'category') {
+      const { id, number } = this.props.match.params;
+      if (number === undefined) {
         fetch('http://localhost:3000/data/listData.json')
           .then(res => res.json())
           .then(data => {
             this.setState({
               foodProducts: data.FIRST_DATA.filter(
-                product => product.mainCategoryId === mainCategoryId
+                product => product.mainCategoryId === +id
+              ),
+            });
+          });
+      } else {
+        fetch('http://localhost:3000/data/listData.json')
+          .then(res => res.json())
+          .then(data => {
+            this.setState({
+              foodProducts: data.FIRST_DATA.filter(
+                product =>
+                  product.mainCategoryId === +id &&
+                  product.subCategoryId === +number
               ),
             });
           });
       }
     }
-    // } else {
-    //   const { mainCategory, subCategory } = this.props.match.params;
-    //   fetch('http://localhost:3000/data/listData.json')
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       this.setState({
-    //         foodProducts: data.FIRST_DATA.filter(
-    //           product =>
-    //             (product.mainCategoryId === mainCategory) &
-    //             (product.subCategoryId === subCategory)
-    //         ),
-    //       });
-    //     });
-    // }
+    if (page === 'list') {
+      const { sort } = this.props.match.params;
+      if (sort === 'bestproducts') {
+        fetch('http://localhost:3000/data/listData.json')
+          .then(res => {
+            return res.json();
+          })
+          .then(data => {
+            this.setState({
+              foodProducts: data.FIRST_DATA.filter(
+                product => product.reviewCount > 10000
+              ),
+            });
+          });
+      } else if (sort === 'specialprice') {
+        fetch('http://localhost:3000/data/listData.json')
+          .then(res => {
+            return res.json();
+          })
+          .then(data => {
+            this.setState({
+              foodProducts: data.FIRST_DATA.filter(
+                product => product.discountedPrice < 5000
+              ),
+            });
+          });
+      } else {
+        fetch('http://localhost:3000/data/listData.json')
+          .then(res => {
+            return res.json();
+          })
+          .then(data => {
+            this.setState({
+              foodProducts: data.FIRST_DATA.filter(product => product.id < 10),
+            });
+          });
+      }
+    }
   }
-
   render() {
     const { foodProducts } = this.state;
     return (
       <div className="List">
-        <h1>{this.props.name}</h1>
+        <h1 className="listTitle">{this.props.name}</h1>
         <ul className="sorts">
           <li className="sortBypop">인기순</li>
           <li className="sortByTime">등록순</li>
@@ -89,22 +120,7 @@ class Cardlist extends React.Component {
         </ul>
         <ul className="foodList">
           {foodProducts.map(product => {
-            return (
-              <>
-                <Card {...product} toggleLike={this.toggleLike} />
-                <Cart
-                  key={product.id}
-                  id={product.id}
-                  alt={product.name}
-                  discountedPrice={product.discountedPrice}
-                  reviewCount={product.reviewCount}
-                  description={product.description}
-                  closeCart={() => this.closeCart(product.id)}
-                  toggleCart={() => this.toggleCart(product.id)}
-                  addQuantity={() => this.addQuantity(product.id)}
-                />
-              </>
-            );
+            return <Card {...product} toggleLike={this.toggleLike} />;
           })}
         </ul>
       </div>
