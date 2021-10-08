@@ -74,8 +74,6 @@ class Cart extends React.Component {
         checked: !checked,
       });
     }
-    console.log(checkItems);
-    console.log(checked);
   };
 
   //전체상품 선택이 미구현
