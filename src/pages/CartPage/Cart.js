@@ -15,7 +15,7 @@ class Cart extends React.Component {
       allProductList: [],
       allProductId: [],
       checkItems: [],
-      setTotalPrice: 0,
+      totalPrice: 0,
       checked: false,
       allChecked: false,
     };
@@ -41,14 +41,10 @@ class Cart extends React.Component {
   }
 
   setTotalAmount = totalCategoryPrice => {
-    const { setTotalPrice } = this.state;
-    const setCategoryPrice = parseInt(totalCategoryPrice);
+    const { totalPrice } = this.state;
 
-    console.log(setCategoryPrice);
-    console.log(setTotalPrice);
-
-    this.setState({
-      setTotalPrice: setTotalPrice + totalCategoryPrice,
+    this.setState(prev => {
+      return { totalPrice: prev.totalPrice + totalCategoryPrice };
     });
   };
 
@@ -114,7 +110,7 @@ class Cart extends React.Component {
       allChecked,
       allProductId,
       checkItems,
-      setTotalPrice,
+      totalPrice,
     } = this.state;
     const TotalSelectId = 0;
 
@@ -144,7 +140,7 @@ class Cart extends React.Component {
               );
             })}
           </div>
-          <TotalOrderPrice setTotalPrice={setTotalPrice} />
+          <TotalOrderPrice totalPrice={totalPrice} />
           <CartOrderButton />
         </div>
       </div>

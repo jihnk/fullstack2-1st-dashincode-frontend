@@ -1,0 +1,155 @@
+.Cart {
+  display: none;
+  // display: block;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 500px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+
+  .cartTitle {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    margin-bottom: 0;
+    line-height: 50px;
+    font-size: 17px;
+    text-align: left;
+    font-weight: 500;
+
+    .closeButton {
+      cursor: pointer;
+    }
+  }
+
+  .cartContent {
+    padding: 10px 0;
+    font-size: 17px;
+    text-align: left;
+
+    .contentProduct {
+      padding-bottom: 10px;
+    }
+
+    .optionWrapper {
+      .option {
+        padding: 20px 0px;
+        margin: 5px;
+        border-top: 2px solid black;
+        border-bottom: 1px #999999 solid;
+        font-size: 13px;
+
+        .optionName {
+          margin-bottom: 15px;
+        }
+
+        .optionAmount {
+          display: flex;
+          justify-content: space-between;
+          line-height: 30px;
+          text-align: center;
+
+          .optionButtons {
+            height: 30px;
+            width: 120px;
+            border: 1px solid #999999;
+
+            button {
+              border: none;
+            }
+
+            .productQuantity {
+              width: 60px;
+            }
+
+            .subtractButton {
+              width: 30px;
+              background-color: #ebebeb;
+            }
+
+            .addButton {
+              width: 30px;
+              background-color: #ebebeb;
+            }
+          }
+        }
+
+        .optionButtons {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  .cartBottom {
+    .productCount {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .productQuantity {
+      margin: 0 10px;
+    }
+
+    .point {
+      display: flex;
+      justify-content: flex-end;
+      line-height: 25px;
+      padding: 5px 30px;
+      font-size: 15px;
+
+      .pointTitle {
+        width: 40px;
+        height: 25px;
+        color: white;
+        background-color: #999999;
+        border-radius: 25px;
+      }
+
+      .pointSum {
+        margin: 0 10px;
+      }
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .showDetails {
+      background-color: #999999;
+    }
+
+    .addToCart {
+      background-color: #ab4ba5;
+    }
+
+    button {
+      width: 160px;
+      height: 50px;
+      padding: 0;
+      margin: 20px 30px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 100%;
+
+      &:hover {
+        background-color: white;
+        color: #ab4ba5;
+        border: 1px solid #ab4ba5;
+        border-color: #ab4ba5;
+      }
+    }
+  }
+
+  &.close {
+    display: none;
+  }
+}
