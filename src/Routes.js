@@ -9,24 +9,27 @@ import login from './pages/Login';
 import product from './pages/Product';
 import list from './pages/List';
 import cart from './pages/CartPage/Cart';
+import category from './pages/Category';
 
 function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={main} />
-        <Route exact path="/signup" component={signup} />
-        <Route exact path="/login" component={login} />
-        <Route exact path="/product" component={product} />
-        <Route
-          exact
-          path="/category/:mainCategoryId/:subCategoryId"
-          component={list}
-        />
-        <Route exact path="/cart" component={cart} />
+        <>
+          <Header />
+          <NavBar />
+          <Route exact path="/" component={main} />
+          <Route exact path="/signup" component={signup} />
+          <Route exact path="/login" component={login} />
+          <Route exact path="/product" component={product} />
+          <Route exact path="/category/:id" component={category} />
+          <Route exact path="/category/:id/:number" component={category} />
+          <Route exact path="/list/:sort" component={list} />
+          <Route exact path="/cart" component={cart} />
+          <Footer />
+        </>
       </Switch>
     </BrowserRouter>
   );
 }
-
 export default Router;

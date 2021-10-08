@@ -1,10 +1,10 @@
 import React from 'react';
 import Cardlist from '../components/List/Cardlist/Cardlist';
 
-class List extends React.Component {
+class Category extends React.Component {
   render() {
-    return <Cardlist page="list" />;
+    return <Cardlist page="category" />;
   }
 }
 
-export default List;
+export default Category;
