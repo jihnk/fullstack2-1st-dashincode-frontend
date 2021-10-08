@@ -4,6 +4,7 @@ import ScrollTo from './ScrollTo';
 import './SideBar.scss';
 
 class SideBar extends Component {
+  //컨플릭트 해결
   constructor(props) {
     super(props);
     this.state = {
