@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import MainCategory from './Components/MainCategory/MainCategory';
 import slider1 from './slider1.png';
 import slider2 from './slider2.jpg';
 import slider3 from './slider3.png';
 import slider4 from './slider4.png';
 import slider5 from './slider5.png';
-import MainCategory from './Components/MainCategory/MainCategory';
 import './Slider.scss';
 
 class Slider extends Component {
