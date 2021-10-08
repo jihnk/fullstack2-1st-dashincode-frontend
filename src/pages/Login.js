@@ -1,8 +1,12 @@
 import React from 'react';
-
+import LoginPage from '../components/LoginPage/LoginPage';
 export class Login extends React.Component {
   render() {
-    return <div>로그인 페이지 초기화</div>;
+    return (
+      <div>
+        <LoginPage />;
+      </div>
+    );
   }
 }
 
