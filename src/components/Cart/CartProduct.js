@@ -24,9 +24,11 @@ export class CartProduct extends React.Component {
     const { setQuantity } = this.state;
     const numQuantity = parseInt(setQuantity);
 
-    this.setState({
-      setQuantity: numQuantity - 1,
-    });
+    if (numQuantity > 0) {
+      this.setState({
+        setQuantity: numQuantity - 1,
+      });
+    }
   };
 
   plusQuantity = () => {
