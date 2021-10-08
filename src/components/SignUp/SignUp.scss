@@ -16,13 +16,14 @@ section {
 .easySignUpBox {
   display: block;
   padding: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 
   text-align: center;
   border-bottom: 1px solid #ddd;
 
   .easySignUpTitle {
     display: block;
+    margin-bottom: 20px;
 
     font-size: 0.9em;
     color: black;
@@ -37,16 +38,7 @@ section {
 
 .signUpWrap {
   position: relative;
-  margin: 0px 0px 40px 0px;
-
-  .signUpTitle {
-    display: block;
-    margin: 10px 0px;
-
-    font-size: 1em;
-    color: black;
-    font-weight: 500;
-  }
+  margin: 40px 0px 40px 0px;
 
   .importStar {
     color: #d7266d;
@@ -77,11 +69,21 @@ section {
     outline: medium none;
     font-weight: normal;
   }
+
+  .signUpTitle {
+    display: block;
+    margin: 10px 0px;
+
+    font-size: 1em;
+    color: black;
+    font-weight: 500;
+  }
 }
+
 // signform 다시...
 
 .signUpTipBox {
-  margin-bottom: 10px;
+  margin: 10px 0px 10px;
 
   .signUpTip {
     display: block;
@@ -92,6 +94,35 @@ section {
     line-height: 1.4em;
     text-align: left;
     font-weight: normal;
+  }
+}
+
+.signUpHpWrap {
+  position: relative;
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.signUpHp {
+  position: relative;
+  height: 52px;
+  line-height: 52px;
+  margin: 0px 130px 0px 0px;
+  background: #fff;
+  font-size: 1.1em;
+  color: #9d9d9d;
+  vertical-align: middle;
+
+  input {
+    height: 52px;
+    line-height: 52px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    text-indent: 10px;
+    font-size: 1.1em;
+    outline: medium none;
+    font-weight: 700;
   }
 }
 
