@@ -70,11 +70,11 @@ class LoginPage extends React.Component {
   render() {
     console.log(this.state.userEmail);
     console.log(this.state.userPw);
-    const { userEmail, userPw } = this.state;
-    const userValidate = userEmail.includes('@') && userPw.length >= 8;
-    const userNotValidate =
-      (userEmail.includes('@') && userPw.length >= 8) ||
-      (userEmail === '' && userPw === '');
+    // const { userEmail, userPw } = this.state;
+    // const userValidate = userEmail.includes('@') && userPw.length >= 8;
+    // const userNotValidate =
+    // (userEmail.includes('@') && userPw.length >= 8) ||
+    // (userEmail === '' && userPw === '');
     return (
       <div className="loginPage">
         <div className="loginBox">
@@ -132,12 +132,6 @@ class LoginPage extends React.Component {
                     <img
                       alt="Naver logo"
                       src="https://dshop.dietshin.com/img/ico/ico_sns_naver_c.png"
-                    />
-                  </Link>
-                  <Link to="https://kauth.kakao.com/oauth/authorize?response_type=code&amp;client_id=2d4ac180ad6ea3f67c6cfbe9d55448bc&amp;redirect_uri=https%3A%2F%2Fdshop%2Edietshin%2Ecom%2Fmember%2Fkakao%2Easp&amp;state=kakao">
-                    <img
-                      alt="Kakao Logo"
-                      src="https://dshop.dietshin.com/img/ico/ico_sns_kakao_c.png"
                     />
                   </Link>
                 </div>

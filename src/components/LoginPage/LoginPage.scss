@@ -27,6 +27,52 @@ $font-family: 'Noto Sans', sans-serif;
 
 .loginForm {
   position: relative;
+  right: -17px;
+  .loginInput {
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+    background: white;
+    color: black;
+    font-weight: normal;
+    text-align: left;
+  }
+
+  .userIdPwForm {
+    vertical-align: middle;
+    padding: 15px;
+    width: 348px;
+    background: white;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    color: black;
+    text-align: left;
+    outline: medium none;
+    font-weight: normal;
+  }
+}
+
+button {
+  display: block;
+  position: relative;
+  right: -12px;
+  width: 95%;
+  background: none;
+  border: 3px #ab4ba5;
+  border-radius: 3px;
+}
+
+.loginBtn a {
+  display: block;
+  cursor: 'pointer';
+  margin-top: 30px;
+  background: #ab4ba5;
+  padding: 17px 0px;
+  border: 1px solid #ab4ba5;
+  color: white;
+  text-align: center;
+  font-size: 1.35em;
+  border-radius: 3px;
 }
 
 .loginTitle {
@@ -54,53 +100,6 @@ $font-family: 'Noto Sans', sans-serif;
   .rightUnderLoginTitle {
     color: #ab4ba5;
   }
-}
-
-.loginInput {
-  position: relative;
-  display: block;
-  margin-bottom: 10px;
-  background: white;
-  color: black;
-  font-weight: normal;
-  text-align: left;
-}
-
-.userIdPwForm {
-  vertical-align: middle;
-  padding: 15px;
-  width: 348px;
-  background: white;
-  border: 1px solid #e1e1e1;
-  border-radius: 5px;
-  color: black;
-  text-align: left;
-  outline: medium none;
-  font-weight: normal;
-}
-
-button {
-  display: block;
-  position: relative;
-  width: 500px;
-  background: none;
-  border: 3px #ab4ba5;
-  border-radius: 3px;
-}
-
-.loginBtn a {
-  display: block;
-  style: {
-    cursor: 'pointer';
-  }
-  margin-top: 30px;
-  background: #ab4ba5;
-  padding: 17px 0px;
-  border: 1px solid #ab4ba5;
-  color: white;
-  text-align: center;
-  font-size: 1.35em;
-  border-radius: 3px;
 }
 
 .underLoginBtn {
@@ -137,7 +136,6 @@ button {
     color: black;
     letter-spacing: 0.03em;
   }
-
   .loginInToSocial {
     display: inline-block;
     margin: 20px 0px 0px 20px;
