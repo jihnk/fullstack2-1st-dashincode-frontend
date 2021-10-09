@@ -1,0 +1,257 @@
+* {
+  box-sizing: border-box;
+}
+
+.ProductInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 1100px;
+  margin: 20px auto 0 auto;
+  font-family: 'Noto sans', sans-serif;
+  font-size: 14px;
+
+  aside {
+    width: 500px;
+    padding: 0 auto;
+
+    img.productThumbnail {
+      width: 500px;
+      height: 500px;
+    }
+
+    div.thumbnailContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      width: 365px;
+      margin: 20px auto 0 auto;
+
+      img.littleThumbnails {
+        width: 67px;
+        border: 1px solid lightgray;
+      }
+    }
+
+    div.iconContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      width: 155px;
+      margin: 20px auto 0 auto;
+
+      svg.fas {
+        width: 70px;
+        height: 50px;
+        border: 1px solid lightgray;
+        padding: 10px;
+
+        color: lightgray;
+        cursor: pointer;
+
+        &:hover {
+          border: 1px solid #ab4ba5;
+        }
+
+        &.active {
+          color: #ab4ba5;
+        }
+      }
+    }
+
+    div.shareContainer {
+      position: relative;
+      display: none;
+
+      width: 320px;
+      height: 120px;
+      margin: 20px auto 0 auto;
+      box-shadow: 0 2px 6px 0 rgba(60, 60, 60, 0.3);
+      border-radius: 6px;
+
+      &.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      svg.fas {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+
+        color: lightgray;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      p {
+        width: 320px;
+        height: 36px;
+        margin-top: 16px;
+        border-bottom: 1px solid rgba(211, 211, 211, 0.6);
+        padding: 10px auto;
+
+        font-size: 16px;
+        text-align: center;
+      }
+
+      div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        width: 180px;
+        height: 90px;
+        margin: 0 auto;
+
+        img {
+          width: 40px;
+        }
+      }
+    }
+  }
+
+  section {
+    width: 520px;
+    margin: 5px 40px 0 40px;
+
+    h2 {
+      color: #666;
+      font-size: 17px;
+
+      span {
+        margin-left: 5px;
+        color: darkgray;
+        font-family: 'Nanum Gothic', '맑은 고딕', 돋움, sans-serif;
+        font-weight: bold;
+      }
+    }
+
+    h1 {
+      padding-top: 18px;
+      color: #000;
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+
+    p {
+      border-bottom: 1px solid lightgray;
+      padding: 15px 0 18px 0;
+      color: #333;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    dl {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+
+      width: 520px;
+      border-bottom: 1px solid lightgray;
+      padding: 10px 0;
+
+      dt {
+        width: 80px;
+        padding-top: 7px;
+        color: #999;
+        line-height: 1.85;
+      }
+
+      dd {
+        width: 440px;
+        padding-top: 5px;
+        color: #555;
+        font-size: 16px;
+        line-height: 1.85;
+
+        a {
+          text-decoration: underline;
+        }
+
+        strong {
+          font-weight: 600;
+        }
+
+        em {
+          margin-right: 3px;
+          color: #262626;
+          font-size: 25px;
+          font-weight: 600;
+          letter-spacing: -0.04em;
+          line-height: 1.6;
+        }
+      }
+    }
+
+    div.orderContainer {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      width: 520px;
+      padding: 10px 0;
+      color: #999;
+      line-height: 1.85;
+
+      p {
+        display: block;
+        width: 400px;
+        border-bottom: 0;
+        text-align: right;
+
+        span {
+          margin-left: 5px;
+          color: #ab4ba5;
+
+          em {
+            margin-right: 3px;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.6;
+          }
+        }
+      }
+
+      button.buy,
+      button.cart {
+        width: 255px;
+        height: 50px;
+        margin: 20px auto 300px auto;
+        border: 1px solid #ab4ba5;
+        border-radius: 0;
+
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      button {
+        &.buy {
+          background: #ab4ba5;
+          color: white;
+        }
+
+        &.cart {
+          background: white;
+          color: #ab4ba5;
+
+          &:hover {
+            background: #ab4ba5;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
