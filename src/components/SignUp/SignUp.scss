@@ -83,12 +83,23 @@
 .signUpTipBox {
   margin: 10px 0px 10px;
 
-  .signUpTip {
+  .valid {
     display: block;
     padding: 1px 0px 3px;
 
     font-size: 0.8em;
-    color: #222;
+    color: black;
+    line-height: 1.4em;
+    text-align: left;
+    font-weight: normal;
+  }
+
+  .invalid {
+    display: block;
+    padding: 1px 0px 3px;
+
+    font-size: 0.8em;
+    color: red;
     line-height: 1.4em;
     text-align: left;
     font-weight: normal;

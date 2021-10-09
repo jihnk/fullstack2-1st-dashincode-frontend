@@ -3,7 +3,34 @@ import { Link } from 'react-router-dom';
 import './SignUp.scss';
 
 class SignUp extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      nickname: '',
+      password: '',
+      passwordConfirm: '',
+    };
+  }
+
+  signUpInput = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  // signUpCheck = e => {
+
+  // }
+
   render() {
+    const { email, nickname, password, passwordConfirm } = this.state;
+    const isValidEmail = email.includes('@');
+    const isValidNickName = nickname.length >= 8 && nickname.length <= 15;
+    const correctPw = /^[a-zA-z0-9]{4,12}$/;
+    const checkPw = password.match(correctPw) || password === '';
+
     return (
       <div className="container">
         <div className="signUpBox">
@@ -30,15 +57,14 @@ class SignUp extends React.Component {
                   type="text"
                   className="signUpInput"
                   placeholder="이메일 입력"
+                  name="email"
+                  onChange={this.signUpInput}
                 ></input>
                 {/* 참고 테스트 */}
                 <div className="signUpTipBox">
-                  <div className="signUpTip">
+                  <p className={isValidEmail ? 'valid' : 'inValid'}>
                     · &nbsp;올바른 형식의 이메일 주소 입력
-                  </div>
-                  <div className="signUpTip">
-                    · &nbsp;가입되지 않는 이메일 주소 입력
-                  </div>
+                  </p>
                 </div>
               </div>
             </div>
@@ -54,15 +80,17 @@ class SignUp extends React.Component {
                   type="text"
                   className="signUpInput"
                   placeholder="닉네임 입력"
+                  name="nickname"
+                  onChange={this.signUpInput}
                 ></input>
                 {/* 참고 테스트 */}
                 <div className="signUpTipBox">
-                  <div className="signUpTip">
+                  <p className={isValidNickName ? 'valid' : 'inValid'}>
                     · &nbsp;한글(2-8자), 영문(4-16자) 이내 입력
-                  </div>
-                  <div className="signUpTip">
+                  </p>
+                  {/* <div className="signUpTip">
                     · &nbsp;중복되지 않는 닉네임 입력
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -78,16 +106,20 @@ class SignUp extends React.Component {
                   type="password"
                   className="signUpInput"
                   placeholder="비밀번호 입력"
+                  name="password"
+                  onChange={this.signUpInput}
                 ></input>
                 {/* 참고 테스트 */}
                 <div className="signUpTipBox">
-                  <p className="signUpTip">· &nbsp;10자 이상 15자 이하 입력</p>
-                  <p className="signUpTip">
+                  <p className={checkPw ? 'valid' : 'invalid'}>
+                    · &nbsp;영문 대소문자와 숫자 4~12자리로 입력해야 됩니다.
+                  </p>
+                  {/* <p className="signUpTip">
                     · &nbsp;영문/숫자/특수문자 2가지 이상
                   </p>
                   <p className="signUpTip">
                     · &nbsp;동일한 문자/숫자 4개 이상 연속 사용불가
-                  </p>
+                  </p> */}
                 </div>
               </div>
 
@@ -98,6 +130,8 @@ class SignUp extends React.Component {
                   type="password"
                   className="signUpInput"
                   placeholder="비밀번호 다시 한번 입력"
+                  name="passwordConfirm"
+                  onChange={this.signUpInput}
                 ></input>
                 {/* 참고 테스트 */}
                 <div className="signUpTipBox">
