@@ -1,4 +1,6 @@
 import React from 'react';
+import ProductNav from '../components/ProductNav/ProductNav';
+import ProductInfo from '../components/ProductInfo/ProductInfo';
 
 class Product extends React.Component {
   componentDidMount() {
@@ -30,7 +32,12 @@ class Product extends React.Component {
     console.log(localStorage);
   }
   render() {
-    return <div>프로덕트 페이지 초기화</div>;
+    return (
+      <div>
+        <ProductNav />
+        <ProductInfo />
+      </div>
+    );
   }
 }
 
