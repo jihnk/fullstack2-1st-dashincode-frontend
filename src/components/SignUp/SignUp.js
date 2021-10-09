@@ -3,9 +3,36 @@ import { Link } from 'react-router-dom';
 import './SignUp.scss';
 
 class SignUp extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      nickname: '',
+      password: '',
+      passwordConfirm: '',
+    };
+  }
+
+  signUpInput = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  // signUpCheck = e => {
+
+  // }
+
   render() {
+    const { email, nickname, password, passwordConfirm } = this.state;
+    const isValidEmail = email.includes('@');
+    const isValidNickName = nickname.length >= 8 && nickname.length <= 15;
+    const correctPw = /^[a-zA-z0-9]{4,12}$/;
+    const checkPw = password.match(correctPw) || password === '';
+
     return (
-      <section>
+      <div className="container">
         <div className="signUpBox">
           <div className="easySignUpBox">
             <p className="easySignUpTitle">SNS계정 간편 로그인/회원가입</p>
@@ -30,15 +57,14 @@ class SignUp extends React.Component {
                   type="text"
                   className="signUpInput"
                   placeholder="이메일 입력"
+                  name="email"
+                  onChange={this.signUpInput}
                 ></input>
                 {/* 참고 테스트 */}
                 <div className="signUpTipBox">
-                  <div className="signUpTip">
+                  <p className={isValidEmail ? 'valid' : 'inValid'}>
                     · &nbsp;올바른 형식의 이메일 주소 입력
-                  </div>
-                  <div className="signUpTip">
-                    · &nbsp;가입되지 않는 이메일 주소 입력
-                  </div>
+                  </p>
                 </div>
               </div>
             </div>
@@ -54,15 +80,17 @@ class SignUp extends React.Component {
                   type="text"
                   className="signUpInput"
                   placeholder="닉네임 입력"
+                  name="nickname"
+                  onChange={this.signUpInput}
                 ></input>
                 {/* 참고 테스트 */}
                 <div className="signUpTipBox">
-                  <div className="signUpTip">
+                  <p className={isValidNickName ? 'valid' : 'inValid'}>
                     · &nbsp;한글(2-8자), 영문(4-16자) 이내 입력
-                  </div>
-                  <div className="signUpTip">
+                  </p>
+                  {/* <div className="signUpTip">
                     · &nbsp;중복되지 않는 닉네임 입력
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -78,16 +106,20 @@ class SignUp extends React.Component {
                   type="password"
                   className="signUpInput"
                   placeholder="비밀번호 입력"
+                  name="password"
+                  onChange={this.signUpInput}
                 ></input>
                 {/* 참고 테스트 */}
                 <div className="signUpTipBox">
-                  <p className="signUpTip">· &nbsp;10자 이상 15자 이하 입력</p>
-                  <p className="signUpTip">
+                  <p className={checkPw ? 'valid' : 'invalid'}>
+                    · &nbsp;영문 대소문자와 숫자 4~12자리로 입력해야 됩니다.
+                  </p>
+                  {/* <p className="signUpTip">
                     · &nbsp;영문/숫자/특수문자 2가지 이상
                   </p>
                   <p className="signUpTip">
                     · &nbsp;동일한 문자/숫자 4개 이상 연속 사용불가
-                  </p>
+                  </p> */}
                 </div>
               </div>
 
@@ -98,169 +130,22 @@ class SignUp extends React.Component {
                   type="password"
                   className="signUpInput"
                   placeholder="비밀번호 다시 한번 입력"
+                  name="passwordConfirm"
+                  onChange={this.signUpInput}
                 ></input>
                 {/* 참고 테스트 */}
                 <div className="signUpTipBox">
                   <p className="signUpTip">· &nbsp;동일한 비밀번호 입력</p>
                 </div>
               </div>
-            </div>
-
-            {/* 휴대폰 */}
-            <div className="signUpWrap">
-              <p className="signUpTitle">휴대폰</p>
-              <div className="signUpInputForm">
-                <input
-                  type="hidden"
-                  name="phoneSms"
-                  className="signUpInput"
-                ></input>
-                {/* 참고 테스트 */}
-                <div className="signUpHpWrap">
-                  <p className="signUpHp">
-                    <input type="hidden" name="sendSms" />
-                    <input type="text" placeholder="휴대폰 번호 입력" />
-                  </p>
-                </div>
-              </div>
+              <button className="signUpBtn">
+                <Link onClick="#">회원가입</Link>
+              </button>
             </div>
           </div>
         </div>
-
-        {/* 이용약관 동의 */}
-        <div className="signUpForm">
-          <p className="signUpTitle">
-            이용약관 동의
-            <em className="importStar">*</em>
-          </p>
-          <div className="policyAgreedTitle">
-            <div className="allAgreeBox">
-              <span className="allAgree">전체 동의합니다.</span>
-              <p className="agreeBox">
-                <span className="loginCheckBox">
-                  <input
-                    type="checkBox"
-                    className="checkBox"
-                    name="checkBox1"
-                    onClick=""
-                  />
-                  <label for="checkBox">
-                    <span></span>
-                  </label>
-                </span>
-              </p>
-            </div>
-            <div className="agreementElement">
-              <span className="allAgree">
-                이용약관 동의
-                <em>(필수)</em>
-              </span>
-              <p className="agreementText">
-                <Link
-                  to="https://dshop.dietshin.com/union_agreement.asp"
-                  target="_blank"
-                  className="text"
-                  style={{ cursor: 'pointer' }}
-                >
-                  내용보기
-                </Link>
-              </p>
-              <p className="agreeBox">
-                <span className="loginCheckBox">
-                  <input
-                    type="checkBox"
-                    className="checkBox"
-                    name="checkBox2"
-                    onClick="#"
-                  />
-                  <label for="checkBox2">
-                    <span></span>
-                  </label>
-                </span>
-              </p>
-            </div>
-            <div className="agreementElement">
-              <span className="allAgree">
-                개인정보처리방침
-                <em>(필수)</em>
-              </span>
-              <p className="agreementText">
-                <Link
-                  to="https://dshop.dietshin.com/union_privacy.asp"
-                  target="_blank"
-                  className="text"
-                  style={{ cursor: 'pointer' }}
-                >
-                  내용보기
-                </Link>
-              </p>
-              <p className="agreeBox">
-                <span className="loginCheckBox">
-                  <input
-                    type="checkBox"
-                    className="checkBox"
-                    name="checkBox3"
-                    onClick="#"
-                  />
-                  <label for="checkBox3">
-                    <span></span>
-                  </label>
-                </span>
-              </p>
-            </div>
-            <div className="agreementElement">
-              <span className="allAgree">
-                본인은 만 14세 이상 입니다.
-                <em>(필수)</em>
-              </span>
-              <p className="agreeBox">
-                <span className="loginCheckBox">
-                  <input
-                    type="checkBox"
-                    className="checkBox"
-                    name="checkBox4"
-                    onClick="#"
-                  />
-                  <label for="checkBox4">
-                    <span></span>
-                  </label>
-                </span>
-              </p>
-            </div>
-            <div className="agreementElement">
-              <span className="allAgree">
-                마케팅 수신동의
-                <em>(선택)</em>
-              </span>
-              <p className="agreementText">
-                <Link
-                  to="https://dshop.dietshin.com/union_privacy.asp"
-                  target="_blank"
-                  className="text"
-                  style={{ cursor: 'pointer' }}
-                >
-                  내용보기
-                </Link>
-              </p>
-              <p className="agreeBox">
-                <span className="loginCheckBox">
-                  <input
-                    type="checkBox"
-                    className="checkBox"
-                    name="checkBox5"
-                    onClick="#"
-                  />
-                  <label for="checkBox5">
-                    <span></span>
-                  </label>
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     );
   }
 }
-
 export default SignUp;
