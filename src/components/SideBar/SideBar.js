@@ -41,14 +41,18 @@ class SideBar extends Component {
   };
 
   deleteLoadedProduct = id => {
-    let loadedProduct = JSON.parse(localStorage.getItem('loadedProduct'));
-    const filteredProduct = loadedProduct.filter(
-      product => product.productId !== id
-    );
-    localStorage.setItem('loadedProduct', JSON.stringify(filteredProduct));
-    this.setState({
-      sidebar: JSON.parse(localStorage.getItem('loadedProduct')),
-    });
+    if (window.confirm('선택한 상품을 삭제하시겠습니까?')) {
+      let loadedProduct = JSON.parse(localStorage.getItem('loadedProduct'));
+      const filteredProduct = loadedProduct.filter(
+        product => product.productId !== id
+      );
+      localStorage.setItem('loadedProduct', JSON.stringify(filteredProduct));
+      this.setState({
+        sidebar: JSON.parse(localStorage.getItem('loadedProduct')),
+      });
+    } else {
+      return;
+    }
   };
 
   nextSlide = () => {

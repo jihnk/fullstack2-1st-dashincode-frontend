@@ -1,0 +1,42 @@
+{
+  "DATA": {
+    "id": 1,
+    "name": "(예약 배송) 찐한 수제 그릭 요거트",
+    "mainImage": {
+      "isMain": true,
+      "image_url": "https://www.cakedrama.com/data/product/202003/1584947478_64.jpg"
+    },
+    "extraImages": [
+      {
+        "isMain": true,
+        "image_url": "https://www.cakedrama.com/data/product/202003/1584947478_64.jpg"
+      },
+      {
+        "isMain": false,
+        "image_url": "https://data.0app0.com/diet/shop/goods/20190930/w_20190930154033_5777044664.jpg"
+      },
+      {
+        "isMain": false,
+        "image_url": "http://imagescdn.gettyimagesbank.com/500/201904/a11353462.jpg"
+      },
+      {
+        "isMain": false,
+        "image_url": "https://stimg.emart.com:448/upload/peacock/item/20180214_1045057_848.jpg"
+      },
+      {
+        "isMain": false,
+        "image_url": "https://cdn.imweb.me/thumbnail/20210713/2d1785388d0ed.jpg"
+      }
+    ],
+    "discountedPrice": 39800,
+    "price": 48500,
+    "description": "[매주 화/수/목 출고] 당류 0g, 유산균과 우유로만 만들었어요.",
+    "storage": "냉장(아이스박스/보냉백 포장)",
+    "isFree": 0,
+    "isDashin": 1,
+    "isCool": 0,
+    "isBasic": 0,
+    "createAt": "2020-03-11",
+    "isLiked": true
+  }
+}

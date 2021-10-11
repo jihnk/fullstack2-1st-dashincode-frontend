@@ -1,13 +1,10 @@
-* {
-  box-sizing: border-box;
-}
-
 .ProductInfo {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
   width: 1100px;
+  height: 700px;
   margin: 20px auto 0 auto;
   font-family: 'Noto sans', sans-serif;
   font-size: 14px;
@@ -32,6 +29,7 @@
       img.littleThumbnails {
         width: 67px;
         border: 1px solid lightgray;
+        cursor: pointer;
       }
     }
 
@@ -69,8 +67,10 @@
       width: 320px;
       height: 120px;
       margin: 20px auto 0 auto;
+      background: white;
       box-shadow: 0 2px 6px 0 rgba(60, 60, 60, 0.3);
       border-radius: 6px;
+      z-index: 2;
 
       &.active {
         display: flex;
@@ -172,10 +172,6 @@
         font-size: 16px;
         line-height: 1.85;
 
-        a {
-          text-decoration: underline;
-        }
-
         strong {
           font-weight: 600;
         }
@@ -187,6 +183,13 @@
           font-weight: 600;
           letter-spacing: -0.04em;
           line-height: 1.6;
+        }
+
+        .originalPrice {
+          color: #999;
+          font-size: 20px;
+          text-decoration: line-through;
+          padding-left: 10px;
         }
       }
     }

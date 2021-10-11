@@ -9,7 +9,6 @@ class ScrollTo extends Component {
 
   scrollToTop = () => {
     document.documentElement.scrollTop = 0;
-    console.log(window.pageYOffset);
   };
 
   scrollToBottom = () => {
