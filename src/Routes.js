@@ -10,23 +10,26 @@ import product from './pages/Product';
 import list from './pages/List';
 import cart from './pages/CartPage/Cart';
 import category from './pages/Category';
+import ScrollToTop from './components/ScrollToTop';
 
 function Router() {
   return (
     <BrowserRouter>
       <Switch>
         <>
-          <Header />
-          <NavBar />
-          <Route exact path="/" component={main} />
-          <Route exact path="/signup" component={signup} />
-          <Route exact path="/login" component={login} />
-          <Route exact path="/product/:id" component={product} />
-          <Route exact path="/category/:id" component={category} />
-          <Route exact path="/category/:id/:number" component={category} />
-          <Route exact path="/list/:sort" component={list} />
-          <Route exact path="/cart" component={cart} />
-          <Footer />
+          <ScrollToTop>
+            <Header />
+            <NavBar />
+            <Route exact path="/" component={main} />
+            <Route exact path="/signup" component={signup} />
+            <Route exact path="/login" component={login} />
+            <Route exact path="/product/:id" component={product} />
+            <Route exact path="/category/:id" component={category} />
+            <Route exact path="/category/:id/:number" component={category} />
+            <Route exact path="/list/:sort" component={list} />
+            <Route exact path="/cart" component={cart} />
+            <Footer />
+          </ScrollToTop>
         </>
       </Switch>
     </BrowserRouter>

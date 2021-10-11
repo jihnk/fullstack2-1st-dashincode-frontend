@@ -1,7 +1,7 @@
 .ProductDescription {
   .productDescriptionWrap {
     position: sticky;
-    top: 0;
+    top: -1px;
     width: 1100px;
     margin: 0 auto;
     z-index: 501;
@@ -29,6 +29,16 @@
         width: 100%;
         padding: 0 10%;
         margin: 40px auto;
+      }
+
+      .informationImage {
+        width: 100%;
+        margin: 10px auto 40px auto;
+      }
+
+      .review {
+        width: 100%;
+        margin: 10px aut0;
       }
     }
   }

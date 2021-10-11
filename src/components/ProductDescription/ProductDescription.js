@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import './ProductDescription.scss';
 import detail from './detail.jpg';
+import info from './info.jpg';
 
 class ProductNav extends React.Component {
   constructor() {
@@ -13,6 +14,9 @@ class ProductNav extends React.Component {
       informationClicked: false,
       reviewClicked: false,
     };
+    this.descriptionRef = React.createRef();
+    this.informationRef = React.createRef();
+    this.reviewRef = React.createRef();
   }
 
   componentDidMount() {
@@ -22,31 +26,53 @@ class ProductNav extends React.Component {
       .then(res =>
         this.setState({ imageUrl: res.IMAGE, reviewCount: res.REVIEW })
       );
+    window.addEventListener('scroll', this.handleScroll);
   }
 
-  moveToDescription = () => {
-    this.setState({
-      descriptionClicked: true,
-      informationClicked: false,
-      reviewClicked: false,
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  moveToRef = name => {
+    let location = '';
+    if (name === 'description') {
+      location = this.descriptionRef.current.offsetTop + window.innerHeight;
+    } else if (name === 'information') {
+      location = this.informationRef.current.offsetTop + window.innerHeight;
+    } else if (name === 'review') {
+      location = this.reviewRef.current.offsetTop + window.innerHeight;
+    }
+
+    window.scroll({
+      top: location,
+      behavior: 'smooth',
     });
   };
 
-  moveToInformation = () => {
+  handleScroll = () => {
+    const scrollY = window.pageYOffset;
     this.setState({
-      descriptionClicked: false,
-      informationClicked: true,
-      reviewClicked: false,
+      descriptionClicked:
+        scrollY >= this.descriptionRef.current.offsetTop + window.innerHeight &&
+        scrollY < this.informationRef.current.offsetTop + window.innerHeight
+          ? true
+          : false,
+      informationClicked:
+        scrollY >= this.informationRef.current.offsetTop + window.innerHeight &&
+        scrollY < this.reviewRef.current.offsetTop + window.innerHeight
+          ? true
+          : false,
+      reviewClicked:
+        scrollY >= this.reviewRef.current.offsetTop + window.innerHeight &&
+        scrollY <
+          this.reviewRef.current.offsetTop +
+            window.innerHeight +
+            this.reviewRef.current.clientHeight
+          ? true
+          : false,
     });
   };
 
-  moveToReview = () => {
-    this.setState({
-      descriptionClicked: false,
-      informationClicked: false,
-      reviewClicked: true,
-    });
-  };
   render() {
     const {
       imageUrl,
@@ -55,6 +81,7 @@ class ProductNav extends React.Component {
       informationClicked,
       reviewClicked,
     } = this.state;
+
     return (
       <div className="ProductDescription">
         <div className="productDescriptionWrap">
@@ -62,24 +89,44 @@ class ProductNav extends React.Component {
             <ul>
               <li
                 className={descriptionClicked && 'watched'}
-                onClick={this.moveToDescription}
+                onClick={() => this.moveToRef('description')}
+                name="description"
               >
                 상세설명
               </li>
               <li
                 className={informationClicked && 'watched'}
-                onClick={this.moveToInformation}
+                onClick={() => this.moveToRef('information')}
+                name="information"
               >
                 구매정보
               </li>
               <li
                 className={reviewClicked && 'watched'}
-                onClick={this.moveToReview}
+                onClick={() => this.moveToRef('review')}
+                name="review"
               >
                 상품후기({reviewCount})
               </li>
             </ul>
-            <img className="descriptionImage" src={detail} alt="description" />
+            <img
+              className="descriptionImage"
+              src={detail}
+              alt="description"
+              ref={this.descriptionRef}
+            />
+            <img
+              className="informationImage"
+              src={info}
+              alt="information"
+              ref={this.informationRef}
+            />
+            <div
+              className="reviewImage"
+              src={detail}
+              alt="review"
+              ref={this.reviewRef}
+            />
           </section>
         </div>
       </div>
