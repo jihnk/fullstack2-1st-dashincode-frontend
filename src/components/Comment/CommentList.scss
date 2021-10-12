@@ -1,0 +1,52 @@
+.commentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1100px;
+  margin: 20px auto 0 auto;
+  margin-top: 70px;
+  font-family: 'Noto sans', sans-serif;
+  font-size: 14px;
+
+  .commentTitleWrap {
+    display: block;
+    line-height: 45px;
+    color: #000;
+    font-size: 28px;
+    text-align: left;
+    letter-spacing: -0.01em;
+
+    .commentTitle {
+      color: inherit;
+    }
+
+    .noticeWrap {
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0;
+      padding: 10px 20px;
+      border-top: 1px solid #dedede;
+      border-bottom: 1px solid #dedede;
+      text-align: left;
+
+      .noticeText {
+        display: inline-block;
+        line-height: 1.4em;
+        color: #333;
+        font-size: 16px;
+        font-weight: normal;
+        letter-spacing: -0.001em;
+
+        &.title {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .commentListWrap {
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
+  }
+}
