@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import './ProductDescription.scss';
 import detail from './detail.jpg';
 import info from './info.jpg';
+import CommentList from '../Comment/CommentList';
 
 class ProductNav extends React.Component {
   constructor() {
@@ -128,6 +129,7 @@ class ProductNav extends React.Component {
               ref={this.reviewRef}
             />
           </section>
+          <CommentList />
         </div>
       </div>
     );
