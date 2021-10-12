@@ -1,0 +1,40 @@
+.commentWrap {
+  padding: 30px 0;
+  border-bottom: 1px solid #dedede;
+
+  .commentHeader {
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    color: #666;
+    font-size: 1.2em;
+
+    .commentRate {
+      font-size: 1.2em;
+      color: #333;
+    }
+
+    .commentNickName {
+      height: 12px;
+      line-height: 14px;
+      margin: 12px 0 0 15px;
+      padding: 0px 14px;
+      border-left: 1px solid #ddd;
+      color: #555;
+    }
+  }
+
+  .commentText {
+    display: block;
+    line-height: 1.8em;
+    padding: 15px 0;
+    color: #000;
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .commentImg {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
