@@ -8,6 +8,7 @@ class Card extends React.Component {
     super();
     this.state = {
       foodProducts: [],
+      isLiked: false,
     };
   }
 
@@ -15,32 +16,38 @@ class Card extends React.Component {
     return Math.round(100 - (num1 / num2) * 100);
   };
 
+  componentDidMount() {
+    const { id } = this.props;
+    fetch(`/like/${id}`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ isLiked: res.DATA });
+      });
+  }
+
   render() {
     const {
       toggleLike,
-      isLiked,
       id,
-      discountedPrice,
+      discounted_price,
       price,
       description,
       reviewCount,
-      isCool,
-      isDashin,
-      isFree,
-      img,
+      shipment,
+      img_url,
       name,
     } = this.props;
     return (
       <li className="foodProduct">
         <div className="foodImage">
           <Link to={`/product/${id}`}>
-            <img src={img} alt={name} />
+            <img src={img_url} alt={name} />
           </Link>
           <Like
             toggleLike={toggleLike}
-            isLiked={isLiked}
+            isLiked={this.state.isLiked}
             id={id}
-            className={isLiked ? 'fa-heart fill' : 'fa-heart'}
+            className={this.state.isLiked ? 'fa-heart fill' : 'fa-heart'}
           />
         </div>
         <div className="productDetails">
@@ -49,7 +56,7 @@ class Card extends React.Component {
           </div>
           <div className="productPrice">
             <div className="prices">
-              <span className="discountedPrice">{`${discountedPrice.toLocaleString(
+              <span className="discountedPrice">{`${discounted_price.toLocaleString(
                 'ko-KR'
               )}원`}</span>
               <span className="originalPrice">{`${price.toLocaleString(
@@ -57,7 +64,7 @@ class Card extends React.Component {
               )}원`}</span>
             </div>
             <div className="discountRate">
-              {`${this.getDiscountRate(discountedPrice, price)}%`}
+              {`${this.getDiscountRate(discounted_price, price)}%`}
             </div>
           </div>
           <p className="productDescription">{description}</p>
@@ -66,12 +73,23 @@ class Card extends React.Component {
               'ko-KR'
             )}`}</div>
             <ul className="shipment">
-              {isFree && <li className="isFree">무료배송</li>}
-              {isDashin && <li className="isDashin">다신배송</li>}
-              {isCool && <li className="isCool">다신쿨배송</li>}
-              {!isFree && !isDashin && !isCool && (
-                <li className="isBasic">기본배송</li>
-              )}
+              {shipment.length === 0 && <li className="isBasic">기본배송</li>}
+              {shipment &&
+                shipment.map((shipment, id) => {
+                  return (
+                    <li key={id} className={shipment}>
+                      {shipment === 'isCool'
+                        ? '다신쿨배송'
+                        : shipment === 'isFree'
+                        ? '무료배송'
+                        : shipment === 'isDashin'
+                        ? '다신배송'
+                        : shipment === 'isBasic'
+                        ? '기본배송'
+                        : shipment}
+                    </li>
+                  );
+                })}
             </ul>
           </div>
         </div>
