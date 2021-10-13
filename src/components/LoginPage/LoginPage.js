@@ -9,6 +9,7 @@ class LoginPage extends React.Component {
     super();
 
     this.state = {
+      user: {},
       userEmail: '',
       userPw: '',
       idChecked: false,
@@ -24,7 +25,20 @@ class LoginPage extends React.Component {
   goToMainPage = () => {
     const { userEmail, userPw } = this.state;
     if (userEmail.includes('@') && userPw.length >= 8) {
-      this.props.history.push('pages/Main');
+      fetch(`/user/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: this.state.userEmail,
+          password: this.state.userPw,
+        }),
+      })
+        .then(res => res.json())
+        .then(res => {
+          this.setState({ user: res });
+        });
+      // alert(this.state.user.message);
+      this.props.history.push('/');
     } else {
       alert('이메일 혹은 비밀번호를 입력해주세요');
     }
@@ -43,6 +57,16 @@ class LoginPage extends React.Component {
     console.log('사용자 ID :', this.state.userEmail);
     console.log('사용자 Password : ', this.state.userPw);
   };
+
+  componentDidMount() {
+    // console.log(this.props.match.params.id);
+    // const id = this.props.match.params.id;
+    fetch(`/user/login`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ user: res });
+      });
+  }
 
   render() {
     return (
@@ -80,7 +104,7 @@ class LoginPage extends React.Component {
                 </div>
               </form>
               <button className="loginBtn" onClick={this.goToMainPage}>
-                <Link onClick="/Main">로그인</Link>
+                <Link to="#">로그인</Link>
               </button>
               <div className="underLoginBtn">
                 <Link to="pages/Signup" className="underLoginBtnWords">
