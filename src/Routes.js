@@ -11,6 +11,7 @@ import list from './pages/List';
 import cart from './pages/CartPage/Cart';
 import category from './pages/Category';
 import ScrollToTop from './components/ScrollToTop';
+import search from './pages/Search';
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
             <Route exact path="/list/:main" component={list} />
             <Route exact path="/list/:main/:sub" component={list} />
             <Route exact path="/cart" component={cart} />
+            <Route exact path="/search" component={search} />
             <Footer />
           </ScrollToTop>
         </>
