@@ -22,13 +22,14 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/cartMockData.json', {
+    fetch('/cart', {
       header: {
-        Accept: 'application / json',
+        'Content-type': 'application/json',
       },
     })
       .then(res => res.json())
       .then(mockData => {
+        console.log(mockData);
         const productList = [];
         mockData.forEach(el => productList.push(el.products));
 
