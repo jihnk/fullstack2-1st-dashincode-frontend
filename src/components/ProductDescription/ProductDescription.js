@@ -22,11 +22,11 @@ class ProductNav extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`http://localhost:3000/product/description/${id}`)
-      .then(res => res.json())
-      .then(res =>
-        this.setState({ imageUrl: res.IMAGE, reviewCount: res.REVIEW })
-      );
+    // fetch(`http://localhost:8000/product/description/${id}`)
+    //   .then(res => res.json())
+    //   .then(res =>
+    //     this.setState({ imageUrl: res.IMAGE, reviewCount: res.REVIEW })
+    //   );
     window.addEventListener('scroll', this.handleScroll);
   }
 
@@ -37,11 +37,13 @@ class ProductNav extends React.Component {
   moveToRef = name => {
     let location = '';
     if (name === 'description') {
-      location = this.descriptionRef.current.offsetTop + window.innerHeight;
+      location =
+        this.descriptionRef.current.offsetTop + window.innerHeight + 200;
     } else if (name === 'information') {
-      location = this.informationRef.current.offsetTop + window.innerHeight;
+      location =
+        this.informationRef.current.offsetTop + window.innerHeight + 180;
     } else if (name === 'review') {
-      location = this.reviewRef.current.offsetTop + window.innerHeight;
+      location = this.reviewRef.current.offsetTop + window.innerHeight + 150;
     }
 
     window.scroll({
@@ -54,17 +56,21 @@ class ProductNav extends React.Component {
     const scrollY = window.pageYOffset;
     this.setState({
       descriptionClicked:
-        scrollY >= this.descriptionRef.current.offsetTop + window.innerHeight &&
-        scrollY < this.informationRef.current.offsetTop + window.innerHeight
+        scrollY >=
+          this.descriptionRef.current.offsetTop + window.innerHeight + 200 &&
+        scrollY <
+          this.informationRef.current.offsetTop + window.innerHeight + 180
           ? true
           : false,
       informationClicked:
-        scrollY >= this.informationRef.current.offsetTop + window.innerHeight &&
-        scrollY < this.reviewRef.current.offsetTop + window.innerHeight
+        scrollY >=
+          this.informationRef.current.offsetTop + window.innerHeight + 180 &&
+        scrollY < this.reviewRef.current.offsetTop + window.innerHeight + 150
           ? true
           : false,
       reviewClicked:
-        scrollY >= this.reviewRef.current.offsetTop + window.innerHeight &&
+        scrollY >=
+          this.reviewRef.current.offsetTop + window.innerHeight + 150 &&
         scrollY <
           this.reviewRef.current.offsetTop +
             window.innerHeight +
@@ -87,7 +93,7 @@ class ProductNav extends React.Component {
       <div className="ProductDescription">
         <div className="productDescriptionWrap">
           <section className="description">
-            <ul>
+            <ul className="descriptionContents">
               <li
                 className={descriptionClicked && 'watched'}
                 onClick={() => this.moveToRef('description')}
@@ -122,14 +128,10 @@ class ProductNav extends React.Component {
               alt="information"
               ref={this.informationRef}
             />
-            <div
-              className="reviewImage"
-              src={detail}
-              alt="review"
-              ref={this.reviewRef}
-            />
+            <div className="review" ref={this.reviewRef}>
+              <CommentList />
+            </div>
           </section>
-          <CommentList />
         </div>
       </div>
     );

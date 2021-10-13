@@ -38,14 +38,13 @@ class Header extends Component {
   };
 
   componentDidUpdate() {
-    fetch('')
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          cartNum: res,
-          //carts table 행이 몇개인지 숫자로 받아야함 fetch
-        });
-      });
+    // fetch('http://localhost:8000/cart/amount')
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     this.setState({
+    //       cartNum: res,
+    //     });
+    //   });
     document.cookie.includes('token') &&
       this.setState({
         token: true,
