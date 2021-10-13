@@ -25,9 +25,9 @@ function Router() {
             <Route exact path="/signup" component={signup} />
             <Route exact path="/login" component={login} />
             <Route exact path="/product/:id" component={product} />
-            <Route exact path="/category/:id" component={category} />
-            <Route exact path="/category/:id/:number" component={category} />
-            <Route exact path="/list/:sort" component={list} />
+            <Route exact path="/category/:sort" component={category} />
+            <Route exact path="/list/:main" component={list} />
+            <Route exact path="/list/:main/:sub" component={list} />
             <Route exact path="/cart" component={cart} />
             <Route exact path="/search" component={search} />
             <Footer />
