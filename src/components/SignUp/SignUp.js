@@ -20,12 +20,26 @@ class SignUp extends React.Component {
     });
   };
 
-  // signUpCheck = e => {
-
-  // }
+  signup = e => {
+    // console.log(this.props.match.params.id);
+    // const id = this.props.match.params.id;
+    fetch(`/user/signup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: this.state.email,
+        nickname: this.state.nickname,
+        password: this.state.password,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ user: res });
+      });
+  };
 
   render() {
-    const { email, nickname, password, passwordConfirm } = this.state;
+    const { email, nickname, password } = this.state;
     const isValidEmail = email.includes('@');
     const isValidNickName = nickname.length >= 8 && nickname.length <= 15;
     const correctPw = /^[a-zA-z0-9]{4,12}$/;
@@ -138,8 +152,8 @@ class SignUp extends React.Component {
                   <p className="signUpTip">· &nbsp;동일한 비밀번호 입력</p>
                 </div>
               </div>
-              <button className="signUpBtn">
-                <Link onClick="#">회원가입</Link>
+              <button onClick={this.signup} className="signUpBtn">
+                <Link to="#">회원가입</Link>
               </button>
             </div>
           </div>
