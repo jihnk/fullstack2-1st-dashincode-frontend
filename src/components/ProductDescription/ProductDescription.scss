@@ -7,7 +7,7 @@
     z-index: 501;
 
     .description {
-      ul {
+      .descriptionContents {
         display: flex;
         position: sticky;
         top: 0;
@@ -38,7 +38,7 @@
 
       .review {
         width: 100%;
-        margin: 10px aut0;
+        margin: 10px auto;
       }
     }
   }
