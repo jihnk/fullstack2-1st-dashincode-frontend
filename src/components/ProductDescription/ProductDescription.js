@@ -56,21 +56,17 @@ class ProductNav extends React.Component {
     const scrollY = window.pageYOffset;
     this.setState({
       descriptionClicked:
-        scrollY >=
-          this.descriptionRef.current.offsetTop + window.innerHeight + 200 &&
-        scrollY <
-          this.informationRef.current.offsetTop + window.innerHeight + 180
+        scrollY >= this.descriptionRef.current.offsetTop + window.innerHeight &&
+        scrollY < this.informationRef.current.offsetTop + window.innerHeight
           ? true
           : false,
       informationClicked:
-        scrollY >=
-          this.informationRef.current.offsetTop + window.innerHeight + 180 &&
-        scrollY < this.reviewRef.current.offsetTop + window.innerHeight + 150
+        scrollY >= this.informationRef.current.offsetTop + window.innerHeight &&
+        scrollY < this.reviewRef.current.offsetTop + window.innerHeight
           ? true
           : false,
       reviewClicked:
-        scrollY >=
-          this.reviewRef.current.offsetTop + window.innerHeight + 150 &&
+        scrollY >= this.reviewRef.current.offsetTop + window.innerHeight &&
         scrollY <
           this.reviewRef.current.offsetTop +
             window.innerHeight +
