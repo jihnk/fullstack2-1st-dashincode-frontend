@@ -9,21 +9,23 @@ class DiscountedProduct extends Component {
     super();
     this.state = {
       product: {},
+      shipment: [],
     };
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/discountedinfo.json')
+    fetch('/product/special')
       .then(res => res.json())
       .then(data => {
         this.setState({
           product: data.DATA,
+          shipment: data.DATA.shipment,
         });
       });
   }
 
   render() {
-    const { product } = this.state;
+    const { product, shipment } = this.state;
     const link = '/product/' + product.id;
     return (
       <div className="DiscountedProduct">
@@ -50,24 +52,40 @@ class DiscountedProduct extends Component {
                   </p>
                 </li>
                 <li className="discountRate">
-                  <p>{product.discountedRate}%</p>
+                  <p>
+                    {Math.round(
+                      100 - (product.discounted_price / product.price) * 100
+                    )}
+                    %
+                  </p>
                 </li>
                 <li className="discountedPrice">
-                  <p>
-                    {product.price * ((100 - product.discountedRate) / 100)}
-                  </p>
+                  <p>{product.discounted_price}</p>
                 </li>
                 <li className="price">
                   <p>{product.price}</p>
                 </li>
                 <li className="delivery">
                   <ul>
-                    {product.isFree && <li className="isFree">무료배송</li>}
-                    {product.isDashin && <li className="isDashin">다신배송</li>}
-                    {product.isCool && <li className="isCool">다신쿨배송</li>}
-                    {!product.isFree &&
-                      !product.isDashin &&
-                      !product.isCool && <li className="isBasic">기본배송</li>}
+                    {shipment.length === 0 && (
+                      <li className="isBasic">기본배송</li>
+                    )}
+                    {shipment &&
+                      shipment.map((shipment, id) => {
+                        return (
+                          <li key={id} className={shipment}>
+                            {shipment === 'isCool'
+                              ? '다신쿨배송'
+                              : shipment === 'isFree'
+                              ? '무료배송'
+                              : shipment === 'isDashin'
+                              ? '다신배송'
+                              : shipment === 'isBasic'
+                              ? '기본배송'
+                              : shipment}
+                          </li>
+                        );
+                      })}
                   </ul>
                 </li>
               </ul>
