@@ -47,7 +47,14 @@ export class CartProduct extends React.Component {
   };
 
   render() {
-    const { id, products, checked, checkItems, handleChecked } = this.props;
+    const {
+      id,
+      products,
+      checked,
+      checkItems,
+      handleChecked,
+      categoryTotalPrice,
+    } = this.props;
     const { setQuantity, setPrice } = this.state;
 
     return (
@@ -78,25 +85,29 @@ export class CartProduct extends React.Component {
               <li className="orderInfoWrap">
                 <div className="orderInfoTitle">{products.description}</div>
                 <span className="orderCntBtnWrap">
-                  <a
+                  <button
                     id={id}
                     className="cntBtn"
-                    onClick={e => this.minusQuantity(e.target.innerHTML)}
+                    onClick={e =>
+                      categoryTotalPrice !== 0
+                        ? this.minusQuantity(e.target.innerHTML)
+                        : null
+                    }
                   >
                     -
-                  </a>
+                  </button>
                   <span className="orderCntWrap">
                     <span className="orderCnt" id={id}>
                       {setQuantity}
                     </span>
                   </span>
-                  <a
+                  <button
                     id={id}
                     className="cntBtn"
                     onClick={e => this.plusQuantity(e.target.innerHTML)}
                   >
                     +
-                  </a>
+                  </button>
                 </span>
                 <span className="orderPriceWrap">
                   <em class="priceText">전체 금액:</em>
