@@ -36,13 +36,13 @@ class NavBar extends Component {
             <div className="dropDownCategory">
               <ul className="mainMenu">
                 {category.map((data, id) => {
-                  const name = '/category/' + data.id;
+                  const name = '/list/' + data.id;
                   return (
                     <li className="mainMenuList" key={id}>
                       <Link to={name}>{data.name}</Link>
                       <ul className="subMenu">
                         {data.list.map((list, id) => {
-                          const name = '/category/' + data.id + '/' + list.id;
+                          const name = '/list/' + data.id + '/' + list.id;
                           return (
                             <li key={id}>
                               <Link to={name}>{list.name}</Link>
@@ -57,7 +57,7 @@ class NavBar extends Component {
             </div>
           </li>
           {navbarList.map((list, id) => {
-            const name = '/list/' + list.link;
+            const name = '/category/' + list.link;
             return (
               <li className="navbarList" key={id}>
                 <Link to={name} key={id}>

@@ -42,15 +42,13 @@ class Cardlist extends React.Component {
         });
     } else if (page === 'search') {
       const { search } = this.props.location;
-      const queryObj = queryString.parse(search);
+      const queryObj = queryString.parse(search, { decode: 'false' });
       const { words } = queryObj;
-      fetch(
-        `/list?value=${words}`
-          .then(res => res.json())
-          .then(res => {
-            this.setState({ products: res.DATA });
-          })
-      );
+      fetch(`/list?value=${words}`)
+        .then(res => res.json())
+        .then(res => {
+          this.setState({ products: res.DATA });
+        });
     } else if (page === 'list') {
       const { main, sub } = this.props.match.params;
       if (sub === undefined) {

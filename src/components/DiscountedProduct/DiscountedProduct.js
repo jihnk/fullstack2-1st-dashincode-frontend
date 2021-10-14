@@ -45,11 +45,8 @@ class DiscountedProduct extends Component {
                   />
                 </li>
                 <li className="name">
-                  <p>
-                    {product.name}
-                    <br />
-                    {product.description}
-                  </p>
+                  <p>{product.name}</p>
+                  <p className="description">{product.description}</p>
                 </li>
                 <li className="discountRate">
                   <p>
