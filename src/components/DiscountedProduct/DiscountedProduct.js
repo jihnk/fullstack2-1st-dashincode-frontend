@@ -57,7 +57,7 @@ class DiscountedProduct extends Component {
                   </p>
                 </li>
                 <li className="discountedPrice">
-                  <p>{product.discounted_price}</p>
+                  <p>{product.discounted_price}원</p>
                 </li>
                 <li className="price">
                   <p>{product.price}</p>

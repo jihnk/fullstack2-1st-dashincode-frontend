@@ -68,19 +68,20 @@ class Cart extends React.Component {
       <div className="cartContainer">
         <div className="cartContents">
           <div className="productsDetailWrap">
-            {allProduct.map(props => {
-              return (
-                <CartDetail
-                  key={props.product_id}
-                  id={props.product_id}
-                  type={props.storage}
-                  products={props}
-                  handleChecked={this.handleSingleCheckBox}
-                  setTotalAmount={this.setTotalAmount}
-                  handleDeleteBtn={this.handleDeleteBtn}
-                />
-              );
-            })}
+            {allProduct &&
+              allProduct.map(props => {
+                return (
+                  <CartDetail
+                    key={props.product_id}
+                    id={props.product_id}
+                    type={props.storage}
+                    products={props}
+                    handleChecked={this.handleSingleCheckBox}
+                    setTotalAmount={this.setTotalAmount}
+                    handleDeleteBtn={this.handleDeleteBtn}
+                  />
+                );
+              })}
           </div>
           <TotalOrderPrice totalPrice={totalPrice} />
           <CartOrderButton />

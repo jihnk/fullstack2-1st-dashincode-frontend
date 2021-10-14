@@ -23,6 +23,10 @@ class NavBar extends Component {
       );
   }
 
+  moveToCategory = link => {
+    window.location.replace(`/category/${link}`);
+  };
+
   render() {
     const { category } = this.state;
     return (
@@ -57,15 +61,16 @@ class NavBar extends Component {
             </div>
           </li>
           {navbarList.map((list, id) => {
-            const name = '/category/' + list.link;
             return (
-              <li className="navbarList" key={id}>
-                <Link to={name} key={id}>
-                  {list.name.includes('배송') && (
-                    <FontAwesomeIcon icon={faBox} />
-                  )}
-                  &nbsp;{list.name}
-                </Link>
+              <li
+                className="navbarList"
+                key={id}
+                onClick={() => {
+                  this.moveToCategory(list.link);
+                }}
+              >
+                {list.name.includes('배송') && <FontAwesomeIcon icon={faBox} />}
+                &nbsp;{list.name}
               </li>
             );
           })}
