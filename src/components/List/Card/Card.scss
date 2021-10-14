@@ -109,7 +109,10 @@
         font-size: 15px;
       }
 
-      .shipment {
+      .shipments {
+        display: flex;
+        justify-content: flex-start;
+
         li {
           padding: 0.3px 2px;
           border: 1px solid;

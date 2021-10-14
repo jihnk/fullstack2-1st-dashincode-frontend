@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 import Like from './Like';
 import './Card.scss';
 
+const cookie = new Cookies();
 class Card extends React.Component {
   constructor() {
     super();
     this.state = {
-      foodProducts: [],
       isLiked: false,
     };
   }
@@ -15,6 +16,29 @@ class Card extends React.Component {
   getDiscountRate = (num1, num2) => {
     return Math.round(100 - (num1 / num2) * 100);
   };
+
+  // toggleLike = () => {
+  //   const { id } = this.props.match.params;
+  //   if (cookie.get('user')) {
+  //     fetch(`/like/${id}`, {
+  //       method: 'POST',
+  //       credentials: 'include',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => {
+  //         this.setState({ isLiked: data.DATA }, () => {
+  //           this.state.isLiked
+  //             ? alert('찜한 상품에 저장되었습니다.')
+  //             : alert('취소되었습니다.');
+  //         });
+  //       });
+  //   } else {
+  //     alert('로그인 후 이용해주세요.');
+  //   }
+  // };
 
   componentDidMount() {
     const { id } = this.props;
@@ -27,21 +51,21 @@ class Card extends React.Component {
 
   render() {
     const {
-      toggleLike,
       id,
+      toggleLike,
       discounted_price,
       price,
       description,
       reviewCount,
       shipment,
-      img_url,
+      image_url,
       name,
     } = this.props;
     return (
       <li className="foodProduct">
         <div className="foodImage">
           <Link to={`/product/${id}`}>
-            <img src={img_url} alt={name} />
+            <img src={image_url} alt={name} />
           </Link>
           <Like
             toggleLike={toggleLike}
@@ -72,7 +96,7 @@ class Card extends React.Component {
             <div className="reviewCount">{`리뷰: ${reviewCount.toLocaleString(
               'ko-KR'
             )}`}</div>
-            <ul className="shipment">
+            <ul className="shipments">
               {shipment.length === 0 && <li className="isBasic">기본배송</li>}
               {shipment &&
                 shipment.map((shipment, id) => {
