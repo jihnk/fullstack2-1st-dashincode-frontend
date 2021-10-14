@@ -97,7 +97,7 @@ class LoginPage extends React.Component {
                 <Link to="#">로그인</Link>
               </button>
               <div className="underLoginBtn">
-                <Link to="pages/Signup" className="underLoginBtnWords">
+                <Link to="/signup" className="underLoginBtnWords">
                   회원가입
                 </Link>
                 <em className="underLoginBtnBar"> | </em>

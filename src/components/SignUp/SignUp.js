@@ -74,11 +74,12 @@ class SignUp extends React.Component {
   };
 
   goToLoginPage = () => {
-    this.props.history.push('./login');
+    alert('회원가입을 축하드립니다!');
+    // this.props.history.push('/login');
   };
 
   render() {
-    console.log(1);
+    // console.log(1);
     const { email, nickname, password } = this.state;
     const signUpComplete =
       email.includes('@') && nickname.includes('') && password.length >= 8;
@@ -206,7 +207,7 @@ class SignUp extends React.Component {
                 }
                 className="signUpBtn"
               >
-                <Link to="#">회원가입</Link>
+                <Link to="/login">회원가입</Link>
               </button>
             </div>
           </div>
