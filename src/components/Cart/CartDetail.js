@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CheckBox from '../shared/CheckBox';
 import CartProduct from './CartProduct';
 import './CartDetail.scss';
 
@@ -8,7 +7,7 @@ class CartDetail extends Component {
     super();
     this.state = {
       categoryTotalPrice: 0,
-      isFree: false,
+      isDeliveryFree: false,
     };
   }
 
@@ -29,7 +28,7 @@ class CartDetail extends Component {
 
     this.setState({
       categoryTotalPrice: categoryTotalPrice + totalCategoryPrice,
-      isFree: isTrue,
+      isDeliveryFree: isTrue,
     });
   }
 
@@ -42,30 +41,27 @@ class CartDetail extends Component {
       setTotalAmount(setProductPrice, sign);
       this.setState({
         categoryTotalPrice: categoryTotalPrice - setProductPrice,
+        isDeliveryFree:
+          categoryTotalPrice - setProductPrice < 30000 ? false : true,
       });
     } else {
       setTotalAmount(setProductPrice, sign);
       this.setState({
         categoryTotalPrice: categoryTotalPrice + setProductPrice,
+        isDeliveryFree:
+          categoryTotalPrice + setProductPrice < 30000 ? false : true,
       });
     }
   };
 
   render() {
-    const { id, type, products, checked, checkItems, handleChecked } =
-      this.props;
-    let { categoryTotalPrice, isFree } = this.state;
+    const { type, products, handleDeleteBtn } = this.props;
+    let { categoryTotalPrice, isDeliveryFree } = this.state;
     const productList = [products];
 
     return (
       <div className="cartDetailContainer">
         <div className="cartDetailHeaderWrap">
-          <CheckBox
-            id={id}
-            checked={checked}
-            checkItems={checkItems}
-            handleChecked={handleChecked}
-          />
           <header class="cartDetailHeader">{type}</header>
         </div>
         <section className="cartDetailContents">
@@ -74,14 +70,13 @@ class CartDetail extends Component {
               return (
                 <div className="cartProductWrap">
                   <CartProduct
-                    key={props.id}
-                    id={props.id}
+                    key={props.product_id}
+                    id={props.product_id}
                     products={props}
-                    checked={checked}
-                    checkItems={checkItems}
-                    handleChecked={handleChecked}
                     categoryTotalPrice={categoryTotalPrice}
                     setCategoryTotalAmount={this.setCategoryTotalAmount}
+                    handleDeleteBtn={handleDeleteBtn}
+                    isDeliveryFree={isDeliveryFree}
                   />
                 </div>
               );
@@ -100,13 +95,15 @@ class CartDetail extends Component {
             <p className="sign">+</p>
             <div className="deliveryWrap">
               <p className="deliveryTitle">배송비</p>
-              <p className="deliveryPrice">{isFree ? '무료배송' : '3,000원'}</p>
+              <p className="deliveryPrice">
+                {isDeliveryFree ? '무료배송' : '3,000원'}
+              </p>
             </div>
             <p className="sign">=</p>
             <div className="totalPriceWrap">
               <p className="totalPriceTitle">결제금액</p>
               <em className="totalPrice">
-                {isFree
+                {isDeliveryFree
                   ? categoryTotalPrice.toLocaleString()
                   : (categoryTotalPrice + 3000).toLocaleString()}
               </em>

@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import Card from '../Card/Card';
 import './Cardlist.scss';
+
 class Cardlist extends React.Component {
   constructor() {
     super();
@@ -11,9 +12,6 @@ class Cardlist extends React.Component {
       products: [],
     };
   }
-
-  //user가 아니면 회원만 이용할 수 있는 기능임을 알려준다
-  //회원이면? 좋아요 처리
 
   toggleLike = id => {
     const { products } = this.state;
@@ -79,11 +77,6 @@ class Cardlist extends React.Component {
     return (
       <div className="List">
         <h1 className="listTitle">{this.props.name}</h1>
-        <ul className="sorts">
-          <li className="sortBypop">인기순</li>
-          <li className="sortByTime">등록순</li>
-          <li className="sortByPrice">낮은가격순</li>
-        </ul>
         <ul className="foodList">
           {products &&
             products.map(product => {

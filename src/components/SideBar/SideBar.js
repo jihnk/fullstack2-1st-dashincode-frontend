@@ -92,7 +92,7 @@ class SideBar extends Component {
                     <div className="loadedProduct">
                       <Link
                         key={id}
-                        to={`/product/${data.productId}`}
+                        to={`/product/${data.detailId}`}
                         className="imgWrap"
                       >
                         <img alt="" src={data.imageUrl} />

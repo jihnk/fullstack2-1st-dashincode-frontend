@@ -39,7 +39,7 @@ class productInfo extends React.Component {
         })
       );
 
-    fetch(`/product/detail/${id}`)
+    fetch(`/product/${id}/detail`)
       .then(res => res.json())
       .then(res =>
         this.setState({
@@ -48,53 +48,55 @@ class productInfo extends React.Component {
         })
       );
 
-    fetch(`/product/thumbnail/${id}`)
+    fetch(`/product/${id}/thumbnail`)
       .then(res => res.json())
-      .then(res =>
+      .then(res => {
+        const [mainImage] = res.filter(img => img.is_main === 1);
+        console.log(mainImage);
         this.setState(
           {
-            img: res[0],
+            img: mainImage,
             images: res,
           },
           () => this.addToStorage()
-        )
-      );
+        );
+      });
     this.interval = setInterval(this.autoChangeImage, 2000);
   }
 
   addToStorage = () => {
     const { id } = this.props.match.params;
 
-    let loadeddetail = JSON.parse(localStorage.getItem('loadeddetail'));
-    if (!loadeddetail) {
-      loadeddetail = [];
-      loadeddetail.unshift({
-        detailId: +id,
+    let loadedProduct = JSON.parse(localStorage.getItem('loadedProduct'));
+    if (!loadedProduct) {
+      loadedProduct = [];
+      loadedProduct.unshift({
+        productId: +id,
         imageUrl: this.state.img.image_url,
       });
-      localStorage.setItem('loadeddetail', JSON.stringify(loadeddetail));
-    } else if (loadeddetail?.length > 15) {
-      loadeddetail.pop();
-      loadeddetail.unshift({
-        detailId: +id,
+      localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
+    } else if (loadedProduct?.length > 15) {
+      loadedProduct.pop();
+      loadedProduct.unshift({
+        productId: +id,
         imageUrl: this.state.img.image_url,
       });
-      localStorage.setItem('loadeddetail', JSON.stringify(loadeddetail));
+      localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
     } else {
-      loadeddetail.unshift({
-        detailId: +id,
+      loadedProduct.unshift({
+        productId: +id,
         imageUrl: this.state.img.image_url,
       });
-      localStorage.setItem('loadeddetail', JSON.stringify(loadeddetail));
+      localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
     }
   };
 
   autoChangeImage = () => {
     let imgNum = Math.round(Math.random() * 2);
-    const { img, images } = this.state;
-    img.image_url = images[imgNum].image_url;
+    const { images } = this.state;
+    const changedMainImage = images[imgNum];
     this.setState({
-      img: img,
+      img: changedMainImage,
     });
   };
 
@@ -149,11 +151,7 @@ class productInfo extends React.Component {
       })
         .then(res => res.json())
         .then(alert('장바구니에 담겼습니다'))
-        .then(
-          this.setState({
-            productQuantity: 1,
-          })
-        );
+        .then(window.location.reload());
     } else {
       alert('로그인 후 이용 가능한 서비스입니다');
     }

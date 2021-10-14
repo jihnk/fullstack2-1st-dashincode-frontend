@@ -48,6 +48,7 @@
 
         .orderInfoWrap {
           flex-direction: row;
+          justify-content: center;
           border-top: 0 none;
           padding-top: 9px;
 
@@ -96,7 +97,7 @@
           .orderPriceWrap {
             display: flex;
             flex-direction: row;
-            width: 150px;
+            width: 130px;
             margin: 5px 0 5px 10px;
             font-size: 15px;
             text-align: right;
@@ -108,6 +109,10 @@
             .price {
               margin-left: 5px;
             }
+          }
+          .deleteBtnWrap {
+            // display: inline-block;
+            margin: auto 0;
           }
         }
       }

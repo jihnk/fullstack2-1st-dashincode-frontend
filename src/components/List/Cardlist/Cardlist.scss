@@ -11,19 +11,6 @@
     font-weight: 700;
   }
 
-  .sorts {
-    display: flex;
-    justify-content: flex-end;
-    padding-bottom: 20px;
-
-    .sortByTime {
-      margin: 0 10px;
-      padding: 0 10px;
-      border-left: 1px solid #999999;
-      border-right: 1px solid #999999;
-    }
-  }
-
   .foodList {
     position: relative;
     display: grid;

@@ -5,6 +5,7 @@ class TotalOrderPrice extends Component {
   render() {
     const { totalPrice } = this.props;
     const totalOrderPrice = totalPrice.toLocaleString();
+    let freeOrder = totalPrice > 30000 ? '무료배송' : '3,000원';
 
     return (
       <>
@@ -24,8 +25,7 @@ class TotalOrderPrice extends Component {
               <strong className="totalOrderTitle">총 배송비</strong>
             </div>
             <div className="totalOrderPriceWrap">
-              <em className="totalOrderPrice">0</em>
-              <em className="totalOrderPriceWon">원</em>
+              <em className="totalOrderPrice">{freeOrder}</em>
             </div>
           </div>
           <p className="sign">=</p>
