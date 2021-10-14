@@ -25,7 +25,7 @@ class Comment extends Component {
 
   render() {
     const { rate } = this.state;
-    const { nickname, comment, imageUrl } = this.props.comment;
+    const { nickname, comment, image_url } = this.props.comment;
 
     return (
       <div className="commentWrap">
@@ -34,7 +34,7 @@ class Comment extends Component {
           <span className="commentNickName">{nickname}</span>
         </p>
         <p className="commentText">{comment}</p>
-        <img className="commentImg" alt="상품 이미지" src={imageUrl} />
+        <img className="commentImg" alt="상품 이미지" src={image_url} />
       </div>
     );
   }
