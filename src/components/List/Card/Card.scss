@@ -77,11 +77,19 @@
         text-decoration: line-through;
         font-size: 15px;
         color: #999999;
+
+        &.notOnSale {
+          display: none;
+        }
       }
 
       .discountRate {
         color: #ab4ba5;
         font-weight: 600;
+
+        &.notOnSale {
+          display: none;
+        }
       }
     }
 
@@ -109,7 +117,10 @@
         font-size: 15px;
       }
 
-      .shipment {
+      .shipments {
+        display: flex;
+        justify-content: flex-start;
+
         li {
           padding: 0.3px 2px;
           border: 1px solid;
