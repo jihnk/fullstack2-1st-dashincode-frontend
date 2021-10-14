@@ -77,11 +77,6 @@ class Cardlist extends React.Component {
     return (
       <div className="List">
         <h1 className="listTitle">{this.props.name}</h1>
-        <ul className="sorts">
-          <li className="sortBypop">인기순</li>
-          <li className="sortByTime">등록순</li>
-          <li className="sortByPrice">낮은가격순</li>
-        </ul>
         <ul className="foodList">
           {products &&
             products.map(product => {

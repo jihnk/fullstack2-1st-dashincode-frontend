@@ -83,11 +83,21 @@ class Card extends React.Component {
               <span className="discountedPrice">{`${discounted_price.toLocaleString(
                 'ko-KR'
               )}원`}</span>
-              <span className="originalPrice">{`${price.toLocaleString(
-                'ko-KR'
-              )}원`}</span>
+              <span
+                className={
+                  price === discounted_price
+                    ? 'originalPrice'
+                    : 'originalPrice notOnSale'
+                }
+              >{`${price.toLocaleString('ko-KR')}원`}</span>
             </div>
-            <div className="discountRate">
+            <div
+              className={
+                price === discounted_price
+                  ? 'discountRate'
+                  : 'discountRate notOnSale'
+              }
+            >
               {`${this.getDiscountRate(discounted_price, price)}%`}
             </div>
           </div>

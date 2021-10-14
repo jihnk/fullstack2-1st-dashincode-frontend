@@ -10,7 +10,7 @@ class Cart extends React.Component {
   constructor() {
     super();
     this.state = {
-      mockData: [],
+      setProduct: [],
       allProduct: [],
       allProductList: [],
       allProductId: [],
@@ -22,30 +22,31 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/cartMockData.json', {
+    fetch('/cart', {
       header: {
-        Accept: 'application / json',
+        'Content-type': 'application/json',
       },
     })
       .then(res => res.json())
-      .then(mockData => {
-        const productList = [];
-        mockData.forEach(el => productList.push(el.products));
-
+      .then(setProduct => {
         this.setState({
-          mockData: mockData,
-          allProduct: productList,
+          setProduct: setProduct,
+          allProduct: setProduct.products,
         });
         this.handleAllProductId();
       });
   }
 
-  setTotalAmount = totalCategoryPrice => {
-    const { totalPrice } = this.state;
-
-    this.setState(prev => {
-      return { totalPrice: prev.totalPrice + totalCategoryPrice };
-    });
+  setTotalAmount = (totalCategoryPrice, sign) => {
+    if (sign === '-' && this.state.totalPrice > 0) {
+      this.setState(prev => {
+        return { totalPrice: prev.totalPrice - totalCategoryPrice };
+      });
+    } else {
+      this.setState(prev => {
+        return { totalPrice: prev.totalPrice + totalCategoryPrice };
+      });
+    }
   };
 
   handleAllProductId = () => {
@@ -105,7 +106,7 @@ class Cart extends React.Component {
 
   render() {
     const {
-      mockData,
+      allProduct,
       checked,
       allChecked,
       allProductId,
@@ -125,15 +126,15 @@ class Cart extends React.Component {
             handleChecked={this.handleAllSelectCheckBox}
           />
           <div className="productsDetailWrap">
-            {mockData.map(props => {
+            {allProduct.map(props => {
               return (
                 <CartDetail
-                  key={props.id}
-                  id={props.id}
-                  type={props.type}
+                  key={props.product_id}
+                  id={props.product_id}
+                  type={props.storage}
                   checked={checked}
                   checkItems={checkItems}
-                  products={props.products}
+                  products={props}
                   handleChecked={this.handleSingleCheckBox}
                   setTotalAmount={this.setTotalAmount}
                 />
