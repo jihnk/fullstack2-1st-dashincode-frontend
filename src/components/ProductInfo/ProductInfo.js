@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import Cookies, { Cookie } from 'universal-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHeart,
@@ -10,77 +11,81 @@ import QuantityCounter from '../QuantityCounter/QuantityCounter';
 import facebook from './ico_sns_facebook.gif';
 import kakaostory from './ico_sns_kakaostory.gif';
 import twitter from './ico_sns_twitter.gif';
-import './ProductInfo.scss';
 import ProductDescription from '../ProductDescription/ProductDescription';
-class ProductInfo extends React.Component {
+import './ProductInfo.scss';
+
+const cookie = new Cookies();
+class productInfo extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: [],
+      detail: {},
       isLiked: false,
       isSharable: false,
       productQuantity: 1,
-      img: [],
+      img: {},
       images: [],
+      shipment: [],
     };
   }
 
   componentDidMount() {
-    // const { id } = this.props.match.params;
-    // fetch(`http://localhost:3000/product/${id}`)
-    //   .then(res => res.json())
-    //   .then(res =>
-    //     this.setState({
-    //       data: res,
-    //     })
-    //   );
-    // fetch(`http://localhost:8000/like/${id}`)
-    //   .then(res => res.json())
-    //   .then(res =>
-    //     this.setState({
-    //       isLiked: res.DATA,
-    //     })
-    //   );
-    fetch('http://localhost:3000/data/detail.json')
+    const { id } = this.props.match.params;
+    fetch(`/like/${id}`)
+      .then(res => res.json())
+      .then(res =>
+        this.setState({
+          isLiked: res.DATA,
+        })
+      );
+
+    fetch(`/product/detail/${id}`)
+      .then(res => res.json())
+      .then(res =>
+        this.setState({
+          detail: res,
+          shipment: res.shipment,
+        })
+      );
+
+    fetch(`/product/thumbnail/${id}`)
       .then(res => res.json())
       .then(res =>
         this.setState(
           {
-            data: res.DATA,
-            isLiked: res.DATA.isLiked,
-            img: res.DATA.mainImage,
-            images: res.DATA.extraImages,
+            img: res[0],
+            images: res,
           },
           () => this.addToStorage()
         )
       );
-    this.interval = setInterval(this.autoChangeImage, 3000);
+    this.interval = setInterval(this.autoChangeImage, 2000);
   }
 
   addToStorage = () => {
     const { id } = this.props.match.params;
 
-    let loadedProduct = JSON.parse(localStorage.getItem('loadedProduct'));
-    if (!loadedProduct) {
-      loadedProduct = [];
-      loadedProduct.unshift({
-        productId: +id,
+    let loadeddetail = JSON.parse(localStorage.getItem('loadeddetail'));
+    if (!loadeddetail) {
+      loadeddetail = [];
+      loadeddetail.unshift({
+        detailId: +id,
         imageUrl: this.state.img.image_url,
       });
-      localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
-    } else if (loadedProduct?.length > 15) {
-      loadedProduct.pop();
-      loadedProduct.unshift({
-        productId: +id,
+      localStorage.setItem('loadeddetail', JSON.stringify(loadeddetail));
+    } else if (loadeddetail?.length > 15) {
+      loadeddetail.pop();
+      loadeddetail.unshift({
+        detailId: +id,
         imageUrl: this.state.img.image_url,
       });
-      localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
+      localStorage.setItem('loadeddetail', JSON.stringify(loadeddetail));
     } else {
-      loadedProduct.unshift({
-        productId: +id,
+      loadeddetail.unshift({
+        detailId: +id,
         imageUrl: this.state.img.image_url,
       });
-      localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
+      localStorage.setItem('loadeddetail', JSON.stringify(loadeddetail));
     }
   };
 
@@ -98,11 +103,26 @@ class ProductInfo extends React.Component {
   }
 
   toggleHeart = () => {
-    const { isLiked } = this.state;
-    this.setState({ isLiked: !isLiked });
-    !isLiked
-      ? window.alert('찜한 상품에 저장되었습니다.')
-      : window.alert('취소되었습니다.');
+    const { id } = this.props.match.params;
+    if (cookie.get('user')) {
+      fetch(`/like/${id}`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ isLiked: data.DATA }, () => {
+            this.state.isLiked
+              ? alert('찜한 상품에 저장되었습니다.')
+              : alert('취소되었습니다.');
+          });
+        });
+    } else {
+      alert('로그인 후 이용 가능한 서비스입니다');
+    }
   };
 
   toggleShare = () => {
@@ -115,20 +135,28 @@ class ProductInfo extends React.Component {
   };
 
   addToCart = () => {
-    fetch('장바구니API', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title: 'Test',
-        productId: this.props.match.params.id,
-        productQuantity: this.state.productQuantity,
-      }),
-    })
-      .then(res => res.json())
-      .then(alert('장바구니에 담겼습니다'));
+    if (cookie.get('user')) {
+      fetch('/cart', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productId: this.props.match.params.id,
+          productQuantity: this.state.productQuantity,
+        }),
+      })
+        .then(res => res.json())
+        .then(alert('장바구니에 담겼습니다'))
+        .then(
+          this.setState({
+            productQuantity: 1,
+          })
+        );
+    } else {
+      alert('로그인 후 이용 가능한 서비스입니다');
+    }
   };
 
   imageChange = url => {
@@ -140,10 +168,16 @@ class ProductInfo extends React.Component {
   };
 
   render() {
-    const { img, images, data, isLiked, isSharable, productQuantity } =
-      this.state;
+    const {
+      img,
+      images,
+      detail,
+      isLiked,
+      isSharable,
+      productQuantity,
+      shipment,
+    } = this.state;
     const { toggleHeart, toggleShare, setQuantity } = this;
-
     return (
       <div>
         <main className="ProductInfo">
@@ -204,49 +238,73 @@ class ProductInfo extends React.Component {
           </aside>
 
           <section>
-            {data.isDashin === 1 && (
+            {shipment.length === 0 && (
               <h2>
-                <Link to="/list/dashindelivery">다신배송</Link>
+                기본배송
                 <span>{'>'}</span>
               </h2>
             )}
-            {data.isCool === 1 && (
-              <h2>
-                <Link to="/list/dashincooldelivery">다신쿨배송</Link>
-                <span>{'>'}</span>
-              </h2>
-            )}
-            <h1>{data.name}</h1>
-            <p>{data.description}</p>
+            {/* {shipment &&
+              shipment.map((shipment, id) => {
+                return (
+                  <h2 key={id}>
+                    {shipment === 'isCool'
+                      ? '다신쿨배송'
+                      : shipment === 'isFree'
+                      ? '무료배송'
+                      : shipment === 'isDashin'
+                      ? '다신배송'
+                      : shipment === 'isBasic'
+                      ? '기본배송'
+                      : shipment}
+                    <span>{'>'}</span>
+                  </h2>
+                );
+              })} */}
+            <h1>{detail.name}</h1>
+            <p>{detail.description}</p>
 
             <dl>
               <dt>판매가격</dt>
-              {!data.discountedPrice ? (
+              {!detail.discountedPrice ? (
                 <dd>
-                  <em>{(data.price * 1).toLocaleString()}</em>원
+                  <em>{(detail.price * 1).toLocaleString()}</em>원
                 </dd>
               ) : (
                 <dd>
-                  <em>{(data.discountedPrice * 1).toLocaleString()}</em>원
+                  <em>{(detail.discountedPrice * 1).toLocaleString()}</em>원
                   <em className="originalPrice">
-                    {(data.price * 1).toLocaleString()}
+                    {(detail.price * 1).toLocaleString()}
                   </em>
                 </dd>
               )}
               <dt>적립금</dt>
               <dd>
-                {(data.price * 0.01).toLocaleString()}원 적립 (실 결제금액의 1%)
+                {(detail.price * 0.01).toLocaleString()}원 적립 (실 결제금액의
+                1%)
               </dd>
             </dl>
             <dl>
               <dt>보관방법</dt>
-              <dd>{data.storage}</dd>
+              <dd>{detail.storage}</dd>
               <dt>배송비</dt>
               <dd>
-                <span>{data.isFree === 1 && '[무료배송] '}</span>
-                <span>{data.isDashin === 1 && '[다신배송] '}</span>
-                <span>{data.isCool === 1 && '[다신쿨배송] '}</span>
-                <span>{data.isBasic === 1 && '[기본배송] '}</span>
+                {shipment &&
+                  shipment.map((shipment, id) => {
+                    return (
+                      <span key={id}>
+                        {shipment === 'isCool'
+                          ? '[다신쿨배송]'
+                          : shipment === 'isFree'
+                          ? '[무료배송]'
+                          : shipment === 'isDashin'
+                          ? '[다신배송]'
+                          : shipment === 'isBasic'
+                          ? '[기본배송]'
+                          : shipment}
+                      </span>
+                    );
+                  })}
                 <strong> 30,000원</strong> 이상 구매 시{' '}
                 <strong>무료배송</strong>
               </dd>
@@ -264,7 +322,7 @@ class ProductInfo extends React.Component {
               <p>
                 총 상품금액{' '}
                 <span>
-                  <em>{(data.price * productQuantity).toLocaleString()}</em>원
+                  <em>{(detail.price * productQuantity).toLocaleString()}</em>원
                 </span>
               </p>
               <button className="buy">구매하기</button>
@@ -280,4 +338,4 @@ class ProductInfo extends React.Component {
   }
 }
 
-export default withRouter(ProductInfo);
+export default withRouter(productInfo);

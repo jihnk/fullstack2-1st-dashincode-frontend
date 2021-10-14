@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { category, navbarList } from './category';
+import { navbarList } from './category';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGripLines, faBox } from '@fortawesome/free-solid-svg-icons';
 import './NavBar.scss';
 
 class NavBar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      category: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('/product/category?location=navbar')
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          category: data.DATA,
+        })
+      );
+  }
+
   render() {
+    const { category } = this.state;
     return (
       <nav className="NavBar">
         <ul className="navbarWrap">
@@ -18,13 +36,13 @@ class NavBar extends Component {
             <div className="dropDownCategory">
               <ul className="mainMenu">
                 {category.map((data, id) => {
-                  const name = '/category/' + data.id;
+                  const name = '/list/' + data.id;
                   return (
                     <li className="mainMenuList" key={id}>
                       <Link to={name}>{data.name}</Link>
                       <ul className="subMenu">
                         {data.list.map((list, id) => {
-                          const name = '/category/' + data.id + '/' + list.id;
+                          const name = '/list/' + data.id + '/' + list.id;
                           return (
                             <li key={id}>
                               <Link to={name}>{list.name}</Link>
@@ -39,7 +57,7 @@ class NavBar extends Component {
             </div>
           </li>
           {navbarList.map((list, id) => {
-            const name = '/list/' + list.link;
+            const name = '/category/' + list.link;
             return (
               <li className="navbarList" key={id}>
                 <Link to={name} key={id}>
