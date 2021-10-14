@@ -63,6 +63,11 @@
       margin-bottom: 20px;
       white-space: nowrap;
       font-size: 20px;
+      .name {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
 
     .productPrice {

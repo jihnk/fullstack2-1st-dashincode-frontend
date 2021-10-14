@@ -76,7 +76,7 @@ class Card extends React.Component {
         </div>
         <div className="productDetails">
           <div className="productName">
-            <p>{name}</p>
+            <p className="name">{name}</p>
           </div>
           <div className="productPrice">
             <div className="prices">
@@ -85,7 +85,7 @@ class Card extends React.Component {
               )}원`}</span>
               <span
                 className={
-                  price === discounted_price
+                  price !== discounted_price
                     ? 'originalPrice'
                     : 'originalPrice notOnSale'
                 }
@@ -93,7 +93,7 @@ class Card extends React.Component {
             </div>
             <div
               className={
-                price === discounted_price
+                price !== discounted_price
                   ? 'discountRate'
                   : 'discountRate notOnSale'
               }
