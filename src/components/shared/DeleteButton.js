@@ -6,7 +6,6 @@ import './DeleteButton.scss';
 class DeleteButton extends Component {
   render() {
     const { id, handleDeleteBtn } = this.props;
-    console.log(id);
     return (
       <div className="deleteBtnWrap">
         <FontAwesomeIcon

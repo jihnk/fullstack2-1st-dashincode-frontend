@@ -7,7 +7,7 @@ class CartDetail extends Component {
     super();
     this.state = {
       categoryTotalPrice: 0,
-      isFree: false,
+      isDeliveryFree: false,
     };
   }
 
@@ -28,7 +28,7 @@ class CartDetail extends Component {
 
     this.setState({
       categoryTotalPrice: categoryTotalPrice + totalCategoryPrice,
-      isFree: isTrue,
+      isDeliveryFree: isTrue,
     });
   }
 
@@ -41,18 +41,22 @@ class CartDetail extends Component {
       setTotalAmount(setProductPrice, sign);
       this.setState({
         categoryTotalPrice: categoryTotalPrice - setProductPrice,
+        isDeliveryFree:
+          categoryTotalPrice - setProductPrice < 30000 ? false : true,
       });
     } else {
       setTotalAmount(setProductPrice, sign);
       this.setState({
         categoryTotalPrice: categoryTotalPrice + setProductPrice,
+        isDeliveryFree:
+          categoryTotalPrice + setProductPrice < 30000 ? false : true,
       });
     }
   };
 
   render() {
-    const { id, type, products, handleDeleteBtn } = this.props;
-    let { categoryTotalPrice, isFree } = this.state;
+    const { type, products, handleDeleteBtn } = this.props;
+    let { categoryTotalPrice, isDeliveryFree } = this.state;
     const productList = [products];
 
     return (
@@ -72,6 +76,7 @@ class CartDetail extends Component {
                     categoryTotalPrice={categoryTotalPrice}
                     setCategoryTotalAmount={this.setCategoryTotalAmount}
                     handleDeleteBtn={handleDeleteBtn}
+                    isDeliveryFree={isDeliveryFree}
                   />
                 </div>
               );
@@ -90,13 +95,15 @@ class CartDetail extends Component {
             <p className="sign">+</p>
             <div className="deliveryWrap">
               <p className="deliveryTitle">배송비</p>
-              <p className="deliveryPrice">{isFree ? '무료배송' : '3,000원'}</p>
+              <p className="deliveryPrice">
+                {isDeliveryFree ? '무료배송' : '3,000원'}
+              </p>
             </div>
             <p className="sign">=</p>
             <div className="totalPriceWrap">
               <p className="totalPriceTitle">결제금액</p>
               <em className="totalPrice">
-                {isFree
+                {isDeliveryFree
                   ? categoryTotalPrice.toLocaleString()
                   : (categoryTotalPrice + 3000).toLocaleString()}
               </em>

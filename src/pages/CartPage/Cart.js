@@ -59,12 +59,6 @@ class Cart extends React.Component {
         });
       });
   };
-  // const { allProduct } = this.state;
-  // console.log(allProduct);
-  // this.setState({
-  //   allProduct: allProduct.filter(product => product.product_id !== id),
-  // });
-  // };
 
   render() {
     const { allProduct, totalPrice } = this.state;
