@@ -57,14 +57,9 @@ class Cart extends React.Component {
         this.setState({
           allProduct: allProduct.filter(product => product.product_id !== id),
         });
-      });
+      })
+      .then(window.location.reload());
   };
-  // const { allProduct } = this.state;
-  // console.log(allProduct);
-  // this.setState({
-  //   allProduct: allProduct.filter(product => product.product_id !== id),
-  // });
-  // };
 
   render() {
     const { allProduct, totalPrice } = this.state;
