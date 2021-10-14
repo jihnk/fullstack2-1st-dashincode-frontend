@@ -38,7 +38,7 @@ class LoginPage extends React.Component {
           this.setState({ user: res });
         });
       // alert(this.state.user.message);
-      this.props.history.push('/');
+      this.props.history.push('/Main');
     } else {
       alert('이메일 혹은 비밀번호를 입력해주세요');
     }
@@ -57,16 +57,6 @@ class LoginPage extends React.Component {
     console.log('사용자 ID :', this.state.userEmail);
     console.log('사용자 Password : ', this.state.userPw);
   };
-
-  componentDidMount() {
-    // console.log(this.props.match.params.id);
-    // const id = this.props.match.params.id;
-    fetch(`/user/login`)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({ user: res });
-      });
-  }
 
   render() {
     return (
