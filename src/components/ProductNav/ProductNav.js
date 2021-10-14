@@ -12,7 +12,7 @@ class ProductNav extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`http://localhost:3000/product/navbar/${id}`)
+    fetch(`/product/${id}/navbar`)
       .then(res => res.json())
       .then(data => this.setState({ data: data }));
   }

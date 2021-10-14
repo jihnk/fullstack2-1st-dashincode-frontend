@@ -9,8 +9,6 @@ class ProductNav extends React.Component {
   constructor() {
     super();
     this.state = {
-      imageUrl: '',
-      reviewCount: 0,
       descriptionClicked: false,
       informationClicked: false,
       reviewClicked: false,
@@ -21,12 +19,6 @@ class ProductNav extends React.Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    // fetch(`http://localhost:8000/product/description/${id}`)
-    //   .then(res => res.json())
-    //   .then(res =>
-    //     this.setState({ imageUrl: res.IMAGE, reviewCount: res.REVIEW })
-    //   );
     window.addEventListener('scroll', this.handleScroll);
   }
 
@@ -78,7 +70,6 @@ class ProductNav extends React.Component {
 
   render() {
     const {
-      imageUrl,
       reviewCount,
       descriptionClicked,
       informationClicked,
@@ -109,7 +100,7 @@ class ProductNav extends React.Component {
                 onClick={() => this.moveToRef('review')}
                 name="review"
               >
-                상품후기({reviewCount})
+                상품후기
               </li>
             </ul>
             <img

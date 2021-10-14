@@ -35,7 +35,7 @@ class Header extends Component {
     const encodedSearchValue = encodeURI(this.state.searchValue);
     console.log(encodedSearchValue);
     this.state.searchValue.length > 0
-      ? this.props.history.push(`/search?words=${encodedSearchValue}`)
+      ? window.location.replace(`/search?words=${encodedSearchValue}`)
       : alert('검색어를 입력해주세요 =͟͟͞͞(๑º ﾛ º๑)');
   };
 
@@ -84,9 +84,9 @@ class Header extends Component {
             <Link to="/">
               <img src={logoKorean} alt="logo korean" className="logoKorean" />
             </Link>
-            <Link to="/">
+            <a href="/">
               <img src={logo} alt="logo" className="logo" />
-            </Link>
+            </a>
             <div>
               <div className="withoutLogo">
                 <div className="searchWrap">
