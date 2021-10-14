@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckBox from '../shared/CheckBox';
+import DeleteButton from '../shared/DeleteButton';
 import './CartProduct.scss';
 
 export class CartProduct extends React.Component {
@@ -47,20 +47,12 @@ export class CartProduct extends React.Component {
   };
 
   render() {
-    const { id, products, checked, checkItems, handleChecked } = this.props;
+    const { id, products, categoryTotalPrice, handleDeleteBtn } = this.props;
     const { setQuantity, setPrice } = this.state;
 
     return (
       <div className="cartDetailContainer">
         <div className="cartDetailWrap">
-          <div className="checkBoxWrap">
-            <CheckBox
-              id={id}
-              checked={checked}
-              checkItems={checkItems}
-              handleChecked={handleChecked}
-            />
-          </div>
           <div className="orderImgWrap">
             <a href="#">
               <img
@@ -78,25 +70,29 @@ export class CartProduct extends React.Component {
               <li className="orderInfoWrap">
                 <div className="orderInfoTitle">{products.description}</div>
                 <span className="orderCntBtnWrap">
-                  <a
+                  <button
                     id={id}
                     className="cntBtn"
-                    onClick={e => this.minusQuantity(e.target.innerHTML)}
+                    onClick={e =>
+                      categoryTotalPrice !== 0
+                        ? this.minusQuantity(e.target.innerHTML)
+                        : null
+                    }
                   >
                     -
-                  </a>
+                  </button>
                   <span className="orderCntWrap">
                     <span className="orderCnt" id={id}>
                       {setQuantity}
                     </span>
                   </span>
-                  <a
+                  <button
                     id={id}
                     className="cntBtn"
                     onClick={e => this.plusQuantity(e.target.innerHTML)}
                   >
                     +
-                  </a>
+                  </button>
                 </span>
                 <span className="orderPriceWrap">
                   <em class="priceText">전체 금액:</em>
@@ -105,6 +101,9 @@ export class CartProduct extends React.Component {
                   </em>
                   <em class="priceText">원</em>
                 </span>
+                <div className="deleteBtnWrap">
+                  <DeleteButton id={id} handleDeleteBtn={handleDeleteBtn} />
+                </div>
               </li>
             </ul>
           </div>
