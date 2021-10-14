@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckBox from '../shared/CheckBox';
+import DeleteButton from '../shared/DeleteButton';
 import './CartProduct.scss';
 
 export class CartProduct extends React.Component {
@@ -47,27 +47,12 @@ export class CartProduct extends React.Component {
   };
 
   render() {
-    const {
-      id,
-      products,
-      checked,
-      checkItems,
-      handleChecked,
-      categoryTotalPrice,
-    } = this.props;
+    const { id, products, categoryTotalPrice, handleDeleteBtn } = this.props;
     const { setQuantity, setPrice } = this.state;
 
     return (
       <div className="cartDetailContainer">
         <div className="cartDetailWrap">
-          <div className="checkBoxWrap">
-            <CheckBox
-              id={id}
-              checked={checked}
-              checkItems={checkItems}
-              handleChecked={handleChecked}
-            />
-          </div>
           <div className="orderImgWrap">
             <a href="#">
               <img
@@ -116,6 +101,9 @@ export class CartProduct extends React.Component {
                   </em>
                   <em class="priceText">원</em>
                 </span>
+                <div className="deleteBtnWrap">
+                  <DeleteButton id={id} handleDeleteBtn={handleDeleteBtn} />
+                </div>
               </li>
             </ul>
           </div>

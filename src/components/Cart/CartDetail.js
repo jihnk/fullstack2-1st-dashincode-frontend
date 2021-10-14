@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CheckBox from '../shared/CheckBox';
 import CartProduct from './CartProduct';
 import './CartDetail.scss';
 
@@ -52,20 +51,13 @@ class CartDetail extends Component {
   };
 
   render() {
-    const { id, type, products, checked, checkItems, handleChecked } =
-      this.props;
+    const { id, type, products, handleDeleteBtn } = this.props;
     let { categoryTotalPrice, isFree } = this.state;
     const productList = [products];
 
     return (
       <div className="cartDetailContainer">
         <div className="cartDetailHeaderWrap">
-          <CheckBox
-            id={id}
-            checked={checked}
-            checkItems={checkItems}
-            handleChecked={handleChecked}
-          />
           <header class="cartDetailHeader">{type}</header>
         </div>
         <section className="cartDetailContents">
@@ -74,14 +66,12 @@ class CartDetail extends Component {
               return (
                 <div className="cartProductWrap">
                   <CartProduct
-                    key={props.id}
-                    id={props.id}
+                    key={props.product_id}
+                    id={props.product_id}
                     products={props}
-                    checked={checked}
-                    checkItems={checkItems}
-                    handleChecked={handleChecked}
                     categoryTotalPrice={categoryTotalPrice}
                     setCategoryTotalAmount={this.setCategoryTotalAmount}
+                    handleDeleteBtn={handleDeleteBtn}
                   />
                 </div>
               );
