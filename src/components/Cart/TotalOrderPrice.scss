@@ -7,7 +7,9 @@
 
   .totalOrderWrap {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     width: 350px;
     border: none;
     margin: 0;
@@ -26,8 +28,7 @@
     }
 
     .totalOrderPriceWrap {
-      padding-bottom: 25px;
-      text-align: center;
+      padding: 25px;
 
       .totalOrderPrice {
         color: #000;
