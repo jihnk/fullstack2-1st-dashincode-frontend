@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import './ProductDescription.scss';
 import detail from './detail.jpg';
 import info from './info.jpg';
 import CommentList from '../Comment/CommentList';
+import './ProductDescription.scss';
 
-class ProductNav extends React.Component {
+class ProductDescription extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -69,12 +69,8 @@ class ProductNav extends React.Component {
   };
 
   render() {
-    const {
-      reviewCount,
-      descriptionClicked,
-      informationClicked,
-      reviewClicked,
-    } = this.state;
+    const { descriptionClicked, informationClicked, reviewClicked } =
+      this.state;
 
     return (
       <div className="ProductDescription">
@@ -125,4 +121,4 @@ class ProductNav extends React.Component {
   }
 }
 
-export default withRouter(ProductNav);
+export default withRouter(ProductDescription);
