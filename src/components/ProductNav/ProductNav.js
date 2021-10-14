@@ -12,26 +12,26 @@ class ProductNav extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`http://localhost:3000/product/category/${id}`)
+    fetch(`http://localhost:3000/product/navbar/${id}`)
       .then(res => res.json())
-      .then(data => this.setState({ data }));
+      .then(data => this.setState({ data: data }));
   }
 
   render() {
+    const { data } = this.state;
     return (
       <nav className="ProductNav">
         <ul>
           <li>
-            <Link to="#">건강간식</Link>
+            <Link to="#">{data.mainCategoryName}</Link>
           </li>
           <span>{'>'}</span>
           <li>
-            <Link to="#">두유/요거트/차</Link>
+            <Link to="#">{data.subCategoryName}</Link>
           </li>
         </ul>
       </nav>
     );
-    // 링크와 name state에서 꺼내쓸 수 있도록 수정해야 함
   }
 }
 

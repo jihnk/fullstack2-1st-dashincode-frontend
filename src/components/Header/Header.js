@@ -32,23 +32,20 @@ class Header extends Component {
   };
 
   handleSearch = () => {
+    const encodedSearchValue = encodeURI(this.state.searchValue);
+    console.log(encodedSearchValue);
     this.state.searchValue.length > 0
-      ? this.props.history.push(`/list?${this.state.searchValue}`)
+      ? this.props.history.push(`/search?words=${encodedSearchValue}`)
       : alert('검색어를 입력해주세요 =͟͟͞͞(๑º ﾛ º๑)');
   };
 
-  componentDidUpdate() {
-    fetch('')
+  componentDidMount() {
+    fetch('/cart/amount')
       .then(res => res.json())
       .then(res => {
         this.setState({
-          cartNum: res,
-          //carts table 행이 몇개인지 숫자로 받아야함 fetch
+          cartNum: res.amount,
         });
-      });
-    document.cookie.includes('token') &&
-      this.setState({
-        token: true,
       });
   }
 

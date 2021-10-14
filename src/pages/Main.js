@@ -13,7 +13,7 @@ class Main extends React.Component {
         <ScrollTo />
         <Slider />
         <DiscountedProduct />
-        <Cardlist name="다신코 베스트" page="main" />
+        <Cardlist name="다신코 베스트" page="mainpage" />
       </div>
     );
   }

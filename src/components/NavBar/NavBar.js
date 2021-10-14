@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { category, navbarList } from './category';
+import { navbarList } from './category';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGripLines, faBox } from '@fortawesome/free-solid-svg-icons';
 import './NavBar.scss';
 
 class NavBar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      category: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('/product/category?location=navbar')
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          category: data.DATA,
+        })
+      );
+  }
+
   render() {
+    const { category } = this.state;
     return (
       <nav className="NavBar">
         <ul className="navbarWrap">
