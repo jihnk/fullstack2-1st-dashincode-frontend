@@ -65,27 +65,27 @@ class productInfo extends React.Component {
   addToStorage = () => {
     const { id } = this.props.match.params;
 
-    let loadeddetail = JSON.parse(localStorage.getItem('loadeddetail'));
-    if (!loadeddetail) {
-      loadeddetail = [];
-      loadeddetail.unshift({
+    let loadedProduct = JSON.parse(localStorage.getItem('loadedProduct'));
+    if (!loadedProduct) {
+      loadedProduct = [];
+      loadedProduct.unshift({
         detailId: +id,
         imageUrl: this.state.img.image_url,
       });
-      localStorage.setItem('loadeddetail', JSON.stringify(loadeddetail));
-    } else if (loadeddetail?.length > 15) {
-      loadeddetail.pop();
-      loadeddetail.unshift({
+      localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
+    } else if (loadedProduct?.length > 15) {
+      loadedProduct.pop();
+      loadedProduct.unshift({
         detailId: +id,
         imageUrl: this.state.img.image_url,
       });
-      localStorage.setItem('loadeddetail', JSON.stringify(loadeddetail));
+      localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
     } else {
-      loadeddetail.unshift({
+      loadedProduct.unshift({
         detailId: +id,
         imageUrl: this.state.img.image_url,
       });
-      localStorage.setItem('loadeddetail', JSON.stringify(loadeddetail));
+      localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
     }
   };
 

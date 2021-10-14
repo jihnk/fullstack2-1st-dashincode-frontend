@@ -44,7 +44,7 @@ class SideBar extends Component {
     if (window.confirm('선택한 상품을 삭제하시겠습니까?')) {
       let loadedProduct = JSON.parse(localStorage.getItem('loadedProduct'));
       const filteredProduct = loadedProduct.filter(
-        product => product.productId !== id
+        product => product.detailId !== id
       );
       localStorage.setItem('loadedProduct', JSON.stringify(filteredProduct));
       this.setState({
@@ -92,7 +92,7 @@ class SideBar extends Component {
                     <div className="loadedProduct">
                       <Link
                         key={id}
-                        to={`/product/${data.productId}`}
+                        to={`/product/${data.detailId}`}
                         className="imgWrap"
                       >
                         <img alt="" src={data.imageUrl} />
