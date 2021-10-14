@@ -50,15 +50,17 @@ class productInfo extends React.Component {
 
     fetch(`/product/${id}/thumbnail`)
       .then(res => res.json())
-      .then(res =>
+      .then(res => {
+        const [mainImage] = res.filter(img => img.is_main === 1);
+        console.log(mainImage);
         this.setState(
           {
-            img: res[0],
+            img: mainImage,
             images: res,
           },
           () => this.addToStorage()
-        )
-      );
+        );
+      });
     this.interval = setInterval(this.autoChangeImage, 2000);
   }
 
@@ -69,20 +71,20 @@ class productInfo extends React.Component {
     if (!loadedProduct) {
       loadedProduct = [];
       loadedProduct.unshift({
-        detailId: +id,
+        productId: +id,
         imageUrl: this.state.img.image_url,
       });
       localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
     } else if (loadedProduct?.length > 15) {
       loadedProduct.pop();
       loadedProduct.unshift({
-        detailId: +id,
+        productId: +id,
         imageUrl: this.state.img.image_url,
       });
       localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
     } else {
       loadedProduct.unshift({
-        detailId: +id,
+        productId: +id,
         imageUrl: this.state.img.image_url,
       });
       localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
@@ -91,10 +93,10 @@ class productInfo extends React.Component {
 
   autoChangeImage = () => {
     let imgNum = Math.round(Math.random() * 2);
-    const { img, images } = this.state;
-    img.image_url = images[imgNum].image_url;
+    const { images } = this.state;
+    const changedMainImage = images[imgNum];
     this.setState({
-      img: img,
+      img: changedMainImage,
     });
   };
 
@@ -174,7 +176,6 @@ class productInfo extends React.Component {
       shipment,
     } = this.state;
     const { toggleHeart, toggleShare, setQuantity } = this;
-    console.log(this.state);
     return (
       <div>
         <main className="ProductInfo">

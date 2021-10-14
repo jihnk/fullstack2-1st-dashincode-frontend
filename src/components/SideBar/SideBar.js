@@ -44,7 +44,7 @@ class SideBar extends Component {
     if (window.confirm('선택한 상품을 삭제하시겠습니까?')) {
       let loadedProduct = JSON.parse(localStorage.getItem('loadedProduct'));
       const filteredProduct = loadedProduct.filter(
-        product => product.detailId !== id
+        product => product.productId !== id
       );
       localStorage.setItem('loadedProduct', JSON.stringify(filteredProduct));
       this.setState({
