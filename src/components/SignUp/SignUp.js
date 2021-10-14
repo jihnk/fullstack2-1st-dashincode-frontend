@@ -20,45 +20,48 @@ class SignUp extends React.Component {
     });
   };
 
-  signup = e => {
+  // signup = e => {
+  //   fetch(`/user/signup`, {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({
+  //       email: this.state.email,
+  //       nickname: this.state.nickname,
+  //       password: this.state.password,
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({ user: res });
+  //     });
+  // };
+
+  handleSignUp = e => {
+    const { email, nickname, password } = this.state;
     fetch(`/user/signup`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
-        email: this.state.email,
-        nickname: this.state.nickname,
-        password: this.state.password,
+        email,
+        nickname,
+        password,
       }),
     })
       .then(res => res.json())
       .then(res => {
-        this.setState({ user: res });
+        if (res.status === 'Failed') {
+          alert('회원가입 실패하셨습니다.');
+        } else if (res.status === 'Success') {
+          alert('회원가입을 성공했습니다.');
+          this.goToLoginPage();
+        }
       });
   };
 
-  // handleSignUp = e => {
-  //   const { email, nickname, password, passwordConfirm } = this.state;
-  //   e.preventDefault();
-  //   fetch(`/user/signup`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       email,
-  //       nickname,
-  //       password,
-  //       passwordConfirm,
-  //     })
-  //       .then(res => res.json())
-  //       .then(res => {
-  //         this.setState({ user: res });
-  //       }),
-  //   });
-  // };
-
   signUpEmptyInfo = () => {
-    const { email, nickname, password, passwordConfirm } = this.state;
+    const { email, nickname, password } = this.state;
 
     if (email === '') {
       return alert('이메일을 입력해주세요.');
@@ -66,20 +69,19 @@ class SignUp extends React.Component {
       return alert('닉네임를 입력해주세요.');
     } else if (password === '') {
       return alert('비밀번호를 입력해주세요.');
-    } else if (passwordConfirm === '') {
-      return alert('비밀번호 확인을 입력해주세요.');
     } else {
       return alert('유효한 형식으로 입력해주세요.');
     }
   };
 
   goToLoginPage = () => {
-    alert('회원가입을 축하드립니다!');
-    // this.props.history.push('/login');
+    window.location.replace(`/login`);
   };
-
+  // moveToCategory = link => {
+  //   window.location.replace(`/category/${link}`);
+  // };
   render() {
-    // console.log(1);
+    // console.log(this.props);
     const { email, nickname, password } = this.state;
     const signUpComplete =
       email.includes('@') && nickname.includes('') && password.length >= 8;
@@ -107,7 +109,7 @@ class SignUp extends React.Component {
               </Link>
             </div>
           </div>
-          <div>
+          <form>
             {/* 이메일 */}
             <div className="signUpWrap">
               <p className="signUpTitle">
@@ -201,16 +203,17 @@ class SignUp extends React.Component {
                 </div>
               </div>
               <button
-                onClick={
-                  (this.signup,
-                  signUpComplete ? this.goToLoginPage : this.signUpEmptyInfo)
-                }
                 className="signUpBtn"
+                type="submit"
+                onClick={this.handleSignUp}
+                // onMouseDown={&& signUpComplete
+                //     ? this.goToLoginPage
+                //     : this.signUpEmptyInfo}
               >
                 <Link to="/login">회원가입</Link>
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     );
