@@ -11,6 +11,7 @@ import QuantityCounter from '../QuantityCounter/QuantityCounter';
 import facebook from './ico_sns_facebook.gif';
 import kakaostory from './ico_sns_kakaostory.gif';
 import twitter from './ico_sns_twitter.gif';
+import ProductNav from '../ProductNav/ProductNav';
 import ProductDescription from '../ProductDescription/ProductDescription';
 import './ProductInfo.scss';
 
@@ -26,11 +27,13 @@ class productInfo extends React.Component {
       img: {},
       images: [],
       shipment: [],
+      navbar: [],
     };
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
+    console.log(id);
     fetch(`/like/${id}`)
       .then(res => res.json())
       .then(res =>
@@ -52,7 +55,6 @@ class productInfo extends React.Component {
       .then(res => res.json())
       .then(res => {
         const [mainImage] = res.filter(img => img.is_main === 1);
-        console.log(mainImage);
         this.setState(
           {
             img: mainImage,
@@ -61,6 +63,11 @@ class productInfo extends React.Component {
           () => this.addToStorage()
         );
       });
+
+    fetch(`/product/${id}/navbar`)
+      .then(res => res.json())
+      .then(data => this.setState({ navbar: data }));
+
     this.interval = setInterval(this.autoChangeImage, 2000);
   }
 
@@ -158,10 +165,8 @@ class productInfo extends React.Component {
   };
 
   imageChange = url => {
-    const { img } = this.state;
-    img.image_url = url;
     this.setState({
-      img: img,
+      img: { image_url: url },
     });
   };
 
@@ -174,10 +179,12 @@ class productInfo extends React.Component {
       isSharable,
       productQuantity,
       shipment,
+      navbar,
     } = this.state;
     const { toggleHeart, toggleShare, setQuantity } = this;
     return (
       <div>
+        <ProductNav navbar={navbar} />
         <main className="ProductInfo">
           <aside>
             <img
@@ -242,23 +249,6 @@ class productInfo extends React.Component {
                 <span>{'>'}</span>
               </h2>
             )}
-            {/* {shipment &&
-              shipment.map((shipment, id) => {
-                return (
-                  <h2 key={id}>
-                    {shipment === 'isCool'
-                      ? '다신쿨배송'
-                      : shipment === 'isFree'
-                      ? '무료배송'
-                      : shipment === 'isDashin'
-                      ? '다신배송'
-                      : shipment === 'isBasic'
-                      ? '기본배송'
-                      : shipment}
-                    <span>{'>'}</span>
-                  </h2>
-                );
-              })} */}
             <h1>{detail.name}</h1>
             <p>{detail.description}</p>
 
