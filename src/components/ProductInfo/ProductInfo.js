@@ -39,7 +39,7 @@ class productInfo extends React.Component {
         })
       );
 
-    fetch(`/product/detail/${id}`)
+    fetch(`/product/${id}/detail`)
       .then(res => res.json())
       .then(res =>
         this.setState({
@@ -48,7 +48,7 @@ class productInfo extends React.Component {
         })
       );
 
-    fetch(`/product/thumbnail/${id}`)
+    fetch(`/product/${id}/thumbnail`)
       .then(res => res.json())
       .then(res =>
         this.setState(
@@ -178,6 +178,7 @@ class productInfo extends React.Component {
       shipment,
     } = this.state;
     const { toggleHeart, toggleShare, setQuantity } = this;
+    console.log(this.state);
     return (
       <div>
         <main className="ProductInfo">
