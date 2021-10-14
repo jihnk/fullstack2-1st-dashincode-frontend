@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Cookies, { Cookie } from 'universal-cookie';
+import Cookies from 'universal-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHeart,
   faShareAlt,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
-import QuantityCounter from '../QuantityCounter/QuantityCounter';
-import facebook from './ico_sns_facebook.gif';
 import kakaostory from './ico_sns_kakaostory.gif';
+import facebook from './ico_sns_facebook.gif';
 import twitter from './ico_sns_twitter.gif';
 import ProductNav from '../ProductNav/ProductNav';
+import QuantityCounter from '../QuantityCounter/QuantityCounter';
 import ProductDescription from '../ProductDescription/ProductDescription';
 import './ProductInfo.scss';
 
@@ -33,7 +33,6 @@ class productInfo extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    console.log(id);
     fetch(`/like/${id}`)
       .then(res => res.json())
       .then(res =>
