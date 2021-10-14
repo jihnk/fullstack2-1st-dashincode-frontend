@@ -21,8 +21,6 @@ class SignUp extends React.Component {
   };
 
   signup = e => {
-    // console.log(this.props.match.params.id);
-    // const id = this.props.match.params.id;
     fetch(`/user/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -38,12 +36,61 @@ class SignUp extends React.Component {
       });
   };
 
+  // handleSignUp = e => {
+  //   const { email, nickname, password, passwordConfirm } = this.state;
+  //   e.preventDefault();
+  //   fetch(`/user/signup`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       email,
+  //       nickname,
+  //       password,
+  //       passwordConfirm,
+  //     })
+  //       .then(res => res.json())
+  //       .then(res => {
+  //         this.setState({ user: res });
+  //       }),
+  //   });
+  // };
+
+  signUpEmptyInfo = () => {
+    const { email, nickname, password, passwordConfirm } = this.state;
+
+    if (email === '') {
+      return alert('이메일을 입력해주세요.');
+    } else if (nickname === '') {
+      return alert('닉네임를 입력해주세요.');
+    } else if (password === '') {
+      return alert('비밀번호를 입력해주세요.');
+    } else if (passwordConfirm === '') {
+      return alert('비밀번호 확인을 입력해주세요.');
+    } else {
+      return alert('유효한 형식으로 입력해주세요.');
+    }
+  };
+
+  goToLoginPage = () => {
+    this.props.history.push('./login');
+  };
+
   render() {
+    console.log(1);
     const { email, nickname, password } = this.state;
-    const isValidEmail = email.includes('@');
-    const isValidNickName = nickname.length >= 8 && nickname.length <= 15;
-    const correctPw = /^[a-zA-z0-9]{4,12}$/;
-    const checkPw = password.match(correctPw) || password === '';
+    const signUpComplete =
+      email.includes('@') && nickname.includes('') && password.length >= 8;
+
+    const isValidEmail =
+      /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+    const isValidNickName = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{4,10}$/;
+    const isValidPw = /(?=.*[a-zA-ZS])(?=.*?[#?!@$%^&*-]).{8,16}/;
+
+    const checkEmail = email.match(isValidEmail) || email === '';
+    const checkNickname = nickname.match(isValidNickName) || nickname === '';
+    const checkPw = password.match(isValidPw) || password === '';
 
     return (
       <div className="container">
@@ -76,7 +123,7 @@ class SignUp extends React.Component {
                 ></input>
                 {/* 참고 테스트 */}
                 <div className="signUpTipBox">
-                  <p className={isValidEmail ? 'valid' : 'inValid'}>
+                  <p className={checkEmail ? 'valid' : 'inValid'}>
                     · &nbsp;올바른 형식의 이메일 주소 입력
                   </p>
                 </div>
@@ -99,8 +146,8 @@ class SignUp extends React.Component {
                 ></input>
                 {/* 참고 테스트 */}
                 <div className="signUpTipBox">
-                  <p className={isValidNickName ? 'valid' : 'inValid'}>
-                    · &nbsp;한글(2-8자), 영문(4-16자) 이내 입력
+                  <p className={checkNickname ? 'valid' : 'inValid'}>
+                    · &nbsp;닉네임은 한글, 영문, 숫자만 가능하며 5-10자리 가능
                   </p>
                   {/* <div className="signUpTip">
                     · &nbsp;중복되지 않는 닉네임 입력
@@ -126,7 +173,7 @@ class SignUp extends React.Component {
                 {/* 참고 테스트 */}
                 <div className="signUpTipBox">
                   <p className={checkPw ? 'valid' : 'invalid'}>
-                    · &nbsp;영문 대소문자와 숫자 4~12자리로 입력해야 됩니다.
+                    · &nbsp;문자와 특수문자 조합의 8~16 자리조합
                   </p>
                   {/* <p className="signUpTip">
                     · &nbsp;영문/숫자/특수문자 2가지 이상
@@ -152,7 +199,13 @@ class SignUp extends React.Component {
                   <p className="signUpTip">· &nbsp;동일한 비밀번호 입력</p>
                 </div>
               </div>
-              <button onClick={this.signup} className="signUpBtn">
+              <button
+                onClick={
+                  (this.signup,
+                  signUpComplete ? this.goToLoginPage : this.signUpEmptyInfo)
+                }
+                className="signUpBtn"
+              >
                 <Link to="#">회원가입</Link>
               </button>
             </div>

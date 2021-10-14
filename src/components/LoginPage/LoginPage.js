@@ -73,7 +73,7 @@ class LoginPage extends React.Component {
       <div className="loginPage">
         <div className="loginBox">
           <div className="login">
-            <div className="loginRenewBox">
+            <form className="loginRenewBox" action="" name="loginForm">
               <div className="loginTitleBox">
                 <p className="loginTitle">로그인</p>
                 <p className="underLoginTitle">
@@ -130,7 +130,7 @@ class LoginPage extends React.Component {
                   </Link>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
