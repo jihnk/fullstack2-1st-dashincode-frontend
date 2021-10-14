@@ -148,7 +148,12 @@ class productInfo extends React.Component {
         }),
       })
         .then(res => res.json())
-        .then(alert('장바구니에 담겼습니다'));
+        .then(alert('장바구니에 담겼습니다'))
+        .then(
+          this.setState({
+            productQuantity: 1,
+          })
+        );
     } else {
       alert('로그인 후 이용 가능한 서비스입니다');
     }

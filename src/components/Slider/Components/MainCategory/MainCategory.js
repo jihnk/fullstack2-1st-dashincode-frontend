@@ -27,7 +27,7 @@ class MainCategory extends Component {
         <div className="categoryWrap">
           <ul className="mainMenu">
             {category.map((data, id) => {
-              const name = '/category/' + data.id;
+              const name = '/list/' + data.id;
               return (
                 <li className="mainMenuList" key={id}>
                   <Link to={name}>{data.name}</Link>
@@ -35,7 +35,7 @@ class MainCategory extends Component {
                     <li className="eachSubMenu">
                       <ul className="subMenuList">
                         {data.list.map((list, id) => {
-                          const name = '/category/' + data.id + '/' + list.id;
+                          const name = '/list/' + data.id + '/' + list.id;
                           return (
                             <li key={id}>
                               <Link className="linkToSubMenu" to={name}>
