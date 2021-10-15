@@ -22,7 +22,8 @@ class LoginPage extends React.Component {
     this.setState({ [name]: value });
   };
 
-  goToMainPage = () => {
+  login = e => {
+    e.preventDefault();
     const { userEmail, userPw } = this.state;
     if (userEmail.includes('@') && userPw.length >= 8) {
       fetch(`/user/login`, {
@@ -35,10 +36,14 @@ class LoginPage extends React.Component {
       })
         .then(res => res.json())
         .then(res => {
-          this.setState({ user: res });
+          // this.setState({ user: res });
+          if (res.message === 'SUCCESS') {
+            alert('로그인을 성공했습니다.');
+            window.location.replace('/');
+          } else {
+            alert(res.message);
+          }
         });
-      // alert(this.state.user.message);
-      this.props.history.push('/');
     } else {
       alert('이메일 혹은 비밀번호를 입력해주세요');
     }
@@ -58,22 +63,12 @@ class LoginPage extends React.Component {
     console.log('사용자 Password : ', this.state.userPw);
   };
 
-  componentDidMount() {
-    // console.log(this.props.match.params.id);
-    // const id = this.props.match.params.id;
-    fetch(`/user/login`)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({ user: res });
-      });
-  }
-
   render() {
     return (
       <div className="loginPage">
         <div className="loginBox">
           <div className="login">
-            <div className="loginRenewBox">
+            <form className="loginRenewBox" action="" name="loginForm">
               <div className="loginTitleBox">
                 <p className="loginTitle">로그인</p>
                 <p className="underLoginTitle">
@@ -103,11 +98,11 @@ class LoginPage extends React.Component {
                   />
                 </div>
               </form>
-              <button className="loginBtn" onClick={this.goToMainPage}>
+              <button className="loginBtn" onClick={this.login}>
                 <Link to="#">로그인</Link>
               </button>
               <div className="underLoginBtn">
-                <Link to="pages/Signup" className="underLoginBtnWords">
+                <Link to="/signup" className="underLoginBtnWords">
                   회원가입
                 </Link>
                 <em className="underLoginBtnBar"> | </em>
@@ -130,7 +125,7 @@ class LoginPage extends React.Component {
                   </Link>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
