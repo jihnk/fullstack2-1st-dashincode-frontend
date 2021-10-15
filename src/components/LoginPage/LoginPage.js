@@ -22,7 +22,8 @@ class LoginPage extends React.Component {
     this.setState({ [name]: value });
   };
 
-  goToMainPage = () => {
+  login = e => {
+    e.preventDefault();
     const { userEmail, userPw } = this.state;
     if (userEmail.includes('@') && userPw.length >= 8) {
       fetch(`/user/login`, {
@@ -35,10 +36,14 @@ class LoginPage extends React.Component {
       })
         .then(res => res.json())
         .then(res => {
-          this.setState({ user: res });
+          // this.setState({ user: res });
+          if (res.message === 'SUCCESS') {
+            alert('로그인을 성공했습니다.');
+            window.location.replace('/');
+          } else {
+            alert(res.message);
+          }
         });
-      // alert(this.state.user.message);
-      this.props.history.push('/Main');
     } else {
       alert('이메일 혹은 비밀번호를 입력해주세요');
     }
@@ -93,7 +98,7 @@ class LoginPage extends React.Component {
                   />
                 </div>
               </form>
-              <button className="loginBtn" onClick={this.goToMainPage}>
+              <button className="loginBtn" onClick={this.login}>
                 <Link to="#">로그인</Link>
               </button>
               <div className="underLoginBtn">

@@ -37,6 +37,7 @@ class SignUp extends React.Component {
   // };
 
   handleSignUp = e => {
+    e.preventDefault();
     const { email, nickname, password } = this.state;
     fetch(`/user/signup`, {
       method: 'POST',
@@ -51,11 +52,12 @@ class SignUp extends React.Component {
     })
       .then(res => res.json())
       .then(res => {
-        if (res.status === 'Failed') {
-          alert('회원가입 실패하셨습니다.');
-        } else if (res.status === 'Success') {
+        console.log(res);
+        if (res.message === 'CREATED') {
           alert('회원가입을 성공했습니다.');
           this.goToLoginPage();
+        } else {
+          alert(res.message);
         }
       });
   };
@@ -210,7 +212,7 @@ class SignUp extends React.Component {
                 //     ? this.goToLoginPage
                 //     : this.signUpEmptyInfo}
               >
-                <Link to="/login">회원가입</Link>
+                회원가입
               </button>
             </div>
           </form>
