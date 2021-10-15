@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Cookies from 'universal-cookie';
 import Like from './Like';
 import './Card.scss';
 
-const cookie = new Cookies();
 class Card extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isLiked: false,
     };
@@ -16,29 +14,6 @@ class Card extends React.Component {
   getDiscountRate = (num1, num2) => {
     return Math.round(100 - (num1 / num2) * 100);
   };
-
-  // toggleLike = () => {
-  //   const { id } = this.props.match.params;
-  //   if (cookie.get('user')) {
-  //     fetch(`/like/${id}`, {
-  //       method: 'POST',
-  //       credentials: 'include',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         this.setState({ isLiked: data.DATA }, () => {
-  //           this.state.isLiked
-  //             ? alert('찜한 상품에 저장되었습니다.')
-  //             : alert('취소되었습니다.');
-  //         });
-  //       });
-  //   } else {
-  //     alert('로그인 후 이용해주세요.');
-  //   }
-  // };
 
   componentDidMount() {
     const { id } = this.props;

@@ -23,7 +23,7 @@ class Like extends React.Component {
     const { checkLike } = this;
     return (
       <FontAwesomeIcon
-        onClick={() => toggleLike(id)}
+        onClick={toggleLike}
         onMouseDown={checkLike}
         icon={faHeart}
         id={id}
