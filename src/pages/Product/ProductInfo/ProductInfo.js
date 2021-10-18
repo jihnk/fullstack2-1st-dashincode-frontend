@@ -72,6 +72,15 @@ class ProductInfo extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
+    fetch(`/product/${id}/info`)
+      .then(res => res.json())
+      .then(res =>
+        this.setState({
+          info: res,
+          shipment: res.shipment,
+        })
+      );
+
     fetch(`/product/${id}/thumbnail`)
       .then(res => res.json())
       .then(res => {
@@ -85,15 +94,6 @@ class ProductInfo extends Component {
         );
       })
       .then((this.interval = setInterval(this.autoChangeImage, 3000)));
-
-    fetch(`/product/${id}/info`)
-      .then(res => res.json())
-      .then(res =>
-        this.setState({
-          info: res,
-          shipment: res.shipment,
-        })
-      );
 
     fetch(`/like/${id}`)
       .then(res => res.json())
