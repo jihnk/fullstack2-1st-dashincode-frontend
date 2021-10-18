@@ -1,3 +1,5 @@
+@import '../shared/CommonColor.scss';
+
 @mixin OrderBtn($color) {
   display: inline-block;
   width: 300px;
@@ -10,10 +12,10 @@
 }
 
 .orderBtn {
-  @include OrderBtn(#ab4ba5);
+  @include OrderBtn($color-mainColor);
 }
 
 .continueBtn {
-  @include OrderBtn(#565656);
+  @include OrderBtn($color-cartButton);
   margin-left: 20px;
 }

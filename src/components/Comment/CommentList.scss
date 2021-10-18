@@ -1,3 +1,5 @@
+@import '../shared/CommonColor.scss';
+
 .commentContainer {
   display: flex;
   flex-direction: column;
@@ -27,14 +29,14 @@
       flex-direction: column;
       margin: 20px 0;
       padding: 10px 20px;
-      border-top: 1px solid #dedede;
-      border-bottom: 1px solid #dedede;
+      border-top: 1px solid $color-commentBorder;
+      border-bottom: 1px solid $color-commentBorder;
       text-align: left;
 
       .noticeText {
         display: inline-block;
         line-height: 1.4em;
-        color: #333;
+        color: $color-commentText;
         font-size: 16px;
         font-weight: normal;
         letter-spacing: -0.001em;

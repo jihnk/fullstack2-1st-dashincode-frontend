@@ -1,5 +1,6 @@
 import React from 'react';
 import CartDetail from '../../components/Cart/CartDetail';
+import CartHeader from '../../components/Cart/CartHeader';
 import TotalOrderPrice from '../../components/Cart/TotalOrderPrice';
 import CartOrderButton from '../../components/Cart/CartOrderButton';
 import './Cart.scss';
@@ -66,6 +67,7 @@ class Cart extends React.Component {
 
     return (
       <div className="cartContainer">
+        <CartHeader />
         <div className="cartContents">
           <div className="productsDetailWrap">
             {allProduct &&

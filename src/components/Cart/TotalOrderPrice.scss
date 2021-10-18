@@ -1,9 +1,11 @@
+@import '../shared/CommonColor.scss';
+
 .totalOrderContainer {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 6px solid #e7e7e7;
+  border: 6px solid $color-cartOderBorder;
 
   .totalOrderWrap {
     display: flex;
@@ -15,15 +17,13 @@
     margin: 0;
 
     .totalOrderTitleWrap {
-      background-color: #fff;
-
       .totalOrderTitle {
-        color: #444;
+        color: $color-darkGrey;
         font-size: 13px;
       }
 
       .expectPrice {
-        color: #ab4ba5;
+        color: $color-mainColor;
       }
     }
 
@@ -31,7 +31,7 @@
       padding: 25px;
 
       .totalOrderPrice {
-        color: #000;
+        color: $color-black;
         display: inline-block;
         line-height: 40px;
         vertical-align: middle;
@@ -40,7 +40,7 @@
       }
 
       .expectPrice {
-        color: #ab4ba5;
+        color: $color-mainColor;
       }
     }
   }
@@ -51,11 +51,11 @@
     height: 50px;
     line-height: 50px;
     border-radius: 80px;
-    color: #999;
-    background-color: #f6f6f6;
+    color: $color-cartSignColor;
+    background-color: $color-cartSignBackground;
     text-align: center;
     font-size: 30px;
-    font-weight: 200;
+    font-weight: 400;
   }
 }
 
@@ -71,17 +71,17 @@
   .discountPriceTitle {
     margin-right: 8px;
     line-height: 1;
-    color: #383838;
+    color: $color-darkGrey;
   }
 
   .discountPrice {
-    color: #9395a0;
+    color: $color-cartSubTitle;
     font-size: 15px;
     letter-spacing: 0px;
   }
 
   .discountPriceWon {
-    color: #000;
+    color: $color-black;
     font-size: 14px;
   }
 }

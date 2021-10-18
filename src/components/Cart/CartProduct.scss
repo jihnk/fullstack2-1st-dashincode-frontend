@@ -1,3 +1,5 @@
+@import '../shared/CommonColor.scss';
+
 .cartDetailContainer {
   .cartDetailWrap {
     position: relative;
@@ -28,7 +30,7 @@
         max-height: 46px;
         margin-top: 20px;
         padding: 1px 1px 0 15px;
-        color: #010101;
+        color: $color-black;
         font-size: 18px;
         font-weight: 700;
         letter-spacing: -1px;
@@ -40,9 +42,9 @@
         width: 100%;
         margin: 30px 15px 0 15px;
         padding: 8px 0px 8px 13px;
-        border: 1px solid #efefef;
-        color: #66646b;
-        background-color: #fbfbfb;
+        border: 1px solid $color-cartBorder;
+        color: $color-cartFont;
+        background-color: $color-cartProductBackground;
         font-size: 12px;
         overflow: hidden;
 
@@ -61,14 +63,14 @@
           }
 
           .orderCntBtnWrap {
-            color: #66646b;
+            color: $color-cartFont;
             font-size: 12px;
 
             .cntBtn {
               display: inline;
               padding: 4px 9px;
-              border: 1px solid #dadada;
-              background: #dadada;
+              border: 1px solid $color-whiteGrey;
+              background: $color-whiteGrey;
               font-size: 12px;
               font-weight: 700;
               cursor: pointer;
@@ -76,8 +78,8 @@
 
             .orderCntWrap {
               display: inline-block;
-              border-top: 1px solid #dadada;
-              border-bottom: 1px solid #dadada;
+              border-top: 1px solid $color-whiteGrey;
+              border-bottom: 1px solid $color-whiteGrey;
               font-size: 1em;
               text-align: center;
               vertical-align: middle;
@@ -111,7 +113,6 @@
             }
           }
           .deleteBtnWrap {
-            // display: inline-block;
             margin: auto 0;
           }
         }
@@ -124,7 +125,7 @@
       width: 100%;
       margin: 0;
       padding: 0;
-      border: 1px solid #dadada;
+      border: 1px solid $color-whiteGrey;
     }
   }
 }
