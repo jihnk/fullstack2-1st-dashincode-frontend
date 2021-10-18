@@ -4,15 +4,11 @@
 - 아래 이미지를 클릭하면, Demo 영상을 시청할 수 있습니다.
   [![[Dashincode] Demo 영상](./public/images/README.png)](https://vimeo.com/634975398)
 
-<br/>
-
 ### 기간
 
 ---
 
-- 2021.10.01 ~ 2021.10.15 (15일)
-
-<br/>
+2021.10.01 ~ 2021.10.15 (15일)
 
 ### Team
 
@@ -24,8 +20,6 @@
 - [신정호](https://github.com/shin-jungho) : 회원가입 & 로그인 페이지 구현
 - [안다빈](https://github.com/dabin219) : 메인 페이지 구현
 
-<br/>
-
 ### Skills
 
 ---
@@ -34,19 +28,15 @@
 - `Back-end`: Node.js, Express, MySQL, Prisma, Bcrypt, JWT
 - `공통`: Git, ESLint, Prettier
 
-<br/>
-
 ### Back-end Repository
 
 ---
 
-- https://github.com/wecode-bootcamp-korea/fullstack2-1st-dashincode-frontend
+https://github.com/wecode-bootcamp-korea/fullstack2-1st-dashincode-frontend
 
 <br/>
 
 ## 구현 기능 상세
-
----
 
 ### 1. 공통 구현 사항
 
