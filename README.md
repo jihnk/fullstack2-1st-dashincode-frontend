@@ -1,16 +1,20 @@
-# Dashincode 프로젝트 소개 (Front-end)
+# Dashincode Front-end 소개
 
 - 다이어트 전문 온라인 쇼핑몰 '[다신샵(Dashinshop)](http://dshop.dietshin.com/)'을 클론 코딩한 프로젝트입니다.
-- 아래 이미지를 클릭하면, 프로젝트 Demo 영상을 시청할 수 있습니다.
-  [![Dashincode 프로젝트 Demo 영상](./public/images/README.png)](https://vimeo.com/634975398)
+- 아래 이미지를 클릭하면, Demo 영상을 시청할 수 있습니다.
+  [![[Dashincode] Demo 영상](./public/images/README.png)](https://vimeo.com/634975398)
 
-### 프로젝트 기간
+<br/>
+
+### 기간
 
 ---
 
 - 2021.10.01 ~ 2021.10.15 (15일)
 
-### 팀원
+<br/>
+
+### Team
 
 ---
 
@@ -20,6 +24,8 @@
 - [신정호](https://github.com/shin-jungho) : 회원가입 & 로그인 페이지 구현
 - [안다빈](https://github.com/dabin219) : 메인 페이지 구현
 
+<br/>
+
 ### Skills
 
 ---
@@ -28,11 +34,15 @@
 - `Back-end`: Node.js, Express, MySQL, Prisma, Bcrypt, JWT
 - `공통`: Git, ESLint, Prettier
 
-### Dashincode Back-end Repository
+<br/>
+
+### Back-end Repository
 
 ---
 
 - https://github.com/wecode-bootcamp-korea/fullstack2-1st-dashincode-frontend
+
+<br/>
 
 ## 구현 기능 상세
 
@@ -82,6 +92,8 @@
 - 정규표현식을 활용하여 입력한 이메일/닉네임/비밀번호의 타당성 검사
 - 회원가입 페이지에서 회원가입 성공 시, 로그인 페이지로 이동
 - 로그인 페이지에서 로그인 성공 시, 메인 페이지로 이동
+
+<br/>
 
 ### References
 
