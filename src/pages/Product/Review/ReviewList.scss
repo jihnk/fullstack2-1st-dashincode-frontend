@@ -1,4 +1,4 @@
-.commentContainer {
+.ReviewList {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,7 +10,7 @@
   font-size: 14px;
   z-index: 5;
 
-  .commentTitleWrap {
+  .reviewTitleWrap {
     display: block;
     line-height: 45px;
     color: #000;
@@ -18,7 +18,7 @@
     text-align: left;
     letter-spacing: -0.01em;
 
-    .commentTitle {
+    .reviewTitle {
       color: inherit;
     }
 
@@ -46,7 +46,7 @@
     }
   }
 
-  .commentListWrap {
+  .reviewListWrap {
     width: 100%;
     text-align: left;
     overflow: hidden;
