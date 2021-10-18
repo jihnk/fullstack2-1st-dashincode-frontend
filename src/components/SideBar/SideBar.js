@@ -47,8 +47,17 @@ class SideBar extends Component {
         product => product.productId !== id
       );
       localStorage.setItem('loadedProduct', JSON.stringify(filteredProduct));
+      const sidebarData = JSON.parse(localStorage.getItem('loadedProduct'));
       this.setState({
-        sidebar: JSON.parse(localStorage.getItem('loadedProduct')),
+        sidebar: sidebarData,
+        slideNum:
+          sidebarData.length < 4 ? 1 : Math.ceil(sidebarData.length / 4),
+        currentSlide:
+          sidebarData.length % 4 === 0 &&
+          this.state.currentSlide > Math.ceil(sidebarData.length / 4) &&
+          this.state.currentSlide !== 1
+            ? this.state.currentSlide - 1
+            : this.state.currentSlide,
       });
     } else {
       return;

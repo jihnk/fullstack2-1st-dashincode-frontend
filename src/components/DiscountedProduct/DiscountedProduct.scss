@@ -47,11 +47,25 @@
         overflow: hidden;
 
         .timer {
+          position: relative;
+          width: 400px;
           margin: 0px 10px 15px 0px;
           color: #ab4ba5;
           font-size: 35px;
           line-height: 1.3em;
           font-weight: 700;
+          span {
+            padding-right: 60px;
+          }
+          .day {
+            position: absolute;
+            left: 30px;
+          }
+
+          .left {
+            position: absolute;
+            right: 20px;
+          }
         }
 
         .name {
