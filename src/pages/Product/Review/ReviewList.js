@@ -1,39 +1,41 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Comment from './Comment';
-import './CommentList.scss';
+import Review from './Review';
+import './ReviewList.scss';
 
-class CommentList extends Component {
+class ReviewList extends Component {
   constructor() {
     super();
     this.state = {
-      commentList: [],
+      reviews: [],
     };
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`/product/${id}/comment`, {
+    fetch(`/product/${id}/review`, {
       header: {
-        Accept: 'application / json',
+        Accept: 'application/json',
       },
     })
       .then(res => res.json())
-      .then(comment => {
+      .then(reviewList => {
         this.setState({
-          commentList: comment,
+          reviews: reviewList,
         });
       });
   }
 
   render() {
-    const { commentList } = this.state;
-
+    const { reviews } = this.state;
     return (
-      <div className="commentContainer">
-        <div className="commentTitleWrap">
-          <header className="commentTitle">
-            상품후기<span className="commentCount">(24018)</span>
+      <div className="ReviewList">
+        <div className="reviewTitleWrap">
+          <header className="reviewTitle">
+            상품후기
+            <span className="reviewCount">
+              ({reviews.length.toLocaleString()})
+            </span>
           </header>
           <ul className="noticeWrap">
             <li className="noticeText title">[공지]</li>
@@ -46,9 +48,9 @@ class CommentList extends Component {
             </li>
           </ul>
         </div>
-        <div className="commentListWrap">
-          {commentList.map(props => {
-            return <Comment key={props.userId} comment={props} />;
+        <div className="reviewListWrap">
+          {reviews.map(review => {
+            return <Review key={review.user_id} review={review} />;
           })}
         </div>
       </div>
@@ -56,4 +58,4 @@ class CommentList extends Component {
   }
 }
 
-export default withRouter(CommentList);
+export default withRouter(ReviewList);

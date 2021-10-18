@@ -13,12 +13,13 @@
     width: 500px;
     padding: 0 auto;
 
-    img.productThumbnail {
+    .productThumbnail {
       width: 500px;
       height: 500px;
+      object-fit: cover;
     }
 
-    div.thumbnailContainer {
+    .thumbnailContainer {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -26,14 +27,16 @@
       width: 365px;
       margin: 20px auto 0 auto;
 
-      img.littleThumbnails {
+      .productThumbnails {
         width: 67px;
+        height: 67px;
+        object-fit: cover;
         border: 1px solid lightgray;
         cursor: pointer;
       }
     }
 
-    div.iconContainer {
+    .iconContainer {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -60,7 +63,7 @@
       }
     }
 
-    div.shareContainer {
+    .shareContainer {
       position: relative;
       display: none;
 
@@ -194,7 +197,7 @@
       }
     }
 
-    div.orderContainer {
+    .orderContainer {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
