@@ -26,10 +26,10 @@ class DiscountedProduct extends Component {
 
   render() {
     const { product, shipment } = this.state;
-    const link = '/product/' + product.id;
+    console.log(shipment);
     return (
       <div className="DiscountedProduct">
-        <Link to={link}>
+        <Link to={`product/${product.id}`}>
           <div className="discountedProductWrap">
             <div className="title">
               <img alt="dart icon" src={dart} />
@@ -68,18 +68,23 @@ class DiscountedProduct extends Component {
                       <li className="isBasic">기본배송</li>
                     )}
                     {shipment &&
-                      shipment.map((shipment, id) => {
+                      shipment.map((item, id) => {
+                        let className = '';
+                        if (item === '다코쿨배송') {
+                          className = 'isCool';
+                        }
+                        if (item === '다코배송') {
+                          className = 'isDaco';
+                        }
+                        if (item === '무료배송') {
+                          className = 'isFree';
+                        }
+                        if (item === '기본배송') {
+                          className = 'isBasic';
+                        }
                         return (
-                          <li key={id} className={shipment}>
-                            {shipment === 'isCool'
-                              ? '다신쿨배송'
-                              : shipment === 'isFree'
-                              ? '무료배송'
-                              : shipment === 'isDashin'
-                              ? '다신배송'
-                              : shipment === 'isBasic'
-                              ? '기본배송'
-                              : shipment}
+                          <li key={id} className={className}>
+                            {item}
                           </li>
                         );
                       })}

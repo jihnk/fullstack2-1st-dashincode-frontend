@@ -1,5 +1,5 @@
 .Header {
-  height:155px;
+  height: 155px;
   z-index: 400;
 
   .headerTop {
@@ -8,8 +8,8 @@
     align-items: center;
     height: 35px;
     background: #ebebeb;
-    
-    .headerTopWrap{
+
+    .headerTopWrap {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -18,7 +18,7 @@
 
       h1 {
         color: #262626;
-        font-size: 12px;
+        font-size: 0.7rem;
         font-weight: 700;
         text-align: center;
       }
@@ -26,8 +26,8 @@
       ul {
         display: flex;
         color: #777;
-        font-size: 11px;
-        
+        font-size: 0.65rem;
+
         li {
           margin-left: 5px;
         }
@@ -40,11 +40,11 @@
     border-bottom: 1px solid #e5e5e5;
     text-align: center;
     z-index: 100;
-    
+
     .headerBottomWrap {
       display: flex;
       justify-content: space-between;
-      align-items: center; 
+      align-items: center;
       position: relative;
       width: 1100px;
       margin: 18px auto;
@@ -81,7 +81,7 @@
             border: none;
             outline: none;
             color: #a9a9a9;
-            font-size: 13px;
+            font-size: 0.75rem;
             line-height: 34px;
           }
         }
@@ -98,7 +98,7 @@
       .userInfoAndGoToCart {
         .userAndCartIcons {
           display: flex;
-          padding-top:7px;
+          padding-top: 7px;
 
           li {
             cursor: pointer;
@@ -106,7 +106,7 @@
             .bagIcon {
               margin-left: 12px;
             }
-            
+
             .cartNum {
               display: inline-block;
               position: relative;
@@ -115,7 +115,7 @@
               height: 19px;
               padding: 0px 6px;
               color: #fff;
-              background: rgb(71, 71, 71);
+              background: #474747;
               border-radius: 60px;
               line-height: 21px;
               text-align: right;
@@ -150,8 +150,8 @@
 
       li {
         color: #333;
-        font-size: 11px;
-        
+        font-size: 0.6rem;
+
         a {
           display: block;
           padding: 8px 17px;
@@ -160,5 +160,7 @@
     }
   }
 
-  .dropDownUserInfo:hover .showUserInfo {display: block;}
+  .dropDownUserInfo:hover .showUserInfo {
+    display: block;
+  }
 }

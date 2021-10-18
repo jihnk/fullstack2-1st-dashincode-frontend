@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 
 class CountDownTimer extends Component {
-  state = {
-    day: 0,
-    hour: 0,
-    min: 0,
-    sec: 0,
-    timeUp: false,
-  };
+  constructor() {
+    super();
+    this.state = {
+      day: 0,
+      hour: 0,
+      min: 0,
+      sec: 0,
+      timeUp: false,
+    };
+  }
 
   componentDidMount() {
     this.interval = setInterval(() => {
