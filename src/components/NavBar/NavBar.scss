@@ -1,5 +1,5 @@
 .NavBar {
-  position:sticky;
+  position: sticky;
   top: 0px;
   height: 52px;
   background-color: white;
@@ -7,12 +7,12 @@
   font-size: 10px;
   font-weight: 300;
   z-index: 500;
-  
+
   .navbarWrap {
     width: 1100px;
     position: relative;
     margin: 0 auto;
-    
+
     li {
       display: inline-block;
       position: relative;
@@ -29,11 +29,11 @@
         justify-content: center;
         align-items: center;
         position: relative;
-        top: -1px;
+        top: -3px;
         width: 160px;
-        height: 53px;
+        height: 55px;
         color: #fff;
-        background: #AB4BA5;
+        background: #ab4ba5;
 
         p {
           padding: 2px 10px 0;
@@ -52,12 +52,12 @@
         transition: 0.5s;
         font-size: 0.7em;
         overflow: hidden;
-        
+
         .mainMenu {
           display: grid;
           grid-template-columns: repeat(8, 1fr);
           border-right: 1px solid #f5f5f5;
-          
+
           .mainMenuList {
             position: relative;
             left: 0;
@@ -101,16 +101,16 @@
     .navbarList {
       top: -2px;
       padding-left: 50px;
-    } 
+    }
 
     a:hover {
-      color: #AB4BA5;
+      color: #ab4ba5;
     }
 
     .dropDown:hover .dropDownCategory {
       height: 260px;
       border: 1px solid #d4d4d4;
       border-top: none;
-    } 
+    }
   }
 }

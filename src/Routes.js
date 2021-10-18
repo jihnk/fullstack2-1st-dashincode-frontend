@@ -11,6 +11,7 @@ import list from './pages/List';
 import cart from './pages/CartPage/Cart';
 import category from './pages/Category';
 import ScrollToTop from './components/ScrollToTop';
+import ScrollTo from './components/SideBar/ScrollTo';
 import search from './pages/Search';
 
 function Router() {
@@ -21,6 +22,7 @@ function Router() {
           <ScrollToTop>
             <Header />
             <NavBar />
+            <ScrollTo />
             <Route exact path="/" component={main} />
             <Route exact path="/signup" component={signup} />
             <Route exact path="/login" component={login} />

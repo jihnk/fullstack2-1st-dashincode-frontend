@@ -3,11 +3,7 @@ import ProductInfo from '../components/ProductInfo/ProductInfo';
 
 class Product extends React.Component {
   render() {
-    return (
-      <div>
-        <ProductInfo />
-      </div>
-    );
+    return <ProductInfo />;
   }
 }
 

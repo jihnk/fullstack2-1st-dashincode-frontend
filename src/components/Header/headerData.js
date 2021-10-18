@@ -1,4 +1,4 @@
-const searchPlaceholder = [
+const searchPlaceholders = [
   '닭가슴살',
   '도시락',
   '현미떡',
@@ -18,4 +18,4 @@ const userInfo = [
   '내정보 수정',
 ];
 
-export { searchPlaceholder, userInfo };
+export { searchPlaceholders, userInfo };
