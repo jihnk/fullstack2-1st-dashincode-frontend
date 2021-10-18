@@ -10,8 +10,17 @@ class Like extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { id } = this.props;
+    fetch(`/like/${id}`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ isLiked: res.DATA });
+      });
+  }
+
   checkLike = () => {
-    const { isLiked } = this.state;
+    const { isLiked } = this.props;
     this.setState({
       isLiked: !isLiked,
     });

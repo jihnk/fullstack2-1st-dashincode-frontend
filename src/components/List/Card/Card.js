@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 import Like from './Like';
 import './Card.scss';
 
+const cookie = new Cookies();
 class Card extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       isLiked: false,
     };
@@ -15,19 +17,32 @@ class Card extends React.Component {
     return Math.round(100 - (num1 / num2) * 100);
   };
 
-  componentDidMount() {
+  toggleLike = () => {
     const { id } = this.props;
-    fetch(`/like/${id}`)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({ isLiked: res.DATA });
-      });
-  }
+    if (cookie.get('user')) {
+      fetch(`/like/${id}`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(res => res.json())
+        .then(res => {
+          this.setState({ isLiked: res.DATA }, () => {
+            this.state.isLiked
+              ? alert('찜한 상품에 저장되었습니다.')
+              : alert('취소되었습니다.');
+          });
+        });
+    } else {
+      alert('로그인 후 이용 가능한 서비스입니다');
+    }
+  };
 
   render() {
     const {
       id,
-      toggleLike,
       discounted_price,
       price,
       description,
@@ -43,7 +58,7 @@ class Card extends React.Component {
             <img src={image_url} alt={name} />
           </Link>
           <Like
-            toggleLike={toggleLike}
+            toggleLike={this.toggleLike}
             isLiked={this.state.isLiked}
             id={id}
             className={this.state.isLiked ? 'fa-heart fill' : 'fa-heart'}
@@ -84,18 +99,23 @@ class Card extends React.Component {
             <ul className="shipments">
               {shipment.length === 0 && <li className="isBasic">기본배송</li>}
               {shipment &&
-                shipment.map((shipment, id) => {
+                shipment.map((item, id) => {
+                  let className = '';
+                  if (item === '다코쿨배송') {
+                    className = 'isCool';
+                  }
+                  if (item === '다코배송') {
+                    className = 'isDaco';
+                  }
+                  if (item === '무료배송') {
+                    className = 'isFree';
+                  }
+                  if (item === '기본배송') {
+                    className = 'isBasic';
+                  }
                   return (
-                    <li key={id} className={shipment}>
-                      {shipment === 'isCool'
-                        ? '다신쿨배송'
-                        : shipment === 'isFree'
-                        ? '무료배송'
-                        : shipment === 'isDashin'
-                        ? '다신배송'
-                        : shipment === 'isBasic'
-                        ? '기본배송'
-                        : shipment}
+                    <li key={id} className={className}>
+                      {item}
                     </li>
                   );
                 })}
