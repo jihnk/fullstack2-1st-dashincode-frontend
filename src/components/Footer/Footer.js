@@ -58,12 +58,10 @@ class Footer extends Component {
                 <Link to="/">
                   <button>1:1 문의하기</button>
                 </Link>
-                <a href="/">
-                  <button onClick={this.goToChat}>
-                    <FontAwesomeIcon icon={faCommentAlt} />
-                    &nbsp;팅팅탱탱 채팅상담
-                  </button>
-                </a>
+                <button onClick={this.goToChat}>
+                  <FontAwesomeIcon icon={faCommentAlt} />
+                  &nbsp;팅팅탱탱 채팅상담
+                </button>
               </div>
             </div>
             <div className="notice">
@@ -127,7 +125,6 @@ class Footer extends Component {
                 </tbody>
               </table>
             </div>
-            {/* 아이콘을 import해서 사용하는 형태라 map이 돌지 않습니다,, 방법을 아시는분은 알려주세요 */}
             <div className="sns">
               <h1>SNS</h1>
               <div className="line">_______</div>

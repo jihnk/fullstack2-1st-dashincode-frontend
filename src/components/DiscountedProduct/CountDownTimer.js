@@ -15,6 +15,7 @@ class CountDownTimer extends Component {
       let difference = eventDate - +new Date();
       if (difference < 1) {
         this.setState({ timeUp: true });
+        clearInterval(this.interval);
       } else {
         let day = Math.floor(difference / (1000 * 60 * 60 * 24));
         let hour = Math.floor((difference / (1000 * 60 * 60)) % 24);
@@ -31,7 +32,7 @@ class CountDownTimer extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.setInterval);
+    clearInterval(this.interval);
   }
 
   render() {
@@ -39,7 +40,12 @@ class CountDownTimer extends Component {
     return timeUp ? (
       <p>{this.props.text}</p>
     ) : (
-      <p>{`${day} 일 ${hour} : ${min} : ${sec} 남음`}</p>
+      <p>
+        <span>{day}</span>
+        <span className="day">일</span>
+        <span>{`${hour} : ${min} : ${sec}`}</span>
+        <span className="left">남음</span>
+      </p>
     );
   }
 }

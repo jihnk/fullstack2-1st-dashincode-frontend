@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Comment from './Comment';
 import './CommentList.scss';
 
@@ -11,7 +12,8 @@ class CommentList extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/comment.json', {
+    const { id } = this.props.match.params;
+    fetch(`/product/${id}/comment`, {
       header: {
         Accept: 'application / json',
       },
@@ -54,4 +56,4 @@ class CommentList extends Component {
   }
 }
 
-export default CommentList;
+export default withRouter(CommentList);

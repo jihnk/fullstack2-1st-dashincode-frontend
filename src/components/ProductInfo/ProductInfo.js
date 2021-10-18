@@ -30,7 +30,6 @@ class productInfo extends React.Component {
       navbar: [],
     };
   }
-
   componentDidMount() {
     const { id } = this.props.match.params;
     fetch(`/like/${id}`)
@@ -61,13 +60,12 @@ class productInfo extends React.Component {
           },
           () => this.addToStorage()
         );
-      });
+      })
+      .then((this.interval = setInterval(this.autoChangeImage, 3000)));
 
     fetch(`/product/${id}/navbar`)
       .then(res => res.json())
       .then(data => this.setState({ navbar: data }));
-
-    this.interval = setInterval(this.autoChangeImage, 2000);
   }
 
   addToStorage = () => {
@@ -83,27 +81,24 @@ class productInfo extends React.Component {
       localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
     } else if (loadedProduct?.length > 15) {
       loadedProduct.pop();
-      loadedProduct.unshift({
+      const filteredProduct = loadedProduct.filter(
+        item => item.productId !== +id
+      );
+      filteredProduct.unshift({
         productId: +id,
         imageUrl: this.state.img.image_url,
       });
-      localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
+      localStorage.setItem('loadedProduct', JSON.stringify(filteredProduct));
     } else {
-      loadedProduct.unshift({
+      const filteredProduct = loadedProduct.filter(
+        item => item.productId !== +id
+      );
+      filteredProduct.unshift({
         productId: +id,
         imageUrl: this.state.img.image_url,
       });
-      localStorage.setItem('loadedProduct', JSON.stringify(loadedProduct));
+      localStorage.setItem('loadedProduct', JSON.stringify(filteredProduct));
     }
-  };
-
-  autoChangeImage = () => {
-    let imgNum = Math.round(Math.random() * 2);
-    const { images } = this.state;
-    const changedMainImage = images[imgNum];
-    this.setState({
-      img: changedMainImage,
-    });
   };
 
   componentWillUnmount() {
@@ -164,8 +159,19 @@ class productInfo extends React.Component {
   };
 
   imageChange = url => {
+    clearInterval(this.interval);
     this.setState({
       img: { image_url: url },
+    });
+    setTimeout((this.interval = setInterval(this.autoChangeImage, 3000)), 3000);
+  };
+
+  autoChangeImage = () => {
+    const { images } = this.state;
+    let imgNum = Math.round(Math.random() * 4);
+    const changedMainImage = images[imgNum];
+    this.setState({
+      img: changedMainImage,
     });
   };
 
