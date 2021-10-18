@@ -9,21 +9,21 @@
     width: 80px;
     overflow: hidden;
     background: #fff;
-    border: 1px solid rgb(199, 198, 198);
+    border: 1px solid #c7c6c6;
 
     li {
       display: block;
-      background: rgb(199, 198, 198);
+      background: #c7c6c6;
       color: #fff;
       line-height: 32px;
-      font-size: 1em;
+      font-size: 1rem;
       text-align: center;
       font-weight: 300;
     }
 
     .imgBox {
       display: flex;
-      background: white;
+      background: #ffffff;
     }
 
     .currentImg {
@@ -40,6 +40,7 @@
       text-align: center;
 
       .loadedProduct {
+        position: relative;
         height: 55px;
         margin: 5px 0;
 
@@ -53,13 +54,13 @@
         }
 
         .deleteBtn {
-          position: relative;
-          right: -22px;
-          bottom: 76px;
+          position: absolute;
+          right: 12px;
+          top: 0px;
           width: 11px;
           padding: 1px;
           color: grey;
-          border: 1px solid rgb(199, 198, 198);
+          border: 1px solid #c7c6c6;
           line-height: 10px;
           cursor: pointer;
         }
@@ -75,14 +76,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: 0.7rem;
 
       button {
         width: 13px;
         height: 13px;
         padding: 0 3px 7px 3px;
-        color: white;
-        background-color: rgb(230, 228, 228);
+        color: #ffffff;
+        background-color: #e6e4e4;
         border: none;
         line-height: 1em;
       }

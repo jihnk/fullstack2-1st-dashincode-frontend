@@ -9,13 +9,15 @@ class ProductDescription extends React.Component {
   constructor() {
     super();
     this.state = {
-      descriptionClicked: false,
-      informationClicked: false,
-      reviewClicked: false,
+      showDescription: false,
+      showInformation: false,
+      showReview: false,
     };
-    this.descriptionRef = React.createRef();
-    this.informationRef = React.createRef();
-    this.reviewRef = React.createRef();
+    this.multiRefs = {
+      descriptionRef: React.createRef(),
+      informationRef: React.createRef(),
+      reviewRef: React.createRef(),
+    };
   }
 
   componentDidMount() {
@@ -27,50 +29,37 @@ class ProductDescription extends React.Component {
   }
 
   moveToRef = name => {
-    let location = '';
-    if (name === 'description') {
-      location =
-        this.descriptionRef.current.offsetTop + window.innerHeight + 200;
-    } else if (name === 'information') {
-      location =
-        this.informationRef.current.offsetTop + window.innerHeight + 180;
-    } else if (name === 'review') {
-      location = this.reviewRef.current.offsetTop + window.innerHeight + 150;
-    }
-
-    window.scroll({
-      top: location,
+    this.multiRefs[name].current.scrollIntoView({
+      block: 'start',
+      inline: 'nearest',
       behavior: 'smooth',
     });
   };
 
   handleScroll = () => {
     const scrollY = window.pageYOffset;
+    const { descriptionRef, informationRef, reviewRef } = this.multiRefs;
     this.setState({
-      descriptionClicked:
-        scrollY >= this.descriptionRef.current.offsetTop + window.innerHeight &&
-        scrollY < this.informationRef.current.offsetTop + window.innerHeight
+      showDescription:
+        scrollY >= descriptionRef.current.offsetTop &&
+        scrollY < informationRef.current.offsetTop
           ? true
           : false,
-      informationClicked:
-        scrollY >= this.informationRef.current.offsetTop + window.innerHeight &&
-        scrollY < this.reviewRef.current.offsetTop + window.innerHeight
+      showInformation:
+        scrollY >= informationRef.current.offsetTop &&
+        scrollY < reviewRef.current.offsetTop
           ? true
           : false,
-      reviewClicked:
-        scrollY >= this.reviewRef.current.offsetTop + window.innerHeight &&
-        scrollY <
-          this.reviewRef.current.offsetTop +
-            window.innerHeight +
-            this.reviewRef.current.clientHeight
+      showReview:
+        scrollY >= reviewRef.current.offsetTop &&
+        scrollY < reviewRef.current.offsetTop + reviewRef.current.clientHeight
           ? true
           : false,
     });
   };
 
   render() {
-    const { descriptionClicked, informationClicked, reviewClicked } =
-      this.state;
+    const { showDescription, showInformation, showReview } = this.state;
 
     return (
       <div className="ProductDescription">
@@ -78,22 +67,22 @@ class ProductDescription extends React.Component {
           <section className="description">
             <ul className="descriptionContents">
               <li
-                className={descriptionClicked && 'watched'}
-                onClick={() => this.moveToRef('description')}
+                className={showDescription && 'watched'}
+                onClick={() => this.moveToRef('descriptionRef')}
                 name="description"
               >
                 상세설명
               </li>
               <li
-                className={informationClicked && 'watched'}
-                onClick={() => this.moveToRef('information')}
+                className={showInformation && 'watched'}
+                onClick={() => this.moveToRef('informationRef')}
                 name="information"
               >
                 구매정보
               </li>
               <li
-                className={reviewClicked && 'watched'}
-                onClick={() => this.moveToRef('review')}
+                className={showReview && 'watched'}
+                onClick={() => this.moveToRef('reviewRef')}
                 name="review"
               >
                 상품후기
@@ -103,15 +92,15 @@ class ProductDescription extends React.Component {
               className="descriptionImage"
               src={detail}
               alt="description"
-              ref={this.descriptionRef}
+              ref={this.multiRefs.descriptionRef}
             />
             <img
               className="informationImage"
               src={info}
               alt="information"
-              ref={this.informationRef}
+              ref={this.multiRefs.informationRef}
             />
-            <div className="review" ref={this.reviewRef}>
+            <div className="review" ref={this.multiRefs.reviewRef}>
               <CommentList />
             </div>
           </section>
