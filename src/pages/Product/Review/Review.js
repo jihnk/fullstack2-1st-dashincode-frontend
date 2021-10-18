@@ -2,12 +2,31 @@ import React, { Component } from 'react';
 import './Review.scss';
 
 class Review extends Component {
+  constructor() {
+    super();
+    this.state = {
+      rate: [],
+    };
+  }
+
+  componentDidMount() {
+    const { scores } = this.props.review;
+    const stars = [];
+    for (let i = 0; i < scores; i++) {
+      stars.push('★');
+    }
+    this.setState({
+      rate: stars.join(''),
+    });
+  }
+
   render() {
-    const { scores, nickname, comment, image_url } = this.props.review;
+    const { nickname, comment, image_url } = this.props.review;
+    const { rate } = this.state;
     return (
       <div className="Review">
         <p className="reviewHeader">
-          <span className="reviewScores">{'★'.repeat(scores)}</span>
+          <span className="reviewScores">{rate}</span>
           <span className="reviewNickname">{nickname}</span>
         </p>
         <p className="reviewComment">{comment}</p>
