@@ -9,16 +9,17 @@ class Card extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLiked: 0,
+      isLiked: false,
+      isValid: true,
     };
   }
 
   componentDidMount() {
     const { id } = this.props.product;
-    fetch(`/like/${id}`)
+    fetch(`/product/${id}/like`)
       .then(res => res.json())
       .then(res => {
-        this.setState({ isLiked: res.DATA });
+        this.setState({ isLiked: res.data });
       });
   }
 
@@ -27,24 +28,31 @@ class Card extends React.Component {
   };
 
   toggleLike = () => {
+    const { isLiked } = this.state;
     const { id } = this.props.product;
+
     if (cookie.get('user')) {
-      fetch(`/like/${id}`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
+      this.setState(
+        {
+          isLiked: !isLiked,
         },
-      })
-        .then(res => res.json())
-        .then(res => {
-          res.DATA
-            ? alert('찜한 상품에 저장되었습니다.')
-            : alert('취소되었습니다.');
-          this.setState({
-            isLiked: res.DATA ? 1 : 0,
-          });
-        });
+        () => {
+          const method = isLiked ? 'POST' : 'DELETE';
+          fetch(`/product/${id}/like`, {
+            method: { method },
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+            .then(res => res.json())
+            .then(res => {
+              res.data
+                ? alert('찜한 상품에 저장되었습니다.')
+                : alert('취소되었습니다.');
+            });
+        }
+      );
     } else {
       alert('로그인 후 이용 가능한 서비스입니다');
     }
