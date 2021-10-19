@@ -1,17 +1,23 @@
+<<<<<<< HEAD:src/components/Comment/Comment.scss
+@import '../shared/CommonColor.scss';
+
+.commentWrap {
+=======
 .Review {
+>>>>>>> main:src/pages/Product/Review/Review.scss
   padding: 30px 0;
-  border-bottom: 1px solid #dedede;
+  border-bottom: 1px solid $color-whiteGrey;
 
   .reviewHeader {
     position: relative;
     height: 30px;
     line-height: 30px;
-    color: #666;
+    color: $color-commentHeaderFont;
     font-size: 1.2em;
 
     .reviewScores {
       font-size: 1.2em;
-      color: #333;
+      color: $color-commentText;
     }
 
     .reviewNickname {
@@ -19,8 +25,8 @@
       line-height: 14px;
       margin: 12px 0 0 15px;
       padding: 0px 14px;
-      border-left: 1px solid #ddd;
-      color: #555;
+      border-left: 1px solid $color-whiteGrey;
+      color: $color-darkGrey;
     }
   }
 
@@ -28,7 +34,7 @@
     display: block;
     line-height: 1.8em;
     padding: 15px 0;
-    color: #000;
+    color: $color-black;
     font-size: 15px;
     text-align: left;
   }

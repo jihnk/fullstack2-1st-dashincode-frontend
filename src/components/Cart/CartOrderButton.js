@@ -6,7 +6,7 @@ class CartOrderButton extends Component {
   render() {
     return (
       <div className="orderBtnContainer">
-        <span class="orderBtnWrap">
+        <span className="orderBtnWrap">
           <Button type="orderBtn" text="구매하기" />
           <Button type="continueBtn" text="계속 쇼핑하기" />
         </span>

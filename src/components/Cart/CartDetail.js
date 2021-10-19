@@ -6,77 +6,67 @@ class CartDetail extends Component {
   constructor() {
     super();
     this.state = {
-      categoryTotalPrice: 0,
-      isDeliveryFree: false,
+      orderPrice: 0,
+      isFreeDelivery: false,
     };
   }
 
-  // 현재 데이터에 저장된 가격만 총 주문금액으로 보여주고, cnt버튼 작동 시 총금액 합산 기능은 미구현됨
   componentDidMount() {
-    const product = [this.props.products];
-    const { categoryTotalPrice } = this.state;
+    const product = [this.props];
+    const { setTotalPrice } = this.props;
+    const { orderPrice } = this.state;
     const reducer = (acc, cur) => acc + cur;
     const priceList = [];
 
     product.forEach(el => priceList.push(parseInt(el.price * el.quantity)));
-    const totalCategoryPrice = priceList.reduce(reducer);
-    const isTrue = totalCategoryPrice > 30000 ? true : false;
-
-    const { setTotalAmount } = this.props;
-
-    setTotalAmount(totalCategoryPrice);
+    const setOrderPrice = priceList.reduce(reducer);
+    setTotalPrice(setOrderPrice);
 
     this.setState({
-      categoryTotalPrice: categoryTotalPrice + totalCategoryPrice,
-      isDeliveryFree: isTrue,
+      orderPrice: orderPrice + setOrderPrice,
+      isFreeDelivery: setOrderPrice > 30000 ? true : false,
     });
   }
 
   setCategoryTotalAmount = (productPrice, sign) => {
-    const { categoryTotalPrice } = this.state;
+    const { orderPrice } = this.state;
     const { setTotalAmount } = this.props;
     const setProductPrice = parseInt(productPrice);
+    let setOrderPrice =
+      (sign === '-' && orderPrice - setProductPrice) ||
+      (sign === '+' && orderPrice + setProductPrice);
+    let isFree = setOrderPrice < 30000 ? false : true;
 
-    if (sign === '-') {
-      setTotalAmount(setProductPrice, sign);
-      this.setState({
-        categoryTotalPrice: categoryTotalPrice - setProductPrice,
-        isDeliveryFree:
-          categoryTotalPrice - setProductPrice < 30000 ? false : true,
-      });
-    } else {
-      setTotalAmount(setProductPrice, sign);
-      this.setState({
-        categoryTotalPrice: categoryTotalPrice + setProductPrice,
-        isDeliveryFree:
-          categoryTotalPrice + setProductPrice < 30000 ? false : true,
-      });
-    }
+    setTotalAmount(setProductPrice, setOrderPrice, sign);
+
+    this.setState({
+      orderPrice: setOrderPrice > 0 ? setOrderPrice : 0,
+      isFreeDelivery: isFree,
+    });
   };
 
   render() {
-    const { type, products, handleDeleteBtn } = this.props;
-    let { categoryTotalPrice, isDeliveryFree } = this.state;
-    const productList = [products];
+    const { shipment, storage, product_id, handleDeleteBtn } = this.props;
+    let { orderPrice, isFreeDelivery } = this.state;
+    const productList = [this.props];
 
     return (
       <div className="cartDetailContainer">
         <div className="cartDetailHeaderWrap">
-          <header class="cartDetailHeader">{type}</header>
+          <header className="cartDetailHeader">
+            {shipment}[{storage}]
+          </header>
         </div>
         <section className="cartDetailContents">
           {productList.map(props => {
             for (let i = 0; i < productList.length; i++) {
               return (
-                <div className="cartProductWrap">
+                <div className="cartProductWrap" key={product_id}>
                   <CartProduct
-                    key={props.product_id}
-                    id={props.product_id}
-                    products={props}
-                    categoryTotalPrice={categoryTotalPrice}
+                    {...props}
+                    orderPrice={orderPrice}
                     setCategoryTotalAmount={this.setCategoryTotalAmount}
                     handleDeleteBtn={handleDeleteBtn}
-                    isDeliveryFree={isDeliveryFree}
                   />
                 </div>
               );
@@ -86,28 +76,28 @@ class CartDetail extends Component {
         <section className="orderTotalPriceContainer">
           <div className="orderTotalPriceWrap">
             <div className="orderPriceWrap">
-              <p className="orderPriceName">주문금액</p>
-              <em className="orderPrice">
-                {parseInt(categoryTotalPrice).toLocaleString()}
-              </em>
-              <em className="orderPriceWon">원</em>
+              <strong className="orderPriceName">주문금액</strong>
+              <p className="orderPrice">
+                {parseInt(orderPrice).toLocaleString()}
+              </p>
+              <p className="orderPriceWon">원</p>
             </div>
             <p className="sign">+</p>
             <div className="deliveryWrap">
-              <p className="deliveryTitle">배송비</p>
+              <strong className="deliveryTitle">배송비</strong>
               <p className="deliveryPrice">
-                {isDeliveryFree ? '무료배송' : '3,000원'}
+                {isFreeDelivery ? '무료배송' : '3,000원'}
               </p>
             </div>
             <p className="sign">=</p>
             <div className="totalPriceWrap">
-              <p className="totalPriceTitle">결제금액</p>
-              <em className="totalPrice">
-                {isDeliveryFree
-                  ? categoryTotalPrice.toLocaleString()
-                  : (categoryTotalPrice + 3000).toLocaleString()}
-              </em>
-              <em className="totalPriceWon">원</em>
+              <strong className="totalPriceTitle">결제금액</strong>
+              <p className="totalPrice">
+                {isFreeDelivery
+                  ? orderPrice.toLocaleString()
+                  : (orderPrice + 3000).toLocaleString()}
+              </p>
+              <strong className="totalPriceWon">원</strong>
             </div>
           </div>
         </section>

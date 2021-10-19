@@ -1,6 +1,10 @@
+@import '../shared/CommonColor.scss';
+
 .cartHeaderWrap {
   position: relative;
-  background-color: #f4f4f4;
+  margin-bottom: 30px;
+  border-bottom: 3px solid $color-darkGrey;
+  background-color: $color-cartBackground;
 
   .cartHeader {
     position: relative;
@@ -11,7 +15,7 @@
     .cartTitle {
       position: relative;
       display: inline-block;
-      color: #161616;
+      color: $color-cartTitle;
       font-size: 26px;
       font-weight: 600;
       letter-spacing: -1px;
@@ -21,20 +25,21 @@
       display: flex;
       position: absolute;
       right: 15px;
+      padding-top: 13px;
 
       .cartSubTitle {
         margin-right: 13px;
 
         .cartSubTitleText {
-          color: #959595;
+          color: $color-cartSubTitle;
           font-size: 17px;
-          font-weight: 400;
+          font-weight: 600;
           line-height: 1;
 
           &.on {
             position: relative;
             top: -3px;
-            color: #161616;
+            color: $color-cartTitle;
             font-size: 20px;
             font-weight: 600;
           }
