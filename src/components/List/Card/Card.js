@@ -9,8 +9,17 @@ class Card extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLiked: false,
+      isLiked: 0,
     };
+  }
+
+  componentDidMount() {
+    const { id } = this.props.product;
+    fetch(`/like/${id}`)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ isLiked: res.DATA });
+      });
   }
 
   getDiscountRate = (num1, num2) => {
@@ -29,10 +38,11 @@ class Card extends React.Component {
       })
         .then(res => res.json())
         .then(res => {
-          this.setState({ isLiked: res.DATA }, () => {
-            this.state.isLiked
-              ? alert('찜한 상품에 저장되었습니다.')
-              : alert('취소되었습니다.');
+          res.DATA
+            ? alert('찜한 상품에 저장되었습니다.')
+            : alert('취소되었습니다.');
+          this.setState({
+            isLiked: res.DATA ? 1 : 0,
           });
         });
     } else {
@@ -52,6 +62,7 @@ class Card extends React.Component {
       name,
     } = this.props.product;
     const { isLiked } = this.state;
+
     return (
       <li className="foodProduct">
         <div className="foodImage">
