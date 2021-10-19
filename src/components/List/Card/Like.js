@@ -3,32 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 class Like extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLiked: this.props.isLiked,
-    };
-  }
-
-  checkLike = () => {
-    const { isLiked } = this.state;
-    this.setState({
-      isLiked: !isLiked,
-    });
-  };
-
   render() {
-    const { toggleLike, id } = this.props;
-    const { isLiked } = this.state;
-    const { checkLike } = this;
+    const { toggleLike, id, isLiked } = this.props;
     return (
       <FontAwesomeIcon
-        onClick={() => toggleLike(id)}
-        onMouseDown={checkLike}
+        onClick={toggleLike}
         icon={faHeart}
         id={id}
-        isLiked={isLiked}
-        className={isLiked ? 'fa-heart fill' : 'fa-heart'}
+        className={isLiked === 1 ? 'fa-heart fill' : 'fa-heart'}
       />
     );
   }

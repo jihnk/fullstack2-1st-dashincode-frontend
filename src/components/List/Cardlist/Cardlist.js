@@ -13,32 +13,15 @@ class Cardlist extends React.Component {
     };
   }
 
-  toggleLike = id => {
-    const { products } = this.state;
-    const newProducts = [...products];
-    for (let i = 0; i < newProducts.length; i++) {
-      if (newProducts[i].id === id) {
-        newProducts[i].isLiked = !newProducts[i].isLiked;
-        newProducts[i].isLiked
-          ? window.alert('찜한 상품에 저장되었습니다.')
-          : window.alert('취소되었습니다.');
-        return newProducts;
-      }
-    }
-    this.setState = {
-      foodProducts: newProducts,
-    };
-  };
-
-  componentDidMount() {
-    const { page } = this.props;
-    if (page === 'mainpage') {
+  fetchFunctions = {
+    mainpage: () => {
       fetch(`/list/mainpage`)
         .then(res => res.json())
         .then(res => {
           this.setState({ products: res.DATA });
         });
-    } else if (page === 'search') {
+    },
+    search: () => {
       const { search } = this.props.location;
       const queryObj = queryString.parse(search, { decode: 'false' });
       const { words } = queryObj;
@@ -47,7 +30,8 @@ class Cardlist extends React.Component {
         .then(res => {
           this.setState({ products: res.DATA });
         });
-    } else if (page === 'list') {
+    },
+    list: () => {
       const { main, sub } = this.props.match.params;
       if (sub === undefined) {
         fetch(`/list/main/${main}`)
@@ -62,14 +46,20 @@ class Cardlist extends React.Component {
             this.setState({ products: res.DATA });
           });
       }
-    } else if (page === 'category') {
+    },
+    category: () => {
       const { sort } = this.props.match.params;
       fetch(`/list/${sort}`)
         .then(res => res.json())
         .then(res => {
           this.setState({ products: res.DATA });
         });
-    }
+    },
+  };
+
+  componentDidMount() {
+    const { page } = this.props;
+    this.fetchFunctions[page]();
   }
 
   render() {
@@ -80,7 +70,7 @@ class Cardlist extends React.Component {
         <ul className="foodList">
           {products &&
             products.map(product => {
-              return <Card {...product} toggleLike={this.toggleLike} />;
+              return <Card key={product.id} product={product} />;
             })}
         </ul>
       </div>
