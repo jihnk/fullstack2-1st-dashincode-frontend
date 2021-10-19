@@ -1,4 +1,4 @@
-.MainCategory {
+.SliderCategory {
   position: absolute;
   width: 100%;
   text-align: center;
@@ -28,7 +28,7 @@
         font-weight: 600;
       }
 
-      .subMenu {
+      > .subMenu {
         display: none;
         position: absolute;
         top: 0px;
@@ -60,7 +60,7 @@
             align-items: center;
             border-left: 1px solid #f4f4f4;
 
-            img {
+            .productImg {
               width: 150px;
               height: 150px;
             }
@@ -81,7 +81,7 @@
     opacity: 1;
   }
 
-  .mainMenuList:hover .subMenu {
+  .mainMenuList:hover > .subMenu {
     display: flex;
   }
 }
