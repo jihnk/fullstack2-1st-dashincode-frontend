@@ -10,7 +10,7 @@ class Like extends React.Component {
         onClick={toggleLike}
         icon={faHeart}
         id={id}
-        className={isLiked === 1 ? 'fa-heart fill' : 'fa-heart'}
+        className={isLiked ? 'fa-heart fill' : 'fa-heart'}
       />
     );
   }
