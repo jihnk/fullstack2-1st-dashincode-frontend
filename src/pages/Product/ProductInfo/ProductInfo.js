@@ -118,21 +118,29 @@ class ProductInfo extends Component {
 
   toggleHeart = () => {
     const { id } = this.props.match.params;
+    const { isLiked } = this.state;
     if (cookie.get('user')) {
-      fetch(`/like/${id}`, {
-        method: 'POST',
+      const method = !isLiked ? 'POST' : 'DELETE';
+      fetch(`/product/${id}/like`, {
+        method: method,
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
       })
         .then(res => res.json())
-        .then(data => {
-          this.setState({ isLiked: data.DATA }, () => {
-            this.state.isLiked
-              ? alert('찜한 상품에 저장되었습니다.')
-              : alert('취소되었습니다.');
-          });
+        .then(res => {
+          if (res.data) {
+            this.setState({
+              isLiked: res.data,
+            });
+            alert('찜한 상품에 저장되었습니다.');
+          } else {
+            this.setState({
+              isLiked: res.data,
+            });
+            alert('취소되었습니다.');
+          }
         });
     } else {
       alert('로그인 후 이용 가능한 서비스입니다');

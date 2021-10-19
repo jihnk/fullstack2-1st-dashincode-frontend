@@ -28,15 +28,9 @@ class Card extends React.Component {
   };
 
   toggleLike = () => {
-    const { isLiked } = this.state;
     const { id } = this.props.product;
-
+    const { isLiked } = this.state;
     if (cookie.get('user')) {
-      // this.setState(
-      // {
-      //   isLiked: !isLiked,
-      // },
-      // () => {
       const method = !isLiked ? 'POST' : 'DELETE';
       fetch(`/product/${id}/like`, {
         method: method,
