@@ -4,17 +4,17 @@
       overflow: hidden;
       z-index: 350;
 
-    .spreadImage {
-      display: flex;
-      width: 500vw;
-    }
+      .spreadImage {
+        display: flex;
+        width: 500vw;
+      }
 
-    .sliderImg {
-      display: flex;
-      float: left;
-      width: 100vw;
-      height: 400px;
-    }
+      .sliderImg {
+        display: flex;
+        float: left;
+        width: 100vw;
+        height: 400px;
+      }
     }
     .button {
       display: flex;
@@ -24,8 +24,8 @@
       width: 108px;
       height: 36px;
       padding-left: 21px;
-      background: rgba(0,0,0,0.5);
-      border-radius: 60px; 
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 60px;
       color: #fff;
       font-size: 1.32em;
       font-weight: 400;
@@ -37,16 +37,17 @@
 
       p {
         position: relative;
-        width: 40px;
-        left: -7px;
-        text-align: center;
         width: 20px;
+        left: -7px;
+        top: 10px;
+        text-align: center;
+        line-height: 20px;
       }
 
       button {
         border: none;
         background: none;
-        color: white;
+        color: #fff;
         font-size: 1.2em;
       }
       button:focus {
@@ -55,4 +56,3 @@
     }
   }
 }
-

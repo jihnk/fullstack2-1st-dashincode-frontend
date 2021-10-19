@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { searchPlaceholder, userInfo } from './headerData';
+import Cookies from 'universal-cookie';
+import { searchPlaceholders, userInfo } from './headerData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faShoppingBag, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -8,14 +9,28 @@ import logo from './logo.png';
 import logoKorean from './logo_korean.png';
 import './Header.scss';
 
+const cookie = new Cookies();
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchValue: '',
+      searchPlaceholder:
+        searchPlaceholders[
+          Math.floor(Math.random() * searchPlaceholders.length)
+        ],
       cartNum: 0,
-      hasToken: false,
     };
+  }
+
+  componentDidMount() {
+    fetch('/cart/amount')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          cartNum: res.amount,
+        });
+      });
   }
 
   handleInput = e => {
@@ -32,27 +47,23 @@ class Header extends Component {
   };
 
   handleSearch = () => {
-    const encodedSearchValue = encodeURI(this.state.searchValue);
-    console.log(encodedSearchValue);
-    this.state.searchValue.length > 0
-      ? window.location.replace(`/search?words=${encodedSearchValue}`)
-      : alert('검색어를 입력해주세요 =͟͟͞͞(๑º ﾛ º๑)');
+    const { searchValue } = this.state;
+    const encodedSearchValue = encodeURI(searchValue);
+    if (searchValue.length > 0) {
+      this.setState({
+        searchPlaceholder: searchValue,
+      });
+      window.location.replace(`/search?words=${encodedSearchValue}`);
+    } else {
+      alert('검색어를 입력해주세요 =͟͟͞͞(๑º ﾛ º๑)');
+    }
   };
 
-  componentDidMount() {
-    fetch('/cart/amount')
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          cartNum: res.amount,
-        });
-      });
-  }
+  logout = () => {
+    cookie.remove('user');
+  };
 
   render() {
-    const randomItem = word => {
-      return word[Math.floor(Math.random() * word.length)];
-    };
     return (
       <header className="Header">
         <div className="headerTop">
@@ -61,13 +72,23 @@ class Header extends Component {
               <h1> 1차 프로젝트 </h1>
             </Link>
             <ul>
-              <Link to="/login">
-                <li>로그인</li>
-              </Link>
-              <li> &nbsp;|&nbsp; </li>
-              <Link to="/signup">
-                <li>회원가입</li>
-              </Link>
+              {cookie.get('user') ? (
+                <Link to="/">
+                  <li onClick={this.logout}>로그아웃</li>
+                </Link>
+              ) : (
+                <li>
+                  <ul>
+                    <Link to="/login">
+                      <li>로그인</li>
+                    </Link>
+                    <li> &nbsp;|&nbsp; </li>
+                    <Link to="/signup">
+                      <li>회원가입</li>
+                    </Link>
+                  </ul>
+                </li>
+              )}
               <li> &nbsp;|&nbsp; </li>
               <Link to="/">
                 <li>비회원주문조회</li>
@@ -94,7 +115,7 @@ class Header extends Component {
                     <input
                       className="search"
                       type="text"
-                      placeholder={randomItem(searchPlaceholder)}
+                      placeholder={this.state.searchPlaceholder}
                       onChange={this.handleInput}
                       onKeyPress={this.handleInputByEnter}
                     />
@@ -120,7 +141,7 @@ class Header extends Component {
                               {userInfo.map((list, id) => {
                                 return (
                                   <li key={id}>
-                                    {this.state.hasToken ? (
+                                    {cookie.get('user') ? (
                                       <Link to="/user">{list}</Link>
                                     ) : (
                                       <Link to="/login">{list}</Link>

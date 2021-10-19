@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import MainCategory from './Components/MainCategory/MainCategory';
+import SliderCategory from './SliderCategory/SliderCategory';
 import slider1 from './slider1.png';
 import slider2 from './slider2.jpg';
 import slider3 from './slider3.png';
@@ -49,7 +49,7 @@ class Slider extends Component {
     return (
       <div className="Slider">
         <div className="sliderWrap">
-          <MainCategory />
+          <SliderCategory />
           <div className="imageSlide">
             <div className="spreadImage" ref={this.myRef}>
               <Link to="/">
