@@ -76,28 +76,28 @@ class CartDetail extends Component {
         <section className="orderTotalPriceContainer">
           <div className="orderTotalPriceWrap">
             <div className="orderPriceWrap">
-              <p className="orderPriceName">주문금액</p>
-              <em className="orderPrice">
+              <strong className="orderPriceName">주문금액</strong>
+              <p className="orderPrice">
                 {parseInt(orderPrice).toLocaleString()}
-              </em>
-              <em className="orderPriceWon">원</em>
+              </p>
+              <p className="orderPriceWon">원</p>
             </div>
             <p className="sign">+</p>
             <div className="deliveryWrap">
-              <p className="deliveryTitle">배송비</p>
+              <strong className="deliveryTitle">배송비</strong>
               <p className="deliveryPrice">
                 {isFreeDelivery ? '무료배송' : '3,000원'}
               </p>
             </div>
             <p className="sign">=</p>
             <div className="totalPriceWrap">
-              <p className="totalPriceTitle">결제금액</p>
-              <em className="totalPrice">
+              <strong className="totalPriceTitle">결제금액</strong>
+              <p className="totalPrice">
                 {isFreeDelivery
                   ? orderPrice.toLocaleString()
                   : (orderPrice + 3000).toLocaleString()}
-              </em>
-              <em className="totalPriceWon">원</em>
+              </p>
+              <strong className="totalPriceWon">원</strong>
             </div>
           </div>
         </section>

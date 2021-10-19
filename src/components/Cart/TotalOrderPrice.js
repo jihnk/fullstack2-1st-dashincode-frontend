@@ -16,10 +16,10 @@ class TotalOrderPrice extends Component {
               <strong className="totalOrderTitle">총 주문금액</strong>
             </div>
             <div className="totalOrderPriceWrap">
-              <em className="totalOrderPrice">
+              <strong className="totalOrderPrice">
                 {totalOrderPrice.toLocaleString()}
-              </em>
-              <em className="totalOrderPriceWon">원</em>
+              </strong>
+              <strong className="totalOrderPriceWon">원</strong>
             </div>
           </div>
           <p className="sign">+</p>
@@ -28,10 +28,10 @@ class TotalOrderPrice extends Component {
               <strong className="totalOrderTitle">총 배송비</strong>
             </div>
             <div className="totalOrderPriceWrap">
-              <em className="totalOrderPrice">
+              <strong className="totalOrderPrice">
                 {DeliveryPrice.toLocaleString()}
-              </em>
-              <em className="totalOrderPriceWon">원</em>
+              </strong>
+              <strong className="totalOrderPriceWon">원</strong>
             </div>
           </div>
           <p className="sign">=</p>
@@ -42,20 +42,20 @@ class TotalOrderPrice extends Component {
               </strong>
             </div>
             <div className="totalOrderPriceWrap">
-              <em className="totalOrderPrice expectPrice">
+              <strong className="totalOrderPrice expectPrice">
                 {finalPrice.toLocaleString()}
-              </em>
-              <em className="totalOrderPriceWon expectPrice">원</em>
+              </strong>
+              <strong className="totalOrderPriceWon expectPrice">원</strong>
             </div>
           </div>
         </div>
         <div className="discountPriceContainer">
           <div className="discountPriceWrap">
             <p className="discountPriceTitle">예상적립금</p>
-            <em className="discountPrice">
+            <strong className="discountPrice">
               {(totalPrice * 0.1).toLocaleString()}
-            </em>
-            <em className="discountPriceWon">원</em>
+            </strong>
+            <strong className="discountPriceWon">원</strong>
           </div>
         </div>
       </>

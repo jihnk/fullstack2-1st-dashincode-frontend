@@ -96,11 +96,11 @@ export class CartProduct extends React.Component {
                   </button>
                 </span>
                 <span className="orderPriceWrap">
-                  <em className="priceText">전체 금액:</em>
-                  <em className="price">
+                  <strong className="priceText">전체 금액:</strong>
+                  <strong className="price">
                     {(setPrice * setQuantity).toLocaleString()}
-                  </em>
-                  <em className="priceText">원</em>
+                  </strong>
+                  <strong className="priceText">원</strong>
                 </span>
                 <div className="deleteBtnWrap">
                   <DeleteButton

@@ -5,7 +5,7 @@ class CartHeader extends Component {
   render() {
     return (
       <div className="cartHeaderWrap">
-        <header className="cartHeader">
+        <section className="cartHeader">
           <div className="cartTitle">장바구니</div>
           <ul className="cartSubTitleList">
             <li>
@@ -24,7 +24,7 @@ class CartHeader extends Component {
               </div>
             </li>
           </ul>
-        </header>
+        </section>
       </div>
     );
   }
