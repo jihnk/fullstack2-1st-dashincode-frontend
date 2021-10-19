@@ -95,13 +95,11 @@ class ProductInfo extends Component {
       })
       .then((this.interval = setInterval(this.autoChangeImage, 3000)));
 
-    fetch(`/like/${id}`)
+    fetch(`/product/${id}/like`)
       .then(res => res.json())
-      .then(res =>
-        this.setState({
-          isLiked: res.DATA,
-        })
-      );
+      .then(res => {
+        this.setState({ isLiked: res.data });
+      });
   }
 
   changeImage = url => {
