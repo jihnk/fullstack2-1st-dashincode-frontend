@@ -54,12 +54,17 @@
   .productDetails {
     margin: 20px 5px;
     text-align: left;
-    overflow: hidden;
 
     .productName {
       margin-bottom: 20px;
-      white-space: nowrap;
       font-size: 20px;
+
+      .name {
+        width: 335px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
     }
 
     .productPrice {

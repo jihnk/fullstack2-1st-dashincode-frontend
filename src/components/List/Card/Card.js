@@ -18,7 +18,7 @@ class Card extends React.Component {
   };
 
   toggleLike = () => {
-    const { id } = this.props;
+    const { id } = this.props.product;
     if (cookie.get('user')) {
       fetch(`/like/${id}`, {
         method: 'POST',
@@ -50,19 +50,15 @@ class Card extends React.Component {
       shipment,
       image_url,
       name,
-    } = this.props;
+    } = this.props.product;
+    const { isLiked } = this.state;
     return (
       <li className="foodProduct">
         <div className="foodImage">
           <Link to={`/product/${id}`}>
             <img src={image_url} alt={name} />
           </Link>
-          <Like
-            toggleLike={this.toggleLike}
-            isLiked={this.state.isLiked}
-            id={id}
-            className={this.state.isLiked ? 'fa-heart fill' : 'fa-heart'}
-          />
+          <Like toggleLike={this.toggleLike} isLiked={isLiked} id={id} />
         </div>
         <div className="productDetails">
           <div className="productName">

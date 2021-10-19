@@ -13,15 +13,15 @@ class Cardlist extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const { page } = this.props;
-    if (page === 'mainpage') {
+  fetchFunctions = {
+    mainpage: () => {
       fetch(`/list/mainpage`)
         .then(res => res.json())
         .then(res => {
           this.setState({ products: res.DATA });
         });
-    } else if (page === 'search') {
+    },
+    search: () => {
       const { search } = this.props.location;
       const queryObj = queryString.parse(search, { decode: 'false' });
       const { words } = queryObj;
@@ -30,7 +30,8 @@ class Cardlist extends React.Component {
         .then(res => {
           this.setState({ products: res.DATA });
         });
-    } else if (page === 'list') {
+    },
+    list: () => {
       const { main, sub } = this.props.match.params;
       if (sub === undefined) {
         fetch(`/list/main/${main}`)
@@ -45,14 +46,20 @@ class Cardlist extends React.Component {
             this.setState({ products: res.DATA });
           });
       }
-    } else if (page === 'category') {
+    },
+    category: () => {
       const { sort } = this.props.match.params;
       fetch(`/list/${sort}`)
         .then(res => res.json())
         .then(res => {
           this.setState({ products: res.DATA });
         });
-    }
+    },
+  };
+
+  componentDidMount() {
+    const { page } = this.props;
+    this.fetchFunctions[page]();
   }
 
   render() {
@@ -63,7 +70,7 @@ class Cardlist extends React.Component {
         <ul className="foodList">
           {products &&
             products.map(product => {
-              return <Card key={product.id} {...product} />;
+              return <Card key={product.id} product={product} />;
             })}
         </ul>
       </div>

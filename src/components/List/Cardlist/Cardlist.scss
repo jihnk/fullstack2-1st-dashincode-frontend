@@ -12,8 +12,8 @@
   }
 
   .foodList {
-    position: relative;
     display: grid;
+    position: relative;
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     align-items: center;
