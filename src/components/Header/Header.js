@@ -140,7 +140,7 @@ class Header extends Component {
                           size="lg"
                           icon={faShoppingBag}
                         />
-                        <em class="cartNum">{this.state.cartNum}</em>
+                        <em className="cartNum">{this.state.cartNum}</em>
                       </Link>
                     </li>
                   </ul>

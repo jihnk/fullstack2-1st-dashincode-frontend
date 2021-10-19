@@ -12,7 +12,7 @@ export class CartProduct extends React.Component {
   }
 
   componentDidMount() {
-    const { quantity, price } = this.props.products;
+    const { quantity, price } = this.props;
 
     this.setState({
       setQuantity: quantity,
@@ -47,34 +47,35 @@ export class CartProduct extends React.Component {
   };
 
   render() {
-    const { id, products, categoryTotalPrice, handleDeleteBtn } = this.props;
+    const {
+      product_id,
+      name,
+      image_url,
+      description,
+      orderPrice,
+      handleDeleteBtn,
+    } = this.props;
     const { setQuantity, setPrice } = this.state;
 
     return (
       <div className="cartDetailContainer">
         <div className="cartDetailWrap">
           <div className="orderImgWrap">
-            <a href="#">
-              <img
-                alt={products.name}
-                src={products.image_url}
-                className="orderDetailImg"
-              />
-            </a>
+            <img alt={name} src={image_url} className="orderDetailImg" />
           </div>
           <div className="orderInfoWrap">
             <p className="orderTitle" href="#">
-              {products.name}
+              {name}
             </p>
             <ul className="orderInfoArea">
               <li className="orderInfoWrap">
-                <div className="orderInfoTitle">{products.description}</div>
+                <div className="orderInfoTitle">{description}</div>
                 <span className="orderCntBtnWrap">
                   <button
-                    id={id}
+                    id={product_id}
                     className="cntBtn"
                     onClick={e =>
-                      categoryTotalPrice !== 0
+                      orderPrice !== 0
                         ? this.minusQuantity(e.target.innerHTML)
                         : null
                     }
@@ -82,12 +83,12 @@ export class CartProduct extends React.Component {
                     -
                   </button>
                   <span className="orderCntWrap">
-                    <span className="orderCnt" id={id}>
+                    <span className="orderCnt" id={product_id}>
                       {setQuantity}
                     </span>
                   </span>
                   <button
-                    id={id}
+                    id={product_id}
                     className="cntBtn"
                     onClick={e => this.plusQuantity(e.target.innerHTML)}
                   >
@@ -95,14 +96,17 @@ export class CartProduct extends React.Component {
                   </button>
                 </span>
                 <span className="orderPriceWrap">
-                  <em class="priceText">전체 금액:</em>
-                  <em class="price">
+                  <em className="priceText">전체 금액:</em>
+                  <em className="price">
                     {(setPrice * setQuantity).toLocaleString()}
                   </em>
-                  <em class="priceText">원</em>
+                  <em className="priceText">원</em>
                 </span>
                 <div className="deleteBtnWrap">
-                  <DeleteButton id={id} handleDeleteBtn={handleDeleteBtn} />
+                  <DeleteButton
+                    id={product_id}
+                    handleDeleteBtn={handleDeleteBtn}
+                  />
                 </div>
               </li>
             </ul>

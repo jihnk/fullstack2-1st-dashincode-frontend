@@ -3,9 +3,10 @@ import './TotalOrderPrice.scss';
 
 class TotalOrderPrice extends Component {
   render() {
-    const { totalPrice } = this.props;
-    const totalOrderPrice = totalPrice.toLocaleString();
-    let freeOrder = totalPrice > 30000 ? '무료배송' : '3,000원';
+    const { totalPrice, totalDeliveryPrice } = this.props;
+    const totalOrderPrice = parseInt(totalPrice);
+    const DeliveryPrice = parseInt(totalDeliveryPrice);
+    let finalPrice = totalOrderPrice + DeliveryPrice;
 
     return (
       <>
@@ -15,7 +16,9 @@ class TotalOrderPrice extends Component {
               <strong className="totalOrderTitle">총 주문금액</strong>
             </div>
             <div className="totalOrderPriceWrap">
-              <em className="totalOrderPrice">{totalOrderPrice}</em>
+              <em className="totalOrderPrice">
+                {totalOrderPrice.toLocaleString()}
+              </em>
               <em className="totalOrderPriceWon">원</em>
             </div>
           </div>
@@ -25,7 +28,10 @@ class TotalOrderPrice extends Component {
               <strong className="totalOrderTitle">총 배송비</strong>
             </div>
             <div className="totalOrderPriceWrap">
-              <em className="totalOrderPrice">{freeOrder}</em>
+              <em className="totalOrderPrice">
+                {DeliveryPrice.toLocaleString()}
+              </em>
+              <em className="totalOrderPriceWon">원</em>
             </div>
           </div>
           <p className="sign">=</p>
@@ -36,7 +42,9 @@ class TotalOrderPrice extends Component {
               </strong>
             </div>
             <div className="totalOrderPriceWrap">
-              <em className="totalOrderPrice expectPrice">{totalOrderPrice}</em>
+              <em className="totalOrderPrice expectPrice">
+                {finalPrice.toLocaleString()}
+              </em>
               <em className="totalOrderPriceWon expectPrice">원</em>
             </div>
           </div>
