@@ -21,8 +21,9 @@ class Review extends Component {
   }
 
   render() {
-    const { nickname, comment, image_url } = this.props.review;
+    const { nickname, comment, imageUrl } = this.props.review;
     const { rate } = this.state;
+    console.log(this.props.review);
     return (
       <div className="Review">
         <p className="reviewHeader">
@@ -33,7 +34,7 @@ class Review extends Component {
         <img
           className="reviewImage"
           alt="Product Image (Posted by Reviewer)"
-          src={image_url}
+          src={imageUrl}
         />
       </div>
     );
