@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { API_ENDPOINT } from '../../../api';
+import { API_ENDPOINT } from '../../api';
 import Review from './Review';
 import './ReviewList.scss';
 

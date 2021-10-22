@@ -8,7 +8,7 @@ import { faShoppingBag, faSearch } from '@fortawesome/free-solid-svg-icons';
 import logo from './logo.png';
 import logoKorean from './logo_korean.png';
 import './Header.scss';
-import { API_ENDPOINT } from '../../../api';
+import { API_ENDPOINT } from '../../api';
 
 const cookie = new Cookies();
 class Header extends Component {

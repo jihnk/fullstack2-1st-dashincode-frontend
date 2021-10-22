@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { API_ENDPOINT } from '../../../api';
+import { API_ENDPOINT } from '../../api';
 import './findId';
 import './findPw';
 import './LoginPage.scss';

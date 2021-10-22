@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainCategory from '../../MainCategory/MainCategory';
-import { API_ENDPOINT } from '../../../api';
+import { API_ENDPOINT } from '../../api';
 import './SliderCategory.scss';
 
 class SliderCategory extends Component {

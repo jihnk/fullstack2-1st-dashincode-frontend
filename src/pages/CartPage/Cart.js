@@ -3,7 +3,7 @@ import CartDetail from '../../components/Cart/CartDetail';
 import CartHeader from '../../components/Cart/CartHeader';
 import TotalOrderPrice from '../../components/Cart/TotalOrderPrice';
 import CartOrderButton from '../../components/Cart/CartOrderButton';
-import { API_ENDPOINT } from '../../../api';
+import { API_ENDPOINT } from '../../api';
 import './Cart.scss';
 
 class Cart extends React.Component {

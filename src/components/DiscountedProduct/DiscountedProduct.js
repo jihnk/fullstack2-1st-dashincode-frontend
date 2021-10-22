@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import CountDownTimer from './CountDownTimer';
 import dart from './dart.png';
 import './DiscountedProduct.scss';
-import { API_ENDPOINT } from '../api';
+import { API_ENDPOINT } from '../../api';
 
 class DiscountedProduct extends Component {
   constructor() {
