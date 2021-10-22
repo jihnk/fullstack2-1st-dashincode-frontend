@@ -11,7 +11,7 @@ import QuantityCounter from '../../../components/QuantityCounter/QuantityCounter
 import kakaostory from './ico_sns_kakaostory.gif';
 import facebook from './ico_sns_facebook.gif';
 import twitter from './ico_sns_twitter.gif';
-import { API_ENDPOINT } from '../../api';
+import { API_ENDPOINT } from '../../../api';
 import './ProductInfo.scss';
 
 const cookie = new Cookies();

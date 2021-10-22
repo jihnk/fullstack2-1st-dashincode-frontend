@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { API_ENDPOINT } from '../../api';
+import { API_ENDPOINT } from '../../../api';
 import './ProductNav.scss';
 
 class ProductNav extends Component {
