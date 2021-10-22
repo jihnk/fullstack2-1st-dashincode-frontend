@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGripLines } from '@fortawesome/free-solid-svg-icons';
 import MainCategory from '../MainCategory/MainCategory';
 import NavBarList from './NavBarList/NavBarList';
-import { API_ENDPOINT } from '../../../api';
+import { API_ENDPOINT } from '../../api';
 import './NavBar.scss';
 
 class NavBar extends Component {
