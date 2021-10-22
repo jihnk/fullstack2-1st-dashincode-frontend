@@ -8,6 +8,7 @@ import { faShoppingBag, faSearch } from '@fortawesome/free-solid-svg-icons';
 import logo from './logo.png';
 import logoKorean from './logo_korean.png';
 import './Header.scss';
+import { API_ENDPOINT } from '../../../api';
 
 const cookie = new Cookies();
 class Header extends Component {
@@ -24,7 +25,7 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    fetch('/cart/amount')
+    fetch(`${API_ENDPOINT}/cart/amount`)
       .then(res => res.json())
       .then(res => {
         this.setState({

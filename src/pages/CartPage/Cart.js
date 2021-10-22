@@ -3,6 +3,7 @@ import CartDetail from '../../components/Cart/CartDetail';
 import CartHeader from '../../components/Cart/CartHeader';
 import TotalOrderPrice from '../../components/Cart/TotalOrderPrice';
 import CartOrderButton from '../../components/Cart/CartOrderButton';
+import { API_ENDPOINT } from '../../../api';
 import './Cart.scss';
 
 class Cart extends React.Component {
@@ -18,7 +19,7 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/cart', {
+    fetch(`${API_ENDPOINT}/cart`, {
       header: {
         'Content-type': 'application/json',
       },
@@ -75,7 +76,7 @@ class Cart extends React.Component {
   handleDeleteBtn = id => {
     const { allProduct } = this.state;
 
-    fetch(`/cart/${id}`, {
+    fetch(`${API_ENDPOINT}/cart/${id}`, {
       method: 'DELETE',
       header: {
         'Content-type': 'application/json',

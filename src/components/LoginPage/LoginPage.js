@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { API_ENDPOINT } from '../../../api';
 import './findId';
 import './findPw';
 import './LoginPage.scss';
@@ -26,7 +27,7 @@ class LoginPage extends React.Component {
     e.preventDefault();
     const { userEmail, userPw } = this.state;
     if (userEmail.includes('@') && userPw.length >= 8) {
-      fetch(`/user/login`, {
+      fetch(`${API_ENDPOINT}/user/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

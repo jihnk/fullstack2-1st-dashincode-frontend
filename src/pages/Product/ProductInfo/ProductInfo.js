@@ -11,6 +11,7 @@ import QuantityCounter from '../../../components/QuantityCounter/QuantityCounter
 import kakaostory from './ico_sns_kakaostory.gif';
 import facebook from './ico_sns_facebook.gif';
 import twitter from './ico_sns_twitter.gif';
+import { API_ENDPOINT } from '../../../api';
 import './ProductInfo.scss';
 
 const cookie = new Cookies();
@@ -72,7 +73,7 @@ class ProductInfo extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`/product/${id}/info`)
+    fetch(`${API_ENDPOINT}/product/${id}/info`)
       .then(res => res.json())
       .then(res =>
         this.setState({
@@ -81,7 +82,7 @@ class ProductInfo extends Component {
         })
       );
 
-    fetch(`/product/${id}/thumbnail`)
+    fetch(`${API_ENDPOINT}/product/${id}/thumbnail`)
       .then(res => res.json())
       .then(res => {
         const [mainImage] = res.filter(thumbnail => thumbnail.is_main === 1);
@@ -95,7 +96,7 @@ class ProductInfo extends Component {
       })
       .then((this.interval = setInterval(this.autoChangeImage, 3000)));
 
-    fetch(`/product/${id}/like`)
+    fetch(`${API_ENDPOINT}/product/${id}/like`)
       .then(res => res.json())
       .then(res => {
         this.setState({ isLiked: res.data });
@@ -119,7 +120,7 @@ class ProductInfo extends Component {
     const { isLiked } = this.state;
     if (cookie.get('user')) {
       const method = !isLiked ? 'POST' : 'DELETE';
-      fetch(`/product/${id}/like`, {
+      fetch(`${API_ENDPOINT}/product/${id}/like`, {
         method: method,
         credentials: 'include',
         headers: {
@@ -156,7 +157,7 @@ class ProductInfo extends Component {
 
   addToCart = () => {
     if (cookie.get('user')) {
-      fetch('/cart', {
+      fetch(`${API_ENDPOINT}/cart`, {
         method: 'POST',
         credentials: 'include',
         headers: {

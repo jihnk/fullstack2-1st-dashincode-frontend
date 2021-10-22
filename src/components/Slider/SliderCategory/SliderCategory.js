@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MainCategory from '../../MainCategory/MainCategory';
+import { API_ENDPOINT } from '../../../api';
 import './SliderCategory.scss';
 
 class SliderCategory extends Component {
@@ -11,7 +12,7 @@ class SliderCategory extends Component {
   }
 
   componentDidMount() {
-    fetch('/product/category?location=slider')
+    fetch(`${API_ENDPOINT}/product/category?location=slider`)
       .then(res => res.json())
       .then(data =>
         this.setState({

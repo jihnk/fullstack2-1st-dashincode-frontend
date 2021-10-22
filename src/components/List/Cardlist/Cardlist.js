@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import Card from '../Card/Card';
 import './Cardlist.scss';
+import { API_ENDPOINT } from '../../../api';
 
 class Cardlist extends React.Component {
   constructor() {
@@ -15,7 +16,7 @@ class Cardlist extends React.Component {
 
   fetchFunctions = {
     mainpage: () => {
-      fetch(`/list/mainpage`)
+      fetch(`${API_ENDPOINT}/list/mainpage`)
         .then(res => res.json())
         .then(res => {
           this.setState({ products: res.DATA });
@@ -25,7 +26,7 @@ class Cardlist extends React.Component {
       const { search } = this.props.location;
       const queryObj = queryString.parse(search, { decode: 'false' });
       const { words } = queryObj;
-      fetch(`/list?value=${words}`)
+      fetch(`${API_ENDPOINT}/list?value=${words}`)
         .then(res => res.json())
         .then(res => {
           this.setState({ products: res.DATA });
@@ -34,13 +35,13 @@ class Cardlist extends React.Component {
     list: () => {
       const { main, sub } = this.props.match.params;
       if (sub === undefined) {
-        fetch(`/list/main/${main}`)
+        fetch(`${API_ENDPOINT}/list/main/${main}`)
           .then(res => res.json())
           .then(res => {
             this.setState({ products: res.DATA });
           });
       } else {
-        fetch(`/list/sub/${sub}`)
+        fetch(`${API_ENDPOINT}/list/sub/${sub}`)
           .then(res => res.json())
           .then(res => {
             this.setState({ products: res.DATA });
@@ -49,7 +50,7 @@ class Cardlist extends React.Component {
     },
     category: () => {
       const { sort } = this.props.match.params;
-      fetch(`/list/${sort}`)
+      fetch(`${API_ENDPOINT}/list/${sort}`)
         .then(res => res.json())
         .then(res => {
           this.setState({ products: res.DATA });

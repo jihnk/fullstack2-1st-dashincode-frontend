@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import Like from './Like';
 import './Card.scss';
+import { API_ENDPOINT } from '../../../api';
 
 const cookie = new Cookies();
 class Card extends React.Component {
@@ -16,7 +17,7 @@ class Card extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.product;
-    fetch(`/product/${id}/like`)
+    fetch(`${API_ENDPOINT}/product/${id}/like`)
       .then(res => res.json())
       .then(res => {
         this.setState({ isLiked: res.data });
@@ -32,7 +33,7 @@ class Card extends React.Component {
     const { isLiked } = this.state;
     if (cookie.get('user')) {
       const method = !isLiked ? 'POST' : 'DELETE';
-      fetch(`/product/${id}/like`, {
+      fetch(`${API_ENDPOINT}/product/${id}/like`, {
         method: method,
         credentials: 'include',
         headers: {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { API_ENDPOINT } from '../../../api';
 import Review from './Review';
 import './ReviewList.scss';
 
@@ -13,7 +14,7 @@ class ReviewList extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`/product/${id}/review`, {
+    fetch(`${API_ENDPOINT}/product/${id}/review`, {
       header: {
         Accept: 'application/json',
       },

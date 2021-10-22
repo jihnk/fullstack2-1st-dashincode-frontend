@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { API_ENDPOINT } from '../../../api';
 import './SignUp.scss';
 
 class SignUp extends React.Component {
@@ -20,26 +21,10 @@ class SignUp extends React.Component {
     });
   };
 
-  // signup = e => {
-  //   fetch(`/user/signup`, {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //       email: this.state.email,
-  //       nickname: this.state.nickname,
-  //       password: this.state.password,
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       this.setState({ user: res });
-  //     });
-  // };
-
   handleSignUp = e => {
     e.preventDefault();
     const { email, nickname, password } = this.state;
-    fetch(`/user/signup`, {
+    fetch(`${API_ENDPOINT}/user/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

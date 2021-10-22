@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CountDownTimer from './CountDownTimer';
 import dart from './dart.png';
 import './DiscountedProduct.scss';
+import { API_ENDPOINT } from '../../../api';
 
 class DiscountedProduct extends Component {
   constructor() {
@@ -14,7 +15,7 @@ class DiscountedProduct extends Component {
   }
 
   componentDidMount() {
-    fetch('/product/special')
+    fetch(`${API_ENDPOINT}/product/special`)
       .then(res => res.json())
       .then(data => {
         this.setState({

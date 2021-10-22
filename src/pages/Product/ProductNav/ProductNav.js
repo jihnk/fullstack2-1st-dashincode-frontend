@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { API_ENDPOINT } from '../../../api';
 import './ProductNav.scss';
 
 class ProductNav extends Component {
@@ -12,7 +13,7 @@ class ProductNav extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`/product/${id}/nav`)
+    fetch(`${API_ENDPOINT}/product/${id}/nav`)
       .then(res => res.json())
       .then(data => this.setState({ categories: data }));
   }
