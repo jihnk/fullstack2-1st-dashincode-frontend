@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import Card from '../Card/Card';
 import './Cardlist.scss';
-import { API_ENDPOINT } from '../../api';
+import { API_ENDPOINT } from '../../../api';
 
 class Cardlist extends React.Component {
   constructor() {

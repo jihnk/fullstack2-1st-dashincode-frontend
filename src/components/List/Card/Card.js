@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import Like from './Like';
 import './Card.scss';
-import { API_ENDPOINT } from '../../api';
+import { API_ENDPOINT } from '../../../api';
 
 const cookie = new Cookies();
 class Card extends React.Component {
