@@ -32,7 +32,7 @@
 
 ---
 
-https://github.com/wecode-bootcamp-korea/fullstack2-1st-dashincode-frontend
+https://github.com/wecode-bootcamp-korea/fullstack2-1st-dashincode-backend
 
 <br/>
 
